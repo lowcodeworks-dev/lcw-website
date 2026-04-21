@@ -1,0 +1,74 @@
+{
+  "nav": {
+    "services": "Services",
+    "about": "About",
+    "contact": "Contact",
+    "cta": "Get in touch"
+  },
+  "hero": {
+    "label": "Mendix Consulting · Seoul",
+    "headline": "We turn Mendix licenses into real capability.",
+    "subtext": "Two Mendix Experts from the Netherlands, based in Seoul. We help enterprises build the internal platform teams that don't need us tomorrow.",
+    "cta_primary": "Get in touch",
+    "cta_secondary": "See how we work"
+  },
+  "credibility": {
+    "item1": "Mendix Expert Certified",
+    "item2": "~20 years combined experience",
+    "item3": "Remote & on-site",
+    "item4": "Asia-Pacific and Europe"
+  },
+  "problem": {
+    "headline": "Buying Mendix is easy. Making it work is not.",
+    "body": "Most organisations go live, hit the first wall, and realise their team isn't ready. The platform sits underused. The business case weakens. The vendor gets the blame.",
+    "punchline": "The license was never the problem."
+  },
+  "services": {
+    "label": "What we do",
+    "headline": "Three services, one goal: making your team self-sufficient.",
+    "item1_title": "CoE Setup",
+    "item1_desc": "Governance, standards, architecture decisions, and team structure. We build the foundation your Mendix practice needs to scale.",
+    "item2_title": "Project Advisory",
+    "item2_desc": "Hands-on guidance through your first — or most complex — Mendix delivery. We work with your team, not instead of them.",
+    "item3_title": "Technical Audit",
+    "item3_desc": "An independent review of what you've built, what needs fixing, and what's blocking your next phase."
+  },
+  "process": {
+    "label": "How we work",
+    "headline": "From where you are to where you need to be.",
+    "step1_num": "01",
+    "step1_title": "We assess where you are",
+    "step1_desc": "A structured review of your Mendix maturity, team capability, and platform usage.",
+    "step2_num": "02",
+    "step2_title": "We define where you need to be",
+    "step2_desc": "A clear target — realistic, time-bound, and aligned with your business goals.",
+    "step3_num": "03",
+    "step3_title": "We build the bridge",
+    "step3_desc": "Hands-on delivery with your team. No black boxes. No dependency on us.",
+    "step4_num": "04",
+    "step4_title": "We leave with a team that doesn't need us",
+    "step4_desc": "That's the goal. A capable internal team that can take it from here."
+  },
+  "about": {
+    "label": "About us",
+    "headline": "Dutch expertise. Seoul-based. Built for Asia.",
+    "body": "We started as Mendix developers in the Netherlands and relocated to Seoul in 2022 to support Siemens DISW. Since then, we have built Centers of Excellence for enterprises across East Asia — harmonising the Mendix way of working with how Korean, Taiwanese, and Japanese organisations actually operate.",
+    "body2": "We work remotely and on-site, across time zones. Clients in Korea, Taiwan, Japan, and Europe. English and Dutch.",
+    "danny_name": "Danny Hildebrand",
+    "danny_role": "Mendix Expert · Technical Lead",
+    "jessy_name": "Jessy Hollander",
+    "jessy_role": "Mendix Expert · Strategist"
+  },
+  "contact": {
+    "label": "Get in touch",
+    "headline": "Ready to talk?",
+    "subtext": "Tell us where you are with Mendix and what's blocking you. We'll take it from there.",
+    "cta": "Send us a message",
+    "email": "hello@lowcodeworks.consulting"
+  },
+  "footer": {
+    "tagline": "Mendix expertise for the teams that need it.",
+    "rights": "All rights reserved.",
+    "company": "LowCodeWorks"
+  }
+}
