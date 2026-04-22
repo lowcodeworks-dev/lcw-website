@@ -7,7 +7,7 @@ export function Problem() {
   const t = useTranslations('problem')
 
   return (
-    <section className="bg-white py-28">
+    <section className="bg-background py-28">
       <div className="max-w-6xl mx-auto px-6">
         <div className="max-w-3xl">
           <motion.h2
@@ -15,7 +15,7 @@ export function Problem() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-4xl md:text-5xl font-bold text-[#17280B] leading-tight tracking-tight mb-8"
+            className="text-4xl md:text-5xl font-bold text-foreground leading-tight tracking-tight mb-8"
           >
             {t('headline')}
           </motion.h2>
@@ -25,7 +25,7 @@ export function Problem() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="text-lg text-gray-500 leading-relaxed mb-10"
+            className="text-lg text-muted-foreground leading-relaxed mb-10"
           >
             {t('body')}
           </motion.p>
@@ -35,10 +35,25 @@ export function Problem() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-2xl md:text-3xl font-bold text-[#F04A00]"
+            className="text-2xl md:text-3xl font-bold text-foreground mb-12"
           >
             {t('punchline')}
           </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.45 }}
+            className="border-l-2 border-foreground pl-6"
+          >
+            <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-2">
+              {t('timing_label')}
+            </p>
+            <p className="text-muted-foreground leading-relaxed">
+              {t('timing_body')}
+            </p>
+          </motion.div>
         </div>
       </div>
     </section>

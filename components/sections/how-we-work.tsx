@@ -14,7 +14,7 @@ export function HowWeWork() {
   ]
 
   return (
-    <section id="process" className="bg-[#F1F2EB] py-28">
+    <section id="process" className="bg-muted py-28">
       <div className="max-w-6xl mx-auto px-6">
 
         <motion.div
@@ -24,10 +24,10 @@ export function HowWeWork() {
           transition={{ duration: 0.5 }}
           className="mb-16"
         >
-          <p className="text-xs font-semibold uppercase tracking-widest text-[#F04A00] mb-4">
+          <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-4">
             {t('label')}
           </p>
-          <h2 className="text-4xl md:text-5xl font-bold text-[#17280B] leading-tight tracking-tight">
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground leading-tight tracking-tight">
             {t('headline')}
           </h2>
         </motion.div>
@@ -40,14 +40,14 @@ export function HowWeWork() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="flex gap-6 p-8 bg-white rounded-2xl"
+              className="flex gap-6 p-8 bg-background rounded-2xl"
             >
-              <span className="text-5xl font-bold text-[#F04A00]/20 leading-none select-none shrink-0">
+              <span className="text-5xl font-bold text-foreground/10 leading-none select-none shrink-0">
                 {step.num}
               </span>
               <div>
-                <h3 className="text-lg font-bold text-[#17280B] mb-2">{step.title}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">{step.desc}</p>
+                <h3 className="text-lg font-bold text-foreground mb-2">{step.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">{step.desc}</p>
               </div>
             </motion.div>
           ))}

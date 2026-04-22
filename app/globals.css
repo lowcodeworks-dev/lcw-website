@@ -11,23 +11,20 @@
   --color-muted-foreground: var(--muted-foreground);
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
-  --color-accent: var(--accent);
-
-  /* Brand colours */
-  --color-brand-orange: #F04A00;
-  --color-brand-green: #17280B;
-  --color-brand-cream: #F1F2EB;
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
 }
 
 :root {
-  --background: #ffffff;
-  --foreground: #17280B;
-  --border: #e5e7eb;
-  --muted: #F1F2EB;
-  --muted-foreground: #6b7280;
-  --primary: #F04A00;
-  --primary-foreground: #ffffff;
-  --accent: #17280B;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --border: oklch(0.922 0 0);
   --radius: 0.5rem;
 }
 

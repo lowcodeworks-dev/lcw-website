@@ -7,8 +7,8 @@
   },
   "hero": {
     "label": "Mendix Consulting · Seoul",
-    "headline": "We turn Mendix licenses into real capability.",
-    "subtext": "Two Mendix Experts from the Netherlands, based in Seoul. We help enterprises build the internal platform teams that don't need us tomorrow.",
+    "headline": "Low-code platforms don't transform enterprises. Capable teams do.",
+    "subtext": "We guide organisations and Mendix partners from adoption to genuine capability — whether that means upgrading a stalled Mx9 platform, building a CoE, or preparing your team for the AI features arriving this year.",
     "cta_primary": "Get in touch",
     "cta_secondary": "See how we work"
   },
@@ -16,29 +16,33 @@
     "item1": "Mendix Expert Certified",
     "item2": "~20 years combined experience",
     "item3": "Remote & on-site",
-    "item4": "Asia-Pacific and Europe"
+    "item4": "Global clients, Seoul timezone"
   },
   "problem": {
-    "headline": "Buying Mendix is easy. Making it work is not.",
-    "body": "Most organisations go live, hit the first wall, and realise their team isn't ready. The platform sits underused. The business case weakens. The vendor gets the blame.",
-    "punchline": "The license was never the problem."
+    "headline": "Start is the easy part.",
+    "body": "Most Mendix teams build their first app and hit a wall they can't diagnose. Complexity creeps in, standards don't exist, and the next phase never arrives. The platform gets the blame. The real gap is knowing what to do after go-live.",
+    "punchline": "We know which phase you're in. And exactly how to move you forward.",
+    "timing_label": "Why now",
+    "timing_body": "Mendix 11 — the AI agentic LTS — is arriving later this year. The teams that will benefit are not the ones who wait. They are the ones building the right foundation today. Most are still on Mendix 9."
   },
   "services": {
     "label": "What we do",
-    "headline": "Three services, one goal: making your team self-sufficient.",
-    "item1_title": "CoE Setup",
-    "item1_desc": "Governance, standards, architecture decisions, and team structure. We build the foundation your Mendix practice needs to scale.",
-    "item2_title": "Project Advisory",
-    "item2_desc": "Hands-on guidance through your first — or most complex — Mendix delivery. We work with your team, not instead of them.",
-    "item3_title": "Technical Audit",
-    "item3_desc": "An independent review of what you've built, what needs fixing, and what's blocking your next phase."
+    "headline": "From first sprint to full CoE. We cover the full Mendix lifecycle.",
+    "item1_title": "Maturity Assessment",
+    "item1_desc": "We start by understanding where you are. A structured review of your Mendix adoption, team capability, and platform usage — with a clear picture of what's blocking progress.",
+    "item2_title": "Mx9 → Mx11 Migration",
+    "item2_desc": "Still on Mendix 9? We start with an intake and scope determination — mapping your business rules, process logic, and custom work together with your team — then plan and execute a direct upgrade to Mx11, the AI-ready LTS. Skip the intermediate step. Get there once.",
+    "item3_title": "Development & Advisory",
+    "item3_desc": "Hands-on Mendix development, sprint delivery, and technical guidance — whether you need us for a single phase or as a long-term extension of your team.",
+    "item4_title": "CoE & App Landscape",
+    "item4_desc": "Governance, standards, architecture decisions, and application landscape management. We help you build the structure your Mendix practice needs to run well at scale."
   },
   "process": {
     "label": "How we work",
     "headline": "From where you are to where you need to be.",
     "step1_num": "01",
-    "step1_title": "We assess where you are",
-    "step1_desc": "A structured review of your Mendix maturity, team capability, and platform usage.",
+    "step1_title": "Maturity assessment",
+    "step1_desc": "We start with a structured Mendix Maturity Assessment — platform usage, team capability, governance gaps. This becomes the baseline for everything that follows.",
     "step2_num": "02",
     "step2_title": "We define where you need to be",
     "step2_desc": "A clear target — realistic, time-bound, and aligned with your business goals.",
@@ -46,14 +50,15 @@
     "step3_title": "We build the bridge",
     "step3_desc": "Hands-on delivery with your team. No black boxes. No dependency on us.",
     "step4_num": "04",
-    "step4_title": "We leave with a team that doesn't need us",
-    "step4_desc": "That's the goal. A capable internal team that can take it from here."
+    "step4_title": "We deliver, then decide together",
+    "step4_desc": "Some clients want a capable team that runs independently. Others want ongoing delivery support. We're flexible — the engagement ends when it makes sense, not before."
   },
   "about": {
     "label": "About us",
     "headline": "Dutch expertise. Seoul-based. Built for Asia.",
-    "body": "We started as Mendix developers in the Netherlands and relocated to Seoul in 2022 to support Siemens DISW. Since then, we have built Centers of Excellence for enterprises across East Asia — harmonising the Mendix way of working with how Korean, Taiwanese, and Japanese organisations actually operate.",
-    "body2": "We work remotely and on-site, across time zones. Clients in Korea, Taiwan, Japan, and Europe. English and Dutch.",
+    "body": "We started as Mendix developers in the Netherlands and relocated to Seoul in 2022 to support Siemens DISW. Since then, we have guided organisations across the region through the technical and organisational side of digital transformation — bridging the European Mendix way of working with how APAC teams actually operate.",
+    "body2": "A track record with enterprise clients in Korea, Taiwan, Japan, and Europe. English, Dutch, and remote-first.",
+    "body3": "We also work directly with Mendix partners who need senior capacity on complex engagements. If you need backup, we are available.",
     "danny_name": "Danny Hildebrand",
     "danny_role": "Mendix Expert · Technical Lead",
     "jessy_name": "Jessy Hollander",
@@ -64,7 +69,7 @@
     "headline": "Ready to talk?",
     "subtext": "Tell us where you are with Mendix and what's blocking you. We'll take it from there.",
     "cta": "Send us a message",
-    "email": "hello@lowcodeworks.consulting"
+    "email": "info@lowcodeworks.consulting"
   },
   "footer": {
     "tagline": "Mendix expertise for the teams that need it.",

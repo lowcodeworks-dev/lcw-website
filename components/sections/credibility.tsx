@@ -15,19 +15,19 @@ export function Credibility() {
   ]
 
   return (
-    <section className="bg-white border-y border-gray-100">
+    <section className="bg-background border-y border-border">
       <div className="max-w-6xl mx-auto px-6 py-10">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-0 md:divide-x divide-gray-100"
+          className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-0 md:divide-x divide-border"
         >
           {items.map(({ icon: Icon, text }) => (
             <div key={text} className="flex items-center gap-3 md:px-8 first:pl-0 last:pr-0">
-              <Icon className="h-4 w-4 text-[#F04A00] shrink-0" />
-              <span className="text-sm font-medium text-gray-700">{text}</span>
+              <Icon className="h-4 w-4 text-foreground shrink-0" />
+              <span className="text-sm font-medium text-foreground">{text}</span>
             </div>
           ))}
         </motion.div>
