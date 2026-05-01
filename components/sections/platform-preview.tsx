@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
 
 const spring = { type: 'spring' as const, stiffness: 280, damping: 22, mass: 0.9 }
 
@@ -27,6 +28,7 @@ const cards = [
 
 export function PlatformPreview() {
   const [flipped, setFlipped] = useState(false)
+  const t = useTranslations('platform_preview')
 
   return (
     <section className="bg-foreground py-28 overflow-hidden">
@@ -41,16 +43,16 @@ export function PlatformPreview() {
             transition={{ duration: 0.6 }}
           >
             <p className="text-xs font-semibold uppercase tracking-widest text-background/50 mb-4">
-              Built-in tooling
+              {t('label')}
             </p>
             <h2 className="text-4xl md:text-5xl font-bold text-background leading-tight tracking-tight mb-6">
-              We assess before we advise.
+              {t('headline')}
             </h2>
             <p className="text-background/60 leading-relaxed mb-6">
-              Every engagement starts with a structured assessment — scored across multiple dimensions including architecture, governance, AI readiness, and organisational capability.
+              {t('body1')}
             </p>
             <p className="text-background/60 leading-relaxed">
-              We run assessments across the full engagement lifecycle: CoE maturity, project health, PoC scoping, and AI &amp; data readiness. The output is a clear baseline, not a slide deck.
+              {t('body2')}
             </p>
           </motion.div>
 

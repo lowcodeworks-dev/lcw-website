@@ -90,6 +90,37 @@
     "q4": "계약 범위와 비용은 어떻게 결정되나요?",
     "a4": "첫 대화 후 함께 결정합니다. 고정 요금표는 없습니다 — 규모, 기간, 복잡성에 따라 달라집니다. 솔직하게 말씀드리겠습니다."
   },
+  "platform_preview": {
+    "label": "내장 도구",
+    "headline": "조언하기 전에 평가합니다.",
+    "body1": "모든 프로젝트는 구조화된 평가로 시작합니다 — 아키텍처, 거버넌스, AI 준비도, 조직 역량 등 여러 차원에 걸쳐 점수화됩니다.",
+    "body2": "전체 프로젝트 생애주기에 걸쳐 평가를 실시합니다: CoE 성숙도, 프로젝트 건전성, PoC 범위 결정, AI·데이터 준비도. 결과물은 명확한 기준선이며, 슬라이드 덱이 아닙니다."
+  },
+  "social_proof": {
+    "label": "실적",
+    "headline": "현장에서 나온 숫자들.",
+    "engagements_label": "최근 고객 프로젝트",
+    "stat1_label": "역량 강화한 개발자 수",
+    "stat2_label": "지원한 파트너 수",
+    "stat3_label": "OutSystems·PowerApps 대비 PoC 수주",
+    "stat4_label": "아시아태평양 CoE 구축",
+    "led_by": "담당",
+    "case1_company": "USI Global · 대만",
+    "case1_led": "Danny Hildebrand",
+    "case1_tag": "디지털 전환 · CoE 구축 · 앱 개발",
+    "case1_desc": "USI Global은 30개 생산 거점에 22,000명의 직원을 둔 대만의 전자 제조업체입니다. 저희는 멘딕스 CoE 구축과 디지털 전환을 주도했습니다 — 10개의 분산된 레거시 시스템을 70개 이상의 승인 워크플로우를 포괄하는 단일 플랫폼으로 통합했습니다. 결과: 개발 속도 30% 향상과 전사적 프로세스 혁신을 위한 통합 기반 마련.",
+    "case1_cta": "Mendix.com에서 전체 사례 읽기",
+    "case2_company": "Macnica · 일본",
+    "case2_led": "Jessy Hollander",
+    "case2_tag": "CoE 구축 · DX 팩토리 · 파트너 지원",
+    "case2_desc": "Macnica는 일본의 대표적인 멘딕스 파트너이자 국내 최대 IT 유통사 중 하나입니다. 저희는 내부 애플리케이션 개발과 고객 대상 프로젝트를 모두 지원하는 멘딕스 CoE인 Macnica DX Factory를 구축했습니다. 이 팩토리는 일본 전역에 걸친 Macnica의 멘딕스 사업의 기반이 되었습니다.",
+    "case2_cta": "Macnica.co.jp에서 더 읽기",
+    "case3_company": "Mendix 생태계 · 아시아태평양 & 유럽",
+    "case3_led": "Danny Hildebrand & Jessy Hollander",
+    "case3_tag": "파트너 지원 · PoC · 프리세일즈",
+    "case3_desc": "LCW를 창립하기 전, 저희는 멘딕스와 지멘스 내부에서 일했습니다 — 아시아태평양과 유럽 전역의 8개 이상 파트너를 지원하고, OutSystems 및 Power Apps와의 경쟁 PoC에서 수주하고, 지멘스 프리세일즈를 지원하며, 멘딕스 커뮤니티 행사에서 발표했습니다. 전체 파트너 생태계에 걸친 이 최전선 경험이 패턴 인식의 원천입니다.",
+    "case3_badge": "내부 실적 · LCW 창립 이전"
+  },
   "footer": {
     "tagline": "필요한 팀을 위한 멘딕스 전문성.",
     "rights": "All rights reserved.",

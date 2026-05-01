@@ -90,6 +90,37 @@
     "q4": "How are engagements scoped and priced?",
     "a4": "We scope and price after an initial conversation. There is no fixed rate card — engagements vary by size, duration, and complexity. We will be direct about what makes sense."
   },
+  "platform_preview": {
+    "label": "Built-in tooling",
+    "headline": "We assess before we advise.",
+    "body1": "Every engagement starts with a structured assessment — scored across multiple dimensions including architecture, governance, AI readiness, and organisational capability.",
+    "body2": "We run assessments across the full engagement lifecycle: CoE maturity, project health, PoC scoping, and AI & data readiness. The output is a clear baseline, not a slide deck."
+  },
+  "social_proof": {
+    "label": "Track record",
+    "headline": "Numbers from the field.",
+    "engagements_label": "Latest customer engagements",
+    "stat1_label": "Developers enabled",
+    "stat2_label": "Partners enabled",
+    "stat3_label": "PoC wins vs. Outsystems & PowerApps",
+    "stat4_label": "CoE setups across APAC",
+    "led_by": "Led by",
+    "case1_company": "USI Global · Taiwan",
+    "case1_led": "Danny Hildebrand",
+    "case1_tag": "Digital Transformation · CoE Setup · App Development",
+    "case1_desc": "USI Global is a Taiwanese electronics manufacturer with 22,000 employees across 30 production sites. We led the Mendix CoE setup and digital transformation — consolidating 10 fragmented legacy systems into a single platform covering 70+ approval workflows. Result: 30% faster development and a unified foundation for enterprise-wide process transformation.",
+    "case1_cta": "Read the full story on Mendix.com",
+    "case2_company": "Macnica · Japan",
+    "case2_led": "Jessy Hollander",
+    "case2_tag": "CoE Setup · DX Factory · Partner Enablement",
+    "case2_desc": "Macnica is Japan's leading Mendix partner and one of the country's largest IT distributors. We set up the Macnica DX Factory — a Mendix CoE enabling both internal application development and customer-facing projects. The factory became the foundation for Macnica's Mendix practice across Japan.",
+    "case2_cta": "Read more on Macnica.co.jp",
+    "case3_company": "Mendix Ecosystem · APAC & Europe",
+    "case3_led": "Danny Hildebrand & Jessy Hollander",
+    "case3_tag": "Partner Enablement · PoC · Presales",
+    "case3_desc": "Before founding LCW, we operated inside Mendix and Siemens — enabling 8+ partners across APAC and Europe, winning competitive PoC cycles against OutSystems and Power Apps, supporting Siemens presales engagements, and presenting at Mendix community events. This front-line experience across the full partner landscape is where the pattern recognition comes from.",
+    "case3_badge": "Internal track record · Pre-LCW"
+  },
   "footer": {
     "tagline": "Mendix expertise for the teams that need it.",
     "rights": "All rights reserved.",
