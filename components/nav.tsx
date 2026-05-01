@@ -98,7 +98,7 @@ export function Nav({ locale }: { locale: string }) {
 
           <a
             href="#contact"
-            className="px-4 py-2 bg-foreground text-background text-sm font-semibold rounded-full hover:bg-foreground/85 transition-colors"
+            className="px-4 py-2 bg-accent text-accent-foreground text-sm font-semibold rounded-full hover:bg-accent/85 transition-colors"
           >
             {t('cta')}
           </a>
@@ -139,7 +139,7 @@ export function Nav({ locale }: { locale: string }) {
             <a
               href="#contact"
               onClick={() => setOpen(false)}
-              className="ml-auto px-4 py-2 bg-foreground text-background text-sm font-semibold rounded-full"
+              className="ml-auto px-4 py-2 bg-accent text-accent-foreground text-sm font-semibold rounded-full"
             >
               {t('cta')}
             </a>

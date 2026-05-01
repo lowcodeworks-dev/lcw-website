@@ -1,9 +1,33 @@
 'use client'
 
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 
+const spring = { type: 'spring' as const, stiffness: 280, damping: 22, mass: 0.9 }
+
+const cards = [
+  {
+    src: '/screenshots/workspace-result.png',
+    alt: 'LCW Workspace — Assessment results and radar chart',
+    width: 800,
+    height: 600,
+    front: { y: 0, x: 0, rotate: -2, scale: 1, zIndex: 2, opacity: 1 },
+    back:  { y: 30, x: 18, rotate: 5, scale: 0.91, zIndex: 1, opacity: 0.55 },
+  },
+  {
+    src: '/screenshots/workspace-assessment.png',
+    alt: 'LCW Workspace — Assessment scoring form',
+    width: 800,
+    height: 600,
+    front: { y: 0, x: 0, rotate: -2, scale: 1, zIndex: 2, opacity: 1 },
+    back:  { y: 30, x: 18, rotate: 5, scale: 0.91, zIndex: 1, opacity: 0.55 },
+  },
+]
+
 export function PlatformPreview() {
+  const [flipped, setFlipped] = useState(false)
+
   return (
     <section className="bg-foreground py-28 overflow-hidden">
       <div className="max-w-6xl mx-auto px-6">
@@ -30,46 +54,38 @@ export function PlatformPreview() {
             </p>
           </motion.div>
 
-          {/* Screenshots — result as hero, form as floating card */}
-          <div className="relative h-[480px]">
+          {/* Screenshot stack — hover to shuffle */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="relative aspect-[4/3] cursor-pointer"
+            onHoverStart={() => setFlipped(true)}
+            onHoverEnd={() => setFlipped(false)}
+          >
+            {cards.map((card, i) => {
+              const isFront = flipped ? i === 1 : i === 0
+              return (
+                <motion.div
+                  key={card.src}
+                  animate={isFront ? card.front : card.back}
+                  initial={i === 0 ? card.front : card.back}
+                  transition={spring}
+                  className="absolute inset-0 rounded-2xl overflow-hidden border border-background/10 shadow-2xl"
+                >
+                  <Image
+                    src={card.src}
+                    alt={card.alt}
+                    width={card.width}
+                    height={card.height}
+                    className="w-full h-full object-contain"
+                  />
+                </motion.div>
+              )
+            })}
+          </motion.div>
 
-            {/* Main — assessment result with radar chart */}
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="absolute inset-0 right-0 bottom-12"
-            >
-              <div className="rounded-xl overflow-hidden shadow-2xl border border-background/10 h-full">
-                <Image
-                  src="/screenshots/workspace-result.png"
-                  alt="LCW Workspace — Assessment results and radar chart"
-                  width={640}
-                  height={520}
-                  className="w-full h-full object-cover object-top"
-                />
-              </div>
-            </motion.div>
-
-            {/* Floating — assessment scoring form */}
-            <motion.div
-              initial={{ opacity: 0, x: -20, y: 20 }}
-              whileInView={{ opacity: 1, x: 0, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.35 }}
-              className="absolute bottom-0 -left-6 w-3/5 rounded-xl overflow-hidden shadow-2xl border border-background/10"
-            >
-              <Image
-                src="/screenshots/workspace-assessment.png"
-                alt="LCW Workspace — Assessment scoring"
-                width={420}
-                height={300}
-                className="w-full h-auto object-cover object-top"
-              />
-            </motion.div>
-
-          </div>
         </div>
       </div>
     </section>

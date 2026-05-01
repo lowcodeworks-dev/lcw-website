@@ -35,7 +35,7 @@ export function Hero() {
           <div className="flex flex-wrap gap-4">
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 px-6 py-3.5 bg-foreground text-background font-semibold rounded-full hover:bg-foreground/85 transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-3.5 bg-accent text-accent-foreground font-semibold rounded-full hover:bg-accent/85 transition-colors"
             >
               {t('cta_primary')}
               <ArrowRight className="h-4 w-4" />

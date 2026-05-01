@@ -6,36 +6,39 @@
     "cta": "Get in touch"
   },
   "hero": {
-    "label": "Mendix Consulting · Seoul",
-    "headline": "Low-code platforms don't transform enterprises. Capable teams do.",
-    "subtext": "We guide organisations and Mendix partners from adoption to genuine capability — whether that means upgrading a stalled Mx9 platform, building a CoE, or preparing your team for the AI features arriving this year.",
+    "label": "Mendix Consulting · Remote",
+    "headline": "We helped build the Mendix ecosystem. Now we help you navigate it.",
+    "subtext": "We guide organisations and Mendix partners from adoption to genuine capability — from upgrading a stalled Mx9 platform to preparing your team for agentic AI development with the guardrails enterprises actually need.",
     "cta_primary": "Get in touch",
     "cta_secondary": "See how we work"
   },
   "credibility": {
-    "item1": "Mendix Expert Certified",
-    "item2": "~20 years combined experience",
-    "item3": "Remote & on-site",
-    "item4": "Global clients, Seoul timezone"
+    "item1": "Mendix Expert Certified · Since 2018",
+    "item2": "Ex-Siemens · Mendix NL alumni",
+    "item3": "Remote & on-site, worldwide",
+    "item4": "Global clients, remote-first"
   },
   "problem": {
     "headline": "Start is the easy part.",
     "body": "Most Mendix teams build their first app and hit a wall they can't diagnose. Complexity creeps in, standards don't exist, and the next phase never arrives. The platform gets the blame. The real gap is knowing what to do after go-live.",
     "punchline": "We know which phase you're in. And exactly how to move you forward.",
     "timing_label": "Why now",
-    "timing_body": "Mendix 11 — the AI agentic LTS — is arriving later this year. The teams that will benefit are not the ones who wait. They are the ones building the right foundation today. Most are still on Mendix 9."
+    "timing_body": "Mendix 11 is fully committed to agentic AI development — with built-in guardrails that make it the safest way for enterprises to put AI into production. Raw AI coding tools move fast but leave governance gaps. Mendix closes them by design. Most organisations are still on Mendix 9. The teams that benefit will be the ones building the right foundation today."
   },
   "services": {
     "label": "What we do",
     "headline": "From first sprint to full CoE. We cover the full Mendix lifecycle.",
     "item1_title": "Maturity Assessment",
     "item1_desc": "We start by understanding where you are. A structured review of your Mendix adoption, team capability, and platform usage — with a clear picture of what's blocking progress.",
+    "item1_meta": "Delivered as a scored report across 6 dimensions · Typical duration: 2 weeks",
     "item2_title": "Mx9 → Mx11 Migration",
-    "item2_desc": "Still on Mendix 9? We start with an intake and scope determination — mapping your business rules, process logic, and custom work together with your team — then plan and execute a direct upgrade to Mx11, the AI-ready LTS. Skip the intermediate step. Get there once.",
+    "item2_desc": "Mendix is concentrating all future development — including agentic AI capabilities — in Mendix 11. Everything below is becoming legacy. We start with an intake and scope determination, mapping your business rules and custom work together with your team, then execute a direct upgrade to Mx11. Skip the intermediate step. Get there once, get there ready.",
     "item3_title": "Development & Advisory",
     "item3_desc": "Hands-on Mendix development, sprint delivery, and technical guidance — whether you need us for a single phase or as a long-term extension of your team.",
+    "partner_note": "Mendix partner looking for senior capacity on a complex engagement?",
+    "partner_link": "We work with partners directly →",
     "item4_title": "CoE & App Landscape",
-    "item4_desc": "Governance, standards, architecture decisions, and application landscape management. We help you build the structure your Mendix practice needs to run well at scale."
+    "item4_desc": "Governance, standards, architecture decisions, and application landscape management. A proper CoE is the organisational guardrail layer that makes agentic AI safe to deploy at scale — not just for Mendix, but for your entire platform strategy."
   },
   "process": {
     "label": "How we work",
@@ -48,28 +51,44 @@
     "step2_desc": "A clear target — realistic, time-bound, and aligned with your business goals.",
     "step3_num": "03",
     "step3_title": "We build the bridge",
-    "step3_desc": "Hands-on delivery with your team. No black boxes. No dependency on us.",
+    "step3_desc": "We work embedded with your team, share every decision, and leave you capable of running it yourself.",
     "step4_num": "04",
     "step4_title": "We deliver, then decide together",
     "step4_desc": "Some clients want a capable team that runs independently. Others want ongoing delivery support. We're flexible — the engagement ends when it makes sense, not before."
   },
   "about": {
     "label": "About us",
-    "headline": "Dutch expertise. Seoul-based. Built for Asia.",
-    "body": "We started as Mendix developers in the Netherlands and relocated to Seoul in 2022 to support Siemens DISW. Since then, we have guided organisations across the region through the technical and organisational side of digital transformation — bridging the European Mendix way of working with how APAC teams actually operate.",
-    "body2": "A track record with enterprise clients in Korea, Taiwan, Japan, and Europe. English, Dutch, and remote-first.",
+    "headline": "Dutch expertise. Remote-first. Built for global.",
+    "body": "We built our careers inside Mendix and Siemens — starting at Mendix NL and brought to Seoul in 2022 by Siemens Korea to deliver a worldwide GTM application for a global enterprise client. That project rooted us in the region. Since then, we have guided organisations across East Asia and Europe through the technical and organisational side of digital transformation — bridging the European way of working with how APAC teams actually operate.",
+    "body2": "A track record with enterprise clients in Korea, Taiwan, Japan, and Europe. English and Dutch. Remote-first, and happy to travel when it matters.",
     "body3": "We also work directly with Mendix partners who need senior capacity on complex engagements. If you need backup, we are available.",
     "danny_name": "Danny Hildebrand",
-    "danny_role": "Mendix Expert · Technical Lead",
+    "danny_role": "Digital Transformation · Solution Architect · Tech Lead",
     "jessy_name": "Jessy Hollander",
-    "jessy_role": "Mendix Expert · Strategist"
+    "jessy_role": "Digital Transformation · Project Management · Product Owner"
   },
   "contact": {
     "label": "Get in touch",
     "headline": "Ready to talk?",
-    "subtext": "Tell us where you are with Mendix and what's blocking you. We'll take it from there.",
+    "subtext": "Tell us where you are with Mendix and what's blocking you. We'll take it from there. Engagements are scoped and priced after an initial conversation. Most start with a maturity assessment. Working language: English.",
+    "availability": "Currently accepting new engagements.",
     "cta": "Send us a message",
-    "email": "info@lowcodeworks.consulting"
+    "cta_followup": "We respond within 24 hours and include a booking link if there's a fit.",
+    "email": "info@lowcodeworks.consulting",
+    "partner_headline": "Are you a Mendix partner?",
+    "partner_body": "We work directly with partners who need senior capacity on complex engagements — as sub-contractor or direct extension, white-labelled or credited, your preference."
+  },
+  "faq": {
+    "label": "FAQ",
+    "headline": "Common questions.",
+    "q1": "What does a Maturity Assessment include?",
+    "a1": "A structured review across six dimensions: platform usage, team capability, governance, architecture, AI readiness, and organisational maturity. The output is a scored report that we discuss together — either right away or in a planned follow-up — to pinpoint the topics worth setting up or improving. It is a collaborative starting point, not a document drop.",
+    "q2": "Do you work outside Asia?",
+    "a2": "Yes. We work worldwide, remote-first. We have delivered for clients in Korea, Taiwan, Japan, the Netherlands, and beyond. Large timezone differences are manageable — we discuss upfront how to structure communication so it works for both sides.",
+    "q3": "Can you work alongside our existing team?",
+    "a3": "Yes. We do hands-on Mendix development, work alongside your existing developers, or both. Some clients need us to deliver; others need us to coach and guide their team. Most engagements end up being a mix — we adapt to what the situation actually requires.",
+    "q4": "How are engagements scoped and priced?",
+    "a4": "We scope and price after an initial conversation. There is no fixed rate card — engagements vary by size, duration, and complexity. We will be direct about what makes sense."
   },
   "footer": {
     "tagline": "Mendix expertise for the teams that need it.",

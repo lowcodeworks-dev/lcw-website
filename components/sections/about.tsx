@@ -30,8 +30,17 @@ export function About() {
   const t = useTranslations('about')
 
   return (
-    <section id="about" className="bg-background py-28">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="about" className="relative bg-background py-28 overflow-hidden">
+
+      {/* Ghosted hangul background */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -bottom-8 -right-8 text-[22rem] font-bold leading-none text-foreground/[0.04] select-none"
+      >
+        서울
+      </div>
+
+      <div className="max-w-6xl mx-auto px-6 relative">
         <div className="grid md:grid-cols-2 gap-16 items-start">
 
           {/* Text */}
@@ -44,9 +53,18 @@ export function About() {
             <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-4">
               {t('label')}
             </p>
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground leading-tight tracking-tight mb-8">
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground leading-tight tracking-tight mb-6">
               {t('headline')}
             </h2>
+
+            {/* Previously at */}
+            <div className="flex items-center gap-2 mb-8">
+              <span className="text-xs text-muted-foreground uppercase tracking-widest font-semibold">Previously at</span>
+              <span className="h-px w-4 bg-border" />
+              <span className="text-xs font-bold text-foreground border border-border rounded-full px-3 py-1">Mendix NL</span>
+              <span className="text-xs font-bold text-foreground border border-border rounded-full px-3 py-1">Siemens Korea</span>
+            </div>
+
             <p className="text-muted-foreground leading-relaxed mb-6">{t('body')}</p>
             <p className="text-muted-foreground leading-relaxed mb-6">{t('body2')}</p>
             <p className="text-sm text-muted-foreground leading-relaxed border-l-2 border-border pl-4">{t('body3')}</p>
@@ -82,10 +100,11 @@ export function About() {
                   href={member.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-foreground transition-colors shrink-0"
+                  className="flex items-center gap-1.5 text-xs font-semibold text-muted-foreground hover:text-foreground transition-colors shrink-0"
                   aria-label={`${t(`${member.key}_name`)} on LinkedIn`}
                 >
-                  <LinkedinIcon className="h-4 w-4" />
+                  <LinkedinIcon className="h-5 w-5" />
+                  <span>LinkedIn</span>
                 </a>
               </div>
             ))}
@@ -95,3 +114,4 @@ export function About() {
     </section>
   )
 }
+
