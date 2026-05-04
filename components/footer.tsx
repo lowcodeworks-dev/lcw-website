@@ -15,7 +15,9 @@ export function Footer() {
           <span className="text-xs text-background/30">306 Apgujeong-ro, Gangnam-gu</span>
           <span className="text-xs text-background/30">Seoul, Republic of Korea</span>
         </div>
-        <SeoulClock />
+        <div className="hidden md:block">
+          <SeoulClock />
+        </div>
         <p className="text-xs text-background/30">
           © {new Date().getFullYear()} {t('company')}. {t('rights')}
         </p>

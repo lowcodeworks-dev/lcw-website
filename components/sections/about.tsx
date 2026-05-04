@@ -35,7 +35,7 @@ export function About() {
       {/* Ghosted hangul background */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -bottom-8 -right-8 text-[22rem] font-bold leading-none text-foreground/[0.04] select-none"
+        className="pointer-events-none absolute bottom-0 -right-8 text-[22rem] font-bold leading-none text-foreground/[0.04] select-none hidden md:block"
       >
         서울
       </div>
