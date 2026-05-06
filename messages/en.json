@@ -7,9 +7,9 @@
   },
   "hero": {
     "label": "Mendix Consulting · Remote",
-    "headline": "Guiding your digital transformation journey. From strategy to delivery.",
-    "subtext": "We guide organisations and Mendix partners from adoption to genuine capability — from upgrading a stalled Mx9 platform to preparing your team for agentic AI development with the guardrails enterprises actually need.",
-    "cta_primary": "Get in touch",
+    "headline": "Most enterprises can't ship AI in production. Governance gaps, legacy platforms, missing foundations. We build what closes the gap.",
+    "subtext": "Mendix 11 is one of the few enterprise platforms purpose-built for this — governance, guardrails, and AI capabilities by design. Most organisations are still on legacy Mendix. We assess, migrate, and build the foundation so your teams can actually deliver AI at scale.",
+    "cta_primary": "Start with an assessment",
     "cta_secondary": "See how we work"
   },
   "credibility": {
