@@ -7,7 +7,7 @@
   },
   "hero": {
     "label": "Enterprise Digital Transformation · Remote",
-    "headline": "Enterprises want AI in production. The foundation — governance, standards, modern platforms — usually isn't there. We fix that.",
+    "headline": "Guiding your digital transformation journey. From strategy to delivery.",
     "subtext": "The gap between AI ambition and delivery is almost always foundational — missing governance, fragmented platforms, no standards. We close that gap: strategy, architecture, and hands-on execution. Our primary delivery platform is Mendix 11, purpose-built for governed, AI-connected enterprise development — but the foundation we build works across your entire digital estate.",
     "cta_primary": "Take the assessment",
     "cta_secondary": "Get in touch"
@@ -30,8 +30,8 @@
     "label": "Why now",
     "headline": "The window is open — briefly.",
     "body1": "AI-assisted development is no longer a future capability — it is in active use across engineering teams today. The organisations that will benefit are not the ones that adopt the tools fastest. They are the ones with governance, standards, and platform architecture in place to use them safely and at scale.",
-    "body2": "Most enterprises are not there yet. Governance is patchy. Platforms are fragmented. No standards exist below the C-suite. Every AI initiative runs into the same walls — not because the technology is not ready, but because the organisational foundation underneath it is not.",
-    "body3": "Platforms like Mendix 11 are purpose-built to close this gap — governance, compliance controls, and AI integration built in by design, not bolted on after. But the platform is secondary. The structural advantage goes to the teams that build the right foundation now, whatever tools they use to execute.",
+    "body2": "Most organisations are not there yet. Governance is patchy, teams work in silos, no standards exist or are simply not enforced. Every AI initiative runs into the same walls. Not because the technology is not ready, but because the organisational foundation underneath it is not.",
+    "body3": "Platforms like Mendix 11 are building agentic features to close this gap. Governance, compliance controls, and AI integration built in by design. But the platform is secondary. The structural advantage goes to the teams that build the right foundation now, whatever tools they use to execute.",
     "closing": "That is the work we do."
   },
   "problem": {
