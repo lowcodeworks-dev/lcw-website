@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl'
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
+import { WORKSPACE_ASSESSMENT_URL } from '@/lib/config'
 
 export function Hero() {
   const t = useTranslations('hero')
@@ -34,14 +35,16 @@ export function Hero() {
           {/* CTAs */}
           <div className="flex flex-wrap gap-4">
             <a
-              href="#contact"
+              href={WORKSPACE_ASSESSMENT_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3.5 bg-accent text-accent-foreground font-semibold rounded-full hover:bg-accent/85 transition-colors"
             >
               {t('cta_primary')}
               <ArrowRight className="h-4 w-4" />
             </a>
             <a
-              href="#process"
+              href="#contact"
               className="inline-flex items-center gap-2 px-6 py-3.5 border border-border text-foreground font-semibold rounded-full hover:bg-muted transition-colors"
             >
               {t('cta_secondary')}
