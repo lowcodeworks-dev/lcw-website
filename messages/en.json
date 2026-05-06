@@ -9,7 +9,7 @@
     "label": "Enterprise Digital Transformation · Project management · Product ownership.",
     "label_sub": "Remote first. Travel when it matters.",
     "headline": "Guiding your digital transformation journey. From strategy to delivery.",
-    "subtext": "The gap between AI ambition and delivery is almost always foundational — missing governance, fragmented platforms, no standards. We close that gap: strategy, architecture, governance, and hands-on execution. Our primary delivery platform is Mendix 11, purpose-built for governed, AI-connected enterprise development — but the foundation we build works across your entire digital estate.",
+    "subtext": "Most digital and AI initiatives stall not because the tools are wrong — but because strategy, governance, and architecture aren't in place. We identify the pain points that deliver the most value when solved, define the roadmap, and build the organisational foundation to execute on it. Mendix 11 is our primary delivery platform, but the approach works across your entire digital estate.",
     "cta_primary": "Take the assessment",
     "cta_secondary": "Get in touch"
   },
@@ -37,14 +37,14 @@
   },
   "problem": {
     "headline": "Start is the easy part.",
-    "body": "Most Mendix teams build their first app and hit a wall they can't diagnose. Complexity creeps in, standards don't exist, and the next phase never arrives. The platform gets the blame. The real gap is knowing what to do after go-live.",
-    "punchline": "We know which phase you're in. And exactly how to move you forward."
+    "body": "Most organisations adopt the right platform. Momentum builds early, then stalls. Complexity accumulates, standards don't exist, and no one can agree on what to prioritise. The platform gets the blame. The real gap is strategic — knowing which problems to solve, and in what order, to unlock the most value.",
+    "punchline": "We know how to find those problems. And how to build the path forward."
   },
   "qualify": {
     "label": "This is for you if...",
-    "item1": "Your enterprise has AI on the roadmap but no clear path to putting it in production",
-    "item2": "You're on a legacy platform that needs upgrading — but don't know where to start or what it takes",
-    "item3": "You have a low-code platform in place but adoption stalled after the first few applications",
+    "item1": "Your organisation needs a clear transformation strategy and roadmap — not just another platform implementation",
+    "item2": "You have platforms and teams in place, but governance is missing and every initiative runs into the same walls",
+    "item3": "Your digital or AI initiatives keep stalling — and you need someone to find what's actually blocking value",
     "item4": "You're a Mendix partner who needs senior capacity on a complex engagement",
     "closing": "Not sure? The assessment will tell you."
   },
@@ -92,8 +92,8 @@
     "jessy_role": "Digital Transformation · Project Management · Product Owner",
     "jessy_desc": "Leading transformation programmes, managing delivery across complex enterprise environments, and driving product ownership across multi-stakeholder projects.",
     "qualify_label": "This is for you if...",
-    "qualify_item1": "Your enterprise IT team has AI on the roadmap but no clear foundation to build on",
-    "qualify_item2": "You are on a legacy low-code platform and momentum has stalled after the first few applications",
+    "qualify_item1": "Your organisation needs a digital transformation strategy — not just another implementation that stalls after go-live",
+    "qualify_item2": "You are scaling development but there is no architecture standard and technical debt is accumulating",
     "qualify_item3": "You have a platform in place but no governance layer, standards, or CoE to scale it",
     "qualify_item4": "You are a Mendix partner who needs senior capacity on a complex engagement",
     "qualify_closing": "Not sure? Start with the assessment."
