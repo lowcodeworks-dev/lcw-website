@@ -7,8 +7,8 @@
   },
   "hero": {
     "label": "Mendix Consulting · Remote",
-    "headline": "We know Mendix. What it can do today, how it connects to AI, and what it takes to scale.",
-    "subtext": "Mendix is positioning itself as the enterprise platform for AI-connected development — built-in guardrails, marketplace modules that make AI integration practical today, and agentic capabilities on the roadmap for Mx11. Choosing it is a real strategic decision. We know every dimension of that platform, and what it takes to execute it well.",
+    "headline": "Enterprises want AI in production. The foundation — governance, standards, modern platforms — usually isn't there. We fix that.",
+    "subtext": "The gap between AI ambition and delivery is almost always foundational — missing governance, fragmented platforms, no standards. We close that gap: strategy, architecture, and hands-on execution. Our primary delivery platform is Mendix 11, purpose-built for governed, AI-connected enterprise development — but the foundation we build works across your entire digital estate.",
     "cta_primary": "Take the assessment",
     "cta_secondary": "Get in touch"
   },
@@ -24,7 +24,7 @@
     "item1": "Mendix Expert Certified · Since 2018",
     "item2": "Ex-Siemens · Mendix NL alumni",
     "item3": "Remote & on-site, worldwide",
-    "item4": "Global clients, remote-first"
+    "item4": "Platform-agnostic transformation · Low-code & AI"
   },
   "inflection_point": {
     "label": "Why Mendix",

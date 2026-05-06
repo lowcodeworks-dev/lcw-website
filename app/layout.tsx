@@ -15,8 +15,8 @@ const notoKR = Noto_Sans_KR({
 })
 
 export const metadata: Metadata = {
-  title: 'LowCodeWorks — AI-Ready Enterprise Platforms on Mendix',
-  description: 'Mendix 11 is purpose-built for enterprise AI. We build the governance and architecture foundation that makes production deployment possible.',
+  title: 'LowCodeWorks — Enterprise Digital Transformation',
+  description: 'We help enterprises build the foundation for AI-ready digital transformation — strategy, governance, and execution on modern low-code platforms.',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
