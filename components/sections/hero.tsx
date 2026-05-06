@@ -20,6 +20,7 @@ export function Hero() {
           {/* Label */}
           <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-8">
             {t('label')}
+            <span className="block">{t('label_sub')}</span>
           </p>
 
           {/* Headline */}
