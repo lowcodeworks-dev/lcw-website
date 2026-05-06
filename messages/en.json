@@ -6,7 +6,7 @@
     "cta": "Get in touch"
   },
   "hero": {
-    "label": "Mendix Consulting · Remote",
+    "label": "Enterprise Digital Transformation · Remote",
     "headline": "Enterprises want AI in production. The foundation — governance, standards, modern platforms — usually isn't there. We fix that.",
     "subtext": "The gap between AI ambition and delivery is almost always foundational — missing governance, fragmented platforms, no standards. We close that gap: strategy, architecture, and hands-on execution. Our primary delivery platform is Mendix 11, purpose-built for governed, AI-connected enterprise development — but the foundation we build works across your entire digital estate.",
     "cta_primary": "Take the assessment",
@@ -49,7 +49,7 @@
   },
   "services": {
     "label": "What we do",
-    "headline": "From first sprint to full CoE. We cover the full Mendix lifecycle.",
+    "headline": "From first sprint to full CoE. We cover the full transformation lifecycle.",
     "item1_title": "Find your baseline",
     "item1_desc": "You can't improve what you can't measure — and most enterprises on a low-code or AI adoption path are working without a clear baseline. A structured review across six dimensions — platform usage, team capability, governance, architecture, AI readiness, and organisational maturity — scored and delivered as a clear baseline report. Most engagements start here. The output tells you exactly what's blocking progress and what to prioritise first.",
     "item1_meta": "Delivered as a scored report across 6 dimensions · Typical duration: 2 weeks",
@@ -67,7 +67,7 @@
     "headline": "From where you are to where you need to be.",
     "step1_num": "01",
     "step1_title": "Maturity assessment",
-    "step1_desc": "We start with a structured Mendix Maturity Assessment — platform usage, team capability, governance gaps. This becomes the baseline for everything that follows.",
+    "step1_desc": "We start with a structured Maturity Assessment — platform usage, team capability, governance gaps. This becomes the baseline for everything that follows.",
     "step2_num": "02",
     "step2_title": "We define where you need to be",
     "step2_desc": "A clear target — realistic, time-bound, and aligned with your business goals.",
@@ -100,7 +100,7 @@
   "contact": {
     "label": "Get in touch",
     "headline": "Ready to talk?",
-    "subtext": "Tell us where you are with Mendix and what's blocking you. We'll take it from there. Engagements are scoped and priced after an initial conversation. Most start with a maturity assessment. Working language: English.",
+    "subtext": "Tell us where you are and what's blocking progress. We'll take it from there. Engagements are scoped and priced after an initial conversation. Most start with a maturity assessment. Working language: English.",
     "availability": "Currently accepting new engagements.",
     "cta": "Send us a message",
     "cta_followup": "We respond within 24 hours and include a booking link if there's a fit.",
@@ -116,7 +116,7 @@
     "q2": "Do you work outside Asia?",
     "a2": "Yes. We work worldwide, remote-first. We have delivered for clients in Korea, Taiwan, Japan, the Netherlands, and beyond. Large timezone differences are manageable — we discuss upfront how to structure communication so it works for both sides.",
     "q3": "Can you work alongside our existing team?",
-    "a3": "Yes. We do hands-on Mendix development, work alongside your existing developers, or both. Some clients need us to deliver; others need us to coach and guide their team. Most engagements end up being a mix — we adapt to what the situation actually requires.",
+    "a3": "Yes. We do hands-on delivery, work alongside your existing developers, or both. Some clients need us to deliver; others need us to coach and guide their team. Most engagements end up being a mix — we adapt to what the situation actually requires.",
     "q4": "How are engagements scoped and priced?",
     "a4": "We scope and price after an initial conversation. There is no fixed rate card — engagements vary by size, duration, and complexity. We will be direct about what makes sense."
   },
@@ -152,7 +152,7 @@
     "case3_badge": "Internal track record · Pre-LCW"
   },
   "footer": {
-    "tagline": "Mendix expertise for the teams that need it.",
+    "tagline": "Enterprise digital transformation for the teams that need it.",
     "rights": "All rights reserved.",
     "company": "LowCodeWorks"
   }
