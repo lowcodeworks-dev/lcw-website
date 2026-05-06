@@ -1,5 +1,6 @@
 import { Hero } from '@/components/sections/hero'
 import { Credibility } from '@/components/sections/credibility'
+import { InflectionPoint } from '@/components/sections/inflection-point'
 import { Problem } from '@/components/sections/problem'
 import { Services } from '@/components/sections/services'
 import { AssessmentCta } from '@/components/sections/assessment-cta'
@@ -15,6 +16,7 @@ export default function HomePage() {
     <>
       <Hero />
       <Credibility />
+      <InflectionPoint />
       <Problem />
       <Services />
       <AssessmentCta />

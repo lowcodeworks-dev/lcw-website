@@ -40,20 +40,6 @@ export function Problem() {
             {t('punchline')}
           </motion.p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.45 }}
-            className="border-l-2 border-foreground pl-6"
-          >
-            <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-2">
-              {t('timing_label')}
-            </p>
-            <p className="text-muted-foreground leading-relaxed">
-              {t('timing_body')}
-            </p>
-          </motion.div>
         </div>
       </div>
     </section>

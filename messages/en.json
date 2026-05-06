@@ -18,12 +18,18 @@
     "item3": "Remote & on-site, worldwide",
     "item4": "Global clients, remote-first"
   },
+  "inflection_point": {
+    "label": "Why now",
+    "headline": "The window is open — briefly.",
+    "body1": "Mendix 11 is the first version of the platform fully committed to agentic AI development — governance, guardrails, and enterprise controls built into the architecture by design. Not bolted on afterward. Not a roadmap item. Shipping now.",
+    "body2": "Raw AI coding tools move fast and leave gaps. Missing audit trails, compliance holes, deployment controls no enterprise legal or IT team would sign off on. Mendix closes those gaps structurally. That is a genuinely rare position in the market right now.",
+    "body3": "Most organisations running Mendix are still on version 9. The migration path exists. The capability is live. But structural advantages compound — the teams building the right foundation today will be significantly ahead of the ones that wait.",
+    "closing": "This is not a trend to monitor. It is a decision point."
+  },
   "problem": {
     "headline": "Start is the easy part.",
     "body": "Most Mendix teams build their first app and hit a wall they can't diagnose. Complexity creeps in, standards don't exist, and the next phase never arrives. The platform gets the blame. The real gap is knowing what to do after go-live.",
-    "punchline": "We know which phase you're in. And exactly how to move you forward.",
-    "timing_label": "Why now",
-    "timing_body": "Mendix 11 is fully committed to agentic AI development — with built-in guardrails that make it the safest way for enterprises to put AI into production. Raw AI coding tools move fast but leave governance gaps. Mendix closes them by design. Most organisations are still on Mendix 9. The teams that benefit will be the ones building the right foundation today."
+    "punchline": "We know which phase you're in. And exactly how to move you forward."
   },
   "services": {
     "label": "What we do",
