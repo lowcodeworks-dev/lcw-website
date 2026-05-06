@@ -80,14 +80,22 @@
   },
   "about": {
     "label": "About us",
-    "headline": "Dutch expertise. Remote-first. Built for global.",
-    "body": "We built our careers inside Mendix and Siemens — starting at Mendix NL and brought to Seoul in 2022 by Siemens Korea to deliver a worldwide GTM application for a global enterprise client. That project rooted us in the region. Since then, we have guided organisations across East Asia and Europe through the technical and organisational side of digital transformation — bridging the European way of working with how APAC teams actually operate.",
+    "headline": "Transformation expertise for enterprises that need to get it right.",
+    "body": "We work with enterprise IT teams across APAC and Europe — defining AI strategies, governing platforms at scale, managing complex delivery programmes, and building the organisational foundations that make transformation stick. We built our careers inside Mendix and Siemens — starting at Mendix NL, then brought to Seoul in 2022 by Siemens Korea to deliver a worldwide GTM application for a global enterprise client. That engagement rooted us in the region and shaped how we approach the work.",
     "body2": "A track record with enterprise clients in Korea, Taiwan, Japan, and Europe. English and Dutch. Remote-first, and happy to travel when it matters.",
-    "body3": "We also work directly with Mendix partners who need senior capacity on complex engagements. If you need backup, we are available.",
+    "body3": "We work directly with Mendix partners who need senior capacity on complex engagements. If you need experienced backup on a delivery, we are available.",
     "danny_name": "Danny Hildebrand",
     "danny_role": "Digital Transformation · Solution Architect · Tech Lead",
+    "danny_desc": "Strategy, presales, solution architecture, platform governance, and AI readiness — from the first conversation to long-term programme oversight.",
     "jessy_name": "Jessy Hollander",
-    "jessy_role": "Digital Transformation · Project Management · Product Owner"
+    "jessy_role": "Digital Transformation · Project Management · Product Owner",
+    "jessy_desc": "Leading transformation programmes, managing delivery across complex enterprise environments, and driving product ownership across multi-stakeholder projects.",
+    "qualify_label": "This is for you if...",
+    "qualify_item1": "Your enterprise IT team has AI on the roadmap but no clear foundation to build on",
+    "qualify_item2": "You are on a legacy low-code platform and momentum has stalled after the first few applications",
+    "qualify_item3": "You have a platform in place but no governance layer, standards, or CoE to scale it",
+    "qualify_item4": "You are a Mendix partner who needs senior capacity on a complex engagement",
+    "qualify_closing": "Not sure? Start with the assessment."
   },
   "contact": {
     "label": "Get in touch",

@@ -95,6 +95,7 @@ export function About() {
                 <div className="flex-1">
                   <p className="font-bold text-foreground">{t(`${member.key}_name`)}</p>
                   <p className="text-sm text-muted-foreground">{t(`${member.key}_role`)}</p>
+                  <p className="text-xs text-muted-foreground/70 mt-1 leading-snug">{t(`${member.key}_desc`)}</p>
                 </div>
                 <a
                   href={member.linkedin}
@@ -110,6 +111,31 @@ export function About() {
             ))}
           </motion.div>
         </div>
+
+        {/* Self-qualification block */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="mt-16 pt-16 border-t border-border grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-10 md:gap-16 items-start"
+        >
+          <p className="text-xl md:text-2xl font-bold text-foreground leading-snug tracking-tight">
+            {t('qualify_label')}
+          </p>
+          <div>
+            <ul className="space-y-4">
+              {(['qualify_item1', 'qualify_item2', 'qualify_item3', 'qualify_item4'] as const).map((key) => (
+                <li key={key} className="flex gap-3">
+                  <span className="text-muted-foreground select-none shrink-0 mt-0.5">—</span>
+                  <span className="text-foreground leading-snug">{t(key)}</span>
+                </li>
+              ))}
+            </ul>
+            <p className="text-sm text-muted-foreground mt-8 italic">{t('qualify_closing')}</p>
+          </div>
+        </motion.div>
+
       </div>
     </section>
   )
