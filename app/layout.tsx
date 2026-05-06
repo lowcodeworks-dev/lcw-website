@@ -15,8 +15,8 @@ const notoKR = Noto_Sans_KR({
 })
 
 export const metadata: Metadata = {
-  title: 'LowCodeWorks — Mendix Consulting',
-  description: 'Two Mendix Experts from the Netherlands, based in Seoul. We help enterprises build the internal platform teams that don\'t need us tomorrow.',
+  title: 'LowCodeWorks — AI-Ready Enterprise Platforms on Mendix',
+  description: 'Mendix 11 is purpose-built for enterprise AI. We build the governance and architecture foundation that makes production deployment possible.',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
