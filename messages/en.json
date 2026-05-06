@@ -43,8 +43,8 @@
   "qualify": {
     "label": "This is for you if...",
     "item1": "Your enterprise has AI on the roadmap but no clear path to putting it in production",
-    "item2": "You're running Mendix 9 and haven't upgraded — or don't know where to start",
-    "item3": "You have Mendix in place but momentum stalled after the first few apps",
+    "item2": "You're on a legacy platform that needs upgrading — but don't know where to start or what it takes",
+    "item3": "You have a low-code platform in place but adoption stalled after the first few applications",
     "item4": "You're a Mendix partner who needs senior capacity on a complex engagement",
     "closing": "Not sure? The assessment will tell you."
   },
