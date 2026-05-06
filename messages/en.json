@@ -7,8 +7,8 @@
   },
   "hero": {
     "label": "Mendix Consulting · Remote",
-    "headline": "Most enterprises can't ship AI in production. Governance gaps, legacy platforms, missing foundations. We build what closes the gap.",
-    "subtext": "Mendix 11 is one of the few enterprise platforms purpose-built for this — governance, guardrails, and AI capabilities by design. Most organisations are still on legacy Mendix. We assess, migrate, and build the foundation so your teams can actually deliver AI at scale.",
+    "headline": "We know Mendix. What it can do today, how it connects to AI, and what it takes to scale.",
+    "subtext": "Mendix is positioning itself as the enterprise platform for AI-connected development — built-in guardrails, marketplace modules that make AI integration practical today, and agentic capabilities on the roadmap for Mx11. Choosing it is a real strategic decision. We know every dimension of that platform, and what it takes to execute it well.",
     "cta_primary": "Take the assessment",
     "cta_secondary": "Get in touch"
   },
@@ -27,12 +27,12 @@
     "item4": "Global clients, remote-first"
   },
   "inflection_point": {
-    "label": "Why now",
-    "headline": "The window is open — briefly.",
-    "body1": "Mendix 11 is the first version of the platform fully committed to agentic AI development — governance, guardrails, and enterprise controls built into the architecture by design. Not bolted on afterward. Not a roadmap item. Shipping now.",
-    "body2": "Raw AI coding tools move fast and leave gaps. Missing audit trails, compliance holes, deployment controls no enterprise legal or IT team would sign off on. Mendix closes those gaps structurally. That is a genuinely rare position in the market right now.",
-    "body3": "Most organisations running Mendix are still on version 9. The migration path exists. The capability is live. But structural advantages compound — the teams building the right foundation today will be significantly ahead of the ones that wait.",
-    "closing": "This is not a trend to monitor. It is a decision point."
+    "label": "Why Mendix",
+    "headline": "Mendix is heading in the right direction. The question is whether your organisation is set up to benefit.",
+    "body1": "Mendix is actively building toward the AI-connected enterprise — built-in governance, a growing library of marketplace modules that make AI integration practical today, and agentic development capabilities in development for Mx11. The architecture is right. The direction is clear.",
+    "body2": "But choosing Mendix while those capabilities are still maturing is a real strategic decision — not a given. It requires knowing what the platform can actually do right now, where the gaps are, and how to structure your organisation so you are ready when the AI capabilities fully arrive.",
+    "body3": "The organisations that benefit are the ones that invest in the foundation now: governance that scales, a managed app landscape, and a team that understands the platform well enough to bring AI into it when the time is right. That is exactly what we help you build.",
+    "closing": "We know Mendix well enough to tell you when it is the right choice — and what it takes to do it right."
   },
   "problem": {
     "headline": "Start is the easy part.",
