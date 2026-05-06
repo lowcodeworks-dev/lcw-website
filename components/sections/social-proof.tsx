@@ -8,7 +8,7 @@ const STAT_NUMBERS = ['70+', '8', '3', '2']
 
 const CASE_HREFS = [
   'https://www.mendix.com/customer-stories/usi-accelerates-development-and-enables-process-transformation-at-scale/',
-  'https://www.macnica.co.jp/en/business/ai_iot/columns/144646/',
+  'https://www.macnica.co.jp/en/business/ai_iot/news/2021/136600/',
   null,
 ]
 
