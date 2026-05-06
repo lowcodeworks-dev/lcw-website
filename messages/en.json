@@ -39,6 +39,14 @@
     "body": "Most Mendix teams build their first app and hit a wall they can't diagnose. Complexity creeps in, standards don't exist, and the next phase never arrives. The platform gets the blame. The real gap is knowing what to do after go-live.",
     "punchline": "We know which phase you're in. And exactly how to move you forward."
   },
+  "qualify": {
+    "label": "This is for you if...",
+    "item1": "Your enterprise has AI on the roadmap but no clear path to putting it in production",
+    "item2": "You're running Mendix 9 and haven't upgraded — or don't know where to start",
+    "item3": "You have Mendix in place but momentum stalled after the first few apps",
+    "item4": "You're a Mendix partner who needs senior capacity on a complex engagement",
+    "closing": "Not sure? The assessment will tell you."
+  },
   "services": {
     "label": "What we do",
     "headline": "From first sprint to full CoE. We cover the full Mendix lifecycle.",
