@@ -36,8 +36,6 @@ export function Hero() {
           <div className="flex flex-wrap gap-4">
             <a
               href={WORKSPACE_ASSESSMENT_URL}
-              target="_blank"
-              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3.5 bg-accent text-accent-foreground font-semibold rounded-full hover:bg-accent/85 transition-colors"
             >
               {t('cta_primary')}

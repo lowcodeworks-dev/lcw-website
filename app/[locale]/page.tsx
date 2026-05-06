@@ -17,9 +17,9 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <InflectionPoint />
       <AssessmentBanner />
       <Credibility />
-      <InflectionPoint />
       <Problem />
       <Qualify />
       <Services />

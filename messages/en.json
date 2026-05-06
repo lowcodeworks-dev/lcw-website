@@ -27,12 +27,12 @@
     "item4": "Platform-agnostic transformation · Low-code & AI"
   },
   "inflection_point": {
-    "label": "Why Mendix",
-    "headline": "Mendix is heading in the right direction. The question is whether your organisation is set up to benefit.",
-    "body1": "Mendix is actively building toward the AI-connected enterprise — built-in governance, a growing library of marketplace modules that make AI integration practical today, and agentic development capabilities in development for Mx11. The architecture is right. The direction is clear.",
-    "body2": "But choosing Mendix while those capabilities are still maturing is a real strategic decision — not a given. It requires knowing what the platform can actually do right now, where the gaps are, and how to structure your organisation so you are ready when the AI capabilities fully arrive.",
-    "body3": "The organisations that benefit are the ones that invest in the foundation now: governance that scales, a managed app landscape, and a team that understands the platform well enough to bring AI into it when the time is right. That is exactly what we help you build.",
-    "closing": "We know Mendix well enough to tell you when it is the right choice — and what it takes to do it right."
+    "label": "Why now",
+    "headline": "The window is open — briefly.",
+    "body1": "AI-assisted development is no longer a future capability — it is in active use across engineering teams today. The organisations that will benefit are not the ones that adopt the tools fastest. They are the ones with governance, standards, and platform architecture in place to use them safely and at scale.",
+    "body2": "Most enterprises are not there yet. Governance is patchy. Platforms are fragmented. No standards exist below the C-suite. Every AI initiative runs into the same walls — not because the technology is not ready, but because the organisational foundation underneath it is not.",
+    "body3": "Platforms like Mendix 11 are purpose-built to close this gap — governance, compliance controls, and AI integration built in by design, not bolted on after. But the platform is secondary. The structural advantage goes to the teams that build the right foundation now, whatever tools they use to execute.",
+    "closing": "That is the work we do."
   },
   "problem": {
     "headline": "Start is the easy part.",
