@@ -445,16 +445,18 @@ export default function AssessmentPage() {
 
   return (
     <div className="bg-background min-h-screen">
-      {/* Progress line */}
-      <div className="sticky top-16 z-10 w-full h-0.5 bg-muted">
-        <motion.div
-          className="h-full bg-foreground origin-left"
-          initial={false}
-          animate={{ scaleX: progressPct / 100 }}
-          style={{ transformOrigin: 'left' }}
-          transition={{ duration: 0.4, ease: 'easeOut' }}
-        />
-      </div>
+      {/* Progress line — hidden on results page */}
+      {!complete && (
+        <div className="sticky top-16 z-10 w-full h-0.5 bg-muted">
+          <motion.div
+            className="h-full bg-foreground origin-left"
+            initial={false}
+            animate={{ scaleX: step / QUESTIONS.length }}
+            style={{ transformOrigin: 'left' }}
+            transition={{ duration: 0.4, ease: 'easeOut' }}
+          />
+        </div>
+      )}
 
       {complete ? (
         <Results answers={answers} onRetake={handleRetake} />
