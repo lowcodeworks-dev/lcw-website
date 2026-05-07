@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server'
 import { Resend } from 'resend'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
 const NOTIFY_EMAIL = 'info@lowcodeworks.consulting'
 const FROM_ADDRESS = 'LCW Assessment <assessment@lowcodeworks.consulting>'
 
@@ -25,6 +24,7 @@ async function verifyTurnstile(token: string, ip: string | null): Promise<boolea
 }
 
 export async function POST(request: Request) {
+  const resend = new Resend(process.env.RESEND_API_KEY)
   try {
     const body = await request.json()
     const { name, company, email, message, honeypot, turnstileToken, stage, dimensions, answers } =
