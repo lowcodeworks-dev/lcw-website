@@ -1,8 +1,9 @@
 'use client'
 
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowLeft, RotateCcw } from 'lucide-react'
+import Script from 'next/script'
 
 // ─── Questions ────────────────────────────────────────────────────────────────
 
@@ -94,11 +95,10 @@ const ANSWER_LABELS = ['A', 'B', 'C', 'D']
 
 // ─── Scoring ──────────────────────────────────────────────────────────────────
 
-// Answer index → dimension score (1-4)
-const SCORE_Q2 = [2, 3, 4, 1] // no team = lowest
+const SCORE_Q2 = [2, 3, 4, 1]
 const SCORE_Q3 = [1, 2, 3, 4]
 const SCORE_Q4 = [1, 2, 3, 4]
-const SCORE_Q5 = [1, 2, 2, 4] // stalled = same as fragmented
+const SCORE_Q5 = [1, 2, 2, 4]
 const SCORE_Q6 = [1, 2, 3, 4]
 const SCORE_Q7 = [1, 2, 3, 4]
 const SCORE_Q8 = [1, 2, 3, 4]
@@ -108,22 +108,10 @@ type Dimension = { name: string; score: number }
 function computeDimensions(answers: number[]): Dimension[] {
   const [, q2, q3, q4, q5, q6, q7, q8] = answers
   return [
-    {
-      name: 'AI & Platform Readiness',
-      score: (SCORE_Q4[q4] + SCORE_Q5[q5]) / 2,
-    },
-    {
-      name: 'Governance & Standards',
-      score: (SCORE_Q3[q3] + SCORE_Q6[q6]) / 2,
-    },
-    {
-      name: 'Delivery Capability',
-      score: (SCORE_Q2[q2] + SCORE_Q7[q7]) / 2,
-    },
-    {
-      name: 'Organisational Alignment',
-      score: (SCORE_Q6[q6] + SCORE_Q8[q8]) / 2,
-    },
+    { name: 'AI & Platform Readiness', score: (SCORE_Q4[q4] + SCORE_Q5[q5]) / 2 },
+    { name: 'Governance & Standards',  score: (SCORE_Q3[q3] + SCORE_Q6[q6]) / 2 },
+    { name: 'Delivery Capability',     score: (SCORE_Q2[q2] + SCORE_Q7[q7]) / 2 },
+    { name: 'Organisational Alignment', score: (SCORE_Q6[q6] + SCORE_Q8[q8]) / 2 },
   ]
 }
 
@@ -148,12 +136,10 @@ const Q1_PARAGRAPHS: ((stage: string) => string)[] = [
     `Your assessment puts you at the ${stage} stage. Complex programmes stall when ownership, standards, and delivery structure aren't aligned from the start. The results below show where your foundation is solid and where leadership attention is most needed before committing to full execution.`,
 ]
 
-// ─── Radar chart (pure SVG, no library) ──────────────────────────────────────
+// ─── Radar chart (pure SVG) ───────────────────────────────────────────────────
 
 function RadarChart({ dimensions }: { dimensions: Dimension[] }) {
   const cx = 110, cy = 110, maxR = 82
-
-  // 4 axes clockwise from top: -90°, 0°, 90°, 180°
   const angles = dimensions.map((_, i) => (i * Math.PI) / 2 - Math.PI / 2)
 
   const toXY = (r: number, angle: number) => ({
@@ -165,74 +151,36 @@ function RadarChart({ dimensions }: { dimensions: Dimension[] }) {
     pts.map((p, i) => `${i === 0 ? 'M' : 'L'}${p.x},${p.y}`).join(' ') + 'Z'
 
   const scorePoints = dimensions.map((d, i) => toXY((d.score / 4) * maxR, angles[i]))
-  const scoreD = polyPath(scorePoints)
 
   return (
     <svg viewBox="0 0 220 220" className="w-full max-w-[220px] mx-auto text-foreground">
-      {/* Grid rings at 1, 2, 3, 4 */}
       {[1, 2, 3, 4].map((level) => {
         const pts = angles.map((a) => toXY((level / 4) * maxR, a))
         return (
-          <path
-            key={level}
-            d={polyPath(pts)}
-            fill="none"
-            stroke="currentColor"
-            strokeOpacity={level === 4 ? 0.18 : 0.09}
-            strokeWidth={1}
-          />
+          <path key={level} d={polyPath(pts)} fill="none" stroke="currentColor"
+            strokeOpacity={level === 4 ? 0.18 : 0.09} strokeWidth={1} />
         )
       })}
-
-      {/* Axes */}
       {angles.map((angle, i) => {
         const end = toXY(maxR, angle)
-        return (
-          <line
-            key={i}
-            x1={cx} y1={cy}
-            x2={end.x} y2={end.y}
-            stroke="currentColor"
-            strokeOpacity={0.14}
-            strokeWidth={1}
-          />
-        )
+        return <line key={i} x1={cx} y1={cy} x2={end.x} y2={end.y}
+          stroke="currentColor" strokeOpacity={0.14} strokeWidth={1} />
       })}
-
-      {/* Score polygon */}
-      <path
-        d={scoreD}
-        fill="currentColor"
-        fillOpacity={0.13}
-        stroke="currentColor"
-        strokeWidth={2}
-        strokeLinejoin="round"
-      />
-
-      {/* Score dots */}
+      <path d={polyPath(scorePoints)} fill="currentColor" fillOpacity={0.13}
+        stroke="currentColor" strokeWidth={2} strokeLinejoin="round" />
       {scorePoints.map((p, i) => (
         <circle key={i} cx={p.x} cy={p.y} r={4} fill="currentColor" />
       ))}
-
-      {/* Axis labels — short, positioned outside maxR */}
       {[
         { label: 'AI & Platform', pos: toXY(maxR + 18, angles[0]), anchor: 'middle', dy: -4 },
         { label: 'Governance',    pos: toXY(maxR + 18, angles[1]), anchor: 'start',  dy: 0  },
         { label: 'Delivery',      pos: toXY(maxR + 18, angles[2]), anchor: 'middle', dy: 12 },
         { label: 'Alignment',     pos: toXY(maxR + 18, angles[3]), anchor: 'end',    dy: 0  },
       ].map(({ label, pos, anchor, dy }) => (
-        <text
-          key={label}
-          x={pos.x}
-          y={pos.y + dy}
+        <text key={label} x={pos.x} y={pos.y + dy}
           textAnchor={anchor as 'middle' | 'start' | 'end'}
-          dominantBaseline="middle"
-          fontSize={9}
-          fontWeight={600}
-          fill="currentColor"
-          fillOpacity={0.45}
-          letterSpacing="0.06em"
-        >
+          dominantBaseline="middle" fontSize={9} fontWeight={600}
+          fill="currentColor" fillOpacity={0.45} letterSpacing="0.06em">
           {label.toUpperCase()}
         </text>
       ))}
@@ -240,21 +188,70 @@ function RadarChart({ dimensions }: { dimensions: Dimension[] }) {
   )
 }
 
+// ─── Input shared style ───────────────────────────────────────────────────────
+
+const inputCls =
+  'px-4 py-3 rounded-xl border border-border bg-background text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:ring-1 focus:ring-foreground/40 transition'
+
 // ─── Results page ─────────────────────────────────────────────────────────────
 
-function Results({
-  answers,
-  onRetake,
-}: {
-  answers: number[]
-  onRetake: () => void
-}) {
+function Results({ answers, onRetake }: { answers: number[]; onRetake: () => void }) {
   const dimensions = computeDimensions(answers)
   const stage = getStage(dimensions)
   const paragraph = Q1_PARAGRAPHS[answers[0]](stage)
+  const focusAreas = [...dimensions].sort((a, b) => a.score - b.score).slice(0, 3)
 
-  const sorted = [...dimensions].sort((a, b) => a.score - b.score)
-  const focusAreas = sorted.slice(0, 3)
+  // Form state
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null)
+  const [formStatus, setFormStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+  const [formError, setFormError] = useState('')
+
+  // Register global Turnstile callbacks
+  useEffect(() => {
+    ;(window as any).__lcwTurnstileOk = (token: string) => setTurnstileToken(token)
+    ;(window as any).__lcwTurnstileErr = () => setTurnstileToken(null)
+    return () => {
+      delete (window as any).__lcwTurnstileOk
+      delete (window as any).__lcwTurnstileErr
+    }
+  }, [])
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    const fd = new FormData(e.currentTarget)
+
+    setFormStatus('loading')
+    setFormError('')
+
+    try {
+      const res = await fetch('/api/assessment/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: fd.get('name'),
+          company: fd.get('company'),
+          email: fd.get('email'),
+          message: fd.get('message'),
+          honeypot: fd.get('website'), // honeypot field
+          turnstileToken,
+          stage,
+          dimensions,
+          answers,
+        }),
+      })
+
+      const data = await res.json()
+      if (data.success) {
+        setFormStatus('success')
+      } else {
+        setFormStatus('error')
+        setFormError(data.error ?? 'Something went wrong. Please try again.')
+      }
+    } catch {
+      setFormStatus('error')
+      setFormError('Something went wrong. Please try again.')
+    }
+  }
 
   return (
     <motion.div
@@ -278,15 +275,12 @@ function Results({
       {/* Radar + dimension scores */}
       <div className="grid md:grid-cols-[220px_1fr] gap-10 items-center mb-14">
         <RadarChart dimensions={dimensions} />
-
         <div className="flex flex-col gap-5">
           {dimensions.map((d, i) => (
-            <motion.div
-              key={d.name}
+            <motion.div key={d.name}
               initial={{ opacity: 0, x: 16 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.15 + i * 0.08, duration: 0.4 }}
-            >
+              transition={{ delay: 0.15 + i * 0.08, duration: 0.4 }}>
               <div className="flex justify-between text-sm mb-1.5">
                 <span className="font-medium text-foreground">{d.name}</span>
                 <span className="text-muted-foreground tabular-nums">
@@ -294,12 +288,10 @@ function Results({
                 </span>
               </div>
               <div className="h-1 bg-muted rounded-full overflow-hidden">
-                <motion.div
-                  className="h-full bg-foreground rounded-full"
+                <motion.div className="h-full bg-foreground rounded-full"
                   initial={{ width: 0 }}
                   animate={{ width: `${(d.score / 4) * 100}%` }}
-                  transition={{ delay: 0.2 + i * 0.08, duration: 0.6, ease: 'easeOut' }}
-                />
+                  transition={{ delay: 0.2 + i * 0.08, duration: 0.6, ease: 'easeOut' }} />
               </div>
             </motion.div>
           ))}
@@ -313,16 +305,12 @@ function Results({
         </p>
         <div className="flex flex-col gap-3">
           {focusAreas.map((d, i) => (
-            <motion.div
-              key={d.name}
+            <motion.div key={d.name}
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 + i * 0.07, duration: 0.35 }}
-              className="flex items-center gap-5 px-6 py-4 rounded-2xl border border-border"
-            >
-              <span className="text-xs font-bold text-muted-foreground w-4 shrink-0">
-                {i + 1}
-              </span>
+              className="flex items-center gap-5 px-6 py-4 rounded-2xl border border-border">
+              <span className="text-xs font-bold text-muted-foreground w-4 shrink-0">{i + 1}</span>
               <span className="font-medium text-foreground flex-1">{d.name}</span>
               <span className="text-sm text-muted-foreground tabular-nums">
                 {d.score.toFixed(1)}&thinsp;/&thinsp;4
@@ -332,7 +320,7 @@ function Results({
         </div>
       </div>
 
-      {/* Contact form placeholder */}
+      {/* Contact form */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -350,57 +338,79 @@ function Results({
           what the results mean for your organisation.
         </p>
 
-        {/* TODO: wire up to LCW Workspace CRM endpoint (separate session) */}
-        <form
-          className="flex flex-col gap-4 max-w-lg"
-          onSubmit={(e) => {
-            e.preventDefault()
-            console.log('TODO: submit to LCW Workspace CRM')
-          }}
-        >
-          <div className="grid sm:grid-cols-2 gap-4">
-            <input
-              name="name"
-              placeholder="Name"
-              required
-              className="px-4 py-3 rounded-xl border border-border bg-background text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:ring-1 focus:ring-foreground/40 transition"
+        {formStatus === 'success' ? (
+          <motion.div
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="max-w-lg p-6 rounded-2xl border border-border bg-muted"
+          >
+            <p className="font-semibold text-foreground mb-1">Message sent.</p>
+            <p className="text-sm text-muted-foreground">
+              Thanks — we&apos;ll send you the full breakdown within 24 hours.
+            </p>
+          </motion.div>
+        ) : (
+          <form onSubmit={handleSubmit} className="flex flex-col gap-4 max-w-lg" noValidate>
+            {/* Turnstile script */}
+            <Script
+              src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+              strategy="afterInteractive"
             />
+
+            {/* Honeypot — hidden from real users, catches bots */}
             <input
-              name="company"
-              placeholder="Company"
-              className="px-4 py-3 rounded-xl border border-border bg-background text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:ring-1 focus:ring-foreground/40 transition"
+              name="website"
+              type="text"
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+              style={{ position: 'absolute', left: '-9999px', opacity: 0, height: 0, width: 0 }}
             />
-          </div>
-          <input
-            name="email"
-            type="email"
-            placeholder="Email"
-            required
-            className="px-4 py-3 rounded-xl border border-border bg-background text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:ring-1 focus:ring-foreground/40 transition"
-          />
-          <textarea
-            name="message"
-            rows={3}
-            defaultValue="I'd like to discuss my assessment results."
-            className="px-4 py-3 rounded-xl border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-1 focus:ring-foreground/40 transition resize-none"
-          />
-          <div className="flex items-center gap-4 flex-wrap">
-            <button
-              type="submit"
-              className="px-6 py-3 bg-foreground text-background font-semibold rounded-full text-sm hover:bg-foreground/85 transition-colors"
-            >
-              Send message
-            </button>
-            <button
-              type="button"
-              onClick={onRetake}
-              className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
-              <RotateCcw className="h-3.5 w-3.5" />
-              Retake assessment
-            </button>
-          </div>
-        </form>
+
+            <div className="grid sm:grid-cols-2 gap-4">
+              <input name="name" placeholder="Name" required className={inputCls} />
+              <input name="company" placeholder="Company" className={inputCls} />
+            </div>
+            <input name="email" type="email" placeholder="Email" required className={inputCls} />
+            <textarea
+              name="message"
+              rows={3}
+              defaultValue="I'd like to discuss my assessment results."
+              className={`${inputCls} resize-none`}
+            />
+
+            {/* Cloudflare Turnstile widget */}
+            <div
+              className="cf-turnstile"
+              data-sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? ''}
+              data-callback="__lcwTurnstileOk"
+              data-error-callback="__lcwTurnstileErr"
+              data-theme="light"
+            />
+
+            {formStatus === 'error' && (
+              <p className="text-sm text-red-500">{formError}</p>
+            )}
+
+            <div className="flex items-center gap-4 flex-wrap pt-1">
+              <button
+                type="submit"
+                disabled={formStatus === 'loading' || !turnstileToken}
+                className="px-6 py-3 bg-foreground text-background font-semibold rounded-full text-sm hover:bg-foreground/85 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+              >
+                {formStatus === 'loading' ? 'Sending…' : 'Send message'}
+              </button>
+              <button
+                type="button"
+                onClick={onRetake}
+                className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <RotateCcw className="h-3.5 w-3.5" />
+                Retake assessment
+              </button>
+            </div>
+          </form>
+        )}
       </motion.div>
     </motion.div>
   )
@@ -420,7 +430,6 @@ export default function AssessmentPage() {
     direction.current = 1
     const updated = [...answers.slice(0, step), answerIndex]
     setAnswers(updated)
-
     if (step < QUESTIONS.length - 1) {
       setStep(step + 1)
     } else {
@@ -450,7 +459,7 @@ export default function AssessmentPage() {
 
   return (
     <div className="bg-background min-h-screen">
-      {/* Progress line — sticky just below nav */}
+      {/* Progress line */}
       <div className="sticky top-16 z-10 w-full h-0.5 bg-muted">
         <motion.div
           className="h-full bg-foreground origin-left"
@@ -465,7 +474,6 @@ export default function AssessmentPage() {
         <Results answers={answers} onRetake={handleRetake} />
       ) : (
         <div className="max-w-2xl mx-auto px-6 pt-10 pb-20">
-          {/* Step counter + back */}
           <div className="flex items-center justify-between mb-12">
             <button
               onClick={handleBack}
@@ -483,7 +491,6 @@ export default function AssessmentPage() {
             </span>
           </div>
 
-          {/* Animated question + answers */}
           <div className="overflow-hidden">
             <AnimatePresence mode="wait">
               <motion.div
@@ -499,11 +506,9 @@ export default function AssessmentPage() {
                     About you
                   </p>
                 )}
-
                 <h2 className="text-2xl md:text-3xl font-bold text-foreground leading-snug tracking-tight mb-10">
                   {question.text}
                 </h2>
-
                 <div className="flex flex-col gap-3">
                   {question.answers.map((answer, i) => (
                     <motion.button
