@@ -171,19 +171,7 @@ function RadarChart({ dimensions }: { dimensions: Dimension[] }) {
       {scorePoints.map((p, i) => (
         <circle key={i} cx={p.x} cy={p.y} r={4} fill="currentColor" />
       ))}
-      {[
-        { label: 'AI & Platform', pos: toXY(maxR + 18, angles[0]), anchor: 'middle', dy: -4 },
-        { label: 'Governance',    pos: toXY(maxR + 18, angles[1]), anchor: 'start',  dy: 0  },
-        { label: 'Delivery',      pos: toXY(maxR + 18, angles[2]), anchor: 'middle', dy: 12 },
-        { label: 'Alignment',     pos: toXY(maxR + 18, angles[3]), anchor: 'end',    dy: 0  },
-      ].map(({ label, pos, anchor, dy }) => (
-        <text key={label} x={pos.x} y={pos.y + dy}
-          textAnchor={anchor as 'middle' | 'start' | 'end'}
-          dominantBaseline="middle" fontSize={9} fontWeight={600}
-          fill="currentColor" fillOpacity={0.45} letterSpacing="0.06em">
-          {label.toUpperCase()}
-        </text>
-      ))}
+      {/* Labels omitted — dimension names appear in the adjacent score list */}
     </svg>
   )
 }
@@ -309,7 +297,7 @@ function Results({ answers, onRetake }: { answers: number[]; onRetake: () => voi
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 + i * 0.07, duration: 0.35 }}
-              className="flex items-center gap-5 px-6 py-4 rounded-2xl border border-border">
+              className="flex items-center gap-3 md:gap-5 px-4 md:px-6 py-4 rounded-2xl border border-border">
               <span className="text-xs font-bold text-muted-foreground w-4 shrink-0">{i + 1}</span>
               <span className="font-medium text-foreground flex-1">{d.name}</span>
               <span className="text-sm text-muted-foreground tabular-nums">
@@ -357,15 +345,13 @@ function Results({ answers, onRetake }: { answers: number[]; onRetake: () => voi
               strategy="afterInteractive"
             />
 
-            {/* Honeypot — hidden from real users, catches bots */}
-            <input
-              name="website"
-              type="text"
-              tabIndex={-1}
-              autoComplete="off"
+            {/* Honeypot — entire subtree hidden from accessibility tree and positioned off-screen */}
+            <div
               aria-hidden="true"
-              style={{ position: 'absolute', left: '-9999px', opacity: 0, height: 0, width: 0 }}
-            />
+              style={{ position: 'absolute', left: '-9999px', width: 0, height: 0, overflow: 'hidden' }}
+            >
+              <input name="website" type="text" tabIndex={-1} autoComplete="off" />
+            </div>
 
             <div className="grid sm:grid-cols-2 gap-4">
               <input name="name" placeholder="Name" required className={inputCls} />
