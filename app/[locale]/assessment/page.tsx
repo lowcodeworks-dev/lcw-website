@@ -322,8 +322,8 @@ function Results({ answers, onRetake }: { answers: number[]; onRetake: () => voi
           Want to talk through your results?
         </h2>
         <p className="text-muted-foreground leading-relaxed mb-10 max-w-lg">
-          We&apos;ll send you a detailed breakdown and schedule a 30-minute call to walk through
-          what the results mean for your organisation.
+          Leave your details and we&apos;ll be in touch to walk through what the results mean for
+          your organisation. Use the field below to tell us what you&apos;d most like to cover.
         </p>
 
         {formStatus === 'success' ? (
@@ -334,7 +334,7 @@ function Results({ answers, onRetake }: { answers: number[]; onRetake: () => voi
           >
             <p className="font-semibold text-foreground mb-1">Message sent.</p>
             <p className="text-sm text-muted-foreground">
-              Thanks — we&apos;ll send you the full breakdown within 24 hours.
+              Thanks — we&apos;ll be in touch soon.
             </p>
           </motion.div>
         ) : (
@@ -361,7 +361,7 @@ function Results({ answers, onRetake }: { answers: number[]; onRetake: () => voi
             <textarea
               name="message"
               rows={3}
-              defaultValue="I'd like to discuss my assessment results."
+              placeholder="What's the main challenge you'd like to work through in the call? (optional)"
               className={`${inputCls} resize-none`}
             />
 
