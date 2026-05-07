@@ -16,7 +16,7 @@
   "assessment_banner": {
     "label": "Free · Self-serve",
     "headline": "Not sure where you stand?",
-    "body": "Our AI Readiness Assessment gives you a scored baseline across 6 dimensions in under 15 minutes — governance, architecture, team capability, platform maturity, AI readiness, and organisational structure. No consultant call required.",
+    "body": "Our Digital Transformation Readiness Assessment gives you a scored baseline across 4 dimensions in under 10 minutes — AI & platform readiness, governance & standards, delivery capability, and organisational alignment. No consultant call required.",
     "cta_primary": "Take the assessment",
     "cta_secondary": "Get in touch",
     "qualifier": "No sign-up required · Results available immediately"
@@ -32,8 +32,9 @@
     "headline": "The window is open — briefly.",
     "body1": "AI-assisted development is no longer a future capability — it is in active use across engineering teams today. The organisations that will benefit are not the ones that adopt the tools fastest. They are the ones with governance, standards, and platform architecture in place to use them safely and at scale.",
     "body2": "Most organisations are not there yet. Governance is patchy, teams work in silos, no standards exist or are simply not enforced. Every AI initiative runs into the same walls. Not because the technology is not ready, but because the organisational foundation underneath it is not.",
-    "body3": "Platforms like Mendix 11 are building agentic features to close this gap. Governance, compliance controls, and AI integration built in by design. But the platform is secondary. The structural advantage goes to the teams that build the right foundation now, whatever tools they use to execute.",
-    "closing": "That is the work we do."
+    "body3": "Modern low-code platforms are building agentic capabilities to close this gap — governance, compliance controls, and AI integration built in by design. But the platform is secondary. We have built CoEs where Mendix is the platform of choice, and we bring the same approach regardless of the tools your organisation runs on. The structural advantage goes to teams that build the right foundation now.",
+    "closing": "That is the work we do.",
+    "footnote": "Not sure where your organisation stands? The assessment below takes 8 minutes."
   },
   "problem": {
     "headline": "Start is the easy part.",
@@ -52,16 +53,16 @@
     "label": "What we do",
     "headline": "From first sprint to full CoE. We cover the full transformation lifecycle.",
     "item1_title": "Find your baseline",
-    "item1_desc": "You can't improve what you can't measure — and most enterprises on a low-code or AI adoption path are working without a clear baseline. A structured review across six dimensions — platform usage, team capability, governance, architecture, AI readiness, and organisational maturity — scored and delivered as a clear baseline report. Most engagements start here. The output tells you exactly what's blocking progress and what to prioritise first.",
+    "item1_desc": "You can't improve what you can't measure — and most enterprises on a low-code or AI adoption path are working without a clear baseline. We build a custom maturity assessment tailored to your organisation across six dimensions — platform usage, team capability, governance, architecture, AI readiness, and organisational maturity — scored and delivered as a clear baseline report. Most engagements start here. The output tells you exactly what's blocking progress and what to prioritise first.",
     "item1_meta": "Delivered as a scored report across 6 dimensions · Typical duration: 2 weeks",
     "item2_title": "Get AI-ready infrastructure",
-    "item2_desc": "Everything below the current platform generation is legacy before AI even enters the room. Mendix is concentrating all future development — including agentic AI capabilities — in Mendix 11. We start with an intake and scope determination, mapping your business rules and custom work together with your team, then execute a direct upgrade to Mx11. Skip the intermediate step. Get there once, get there ready.",
+    "item2_desc": "Mendix is concentrating all future development — including agentic AI capabilities — in Mendix 11. We start with an intake and scope determination, mapping your business rules and custom work together with your team, then execute a direct upgrade to Mx11. Skip the intermediate step. Get there once, get there ready.",
     "item3_title": "Delivery with transfer",
     "item3_desc": "Hands-on execution that leaves your team capable, not dependent. We work embedded with your team — developing, delivering, and explaining every decision along the way. Whether you need us for a single phase or a long-term extension, the goal is always the same: when we leave, you can run it yourself.",
     "partner_note": "Mendix partner looking for senior capacity on a complex engagement?",
     "partner_link": "We work with partners directly →",
     "item4_title": "The governance layer AI requires",
-    "item4_desc": "Agentic AI at enterprise scale needs organisational guardrails, not just technical ones. Governance, standards, architecture decisions, and application landscape management — structured so that AI deployment is repeatable, auditable, and safe. A proper CoE is what makes the difference between an AI pilot and an AI practice."
+    "item4_desc": "Agentic AI at enterprise scale needs organisational guardrails, not just technical ones. Governance, standards, and application landscape decisions only deliver value when they are actively enforced — not just documented. Organisations that rush into development without this foundation consistently hit the same walls and miss their business value targets. Build the CoE first and you scale fast and safely — skip it and every new initiative slows you down."
   },
   "process": {
     "label": "How we work",
@@ -86,8 +87,8 @@
     "body2": "A track record with enterprise clients in Korea, Taiwan, Japan, and Europe. English and Dutch. Remote-first, and happy to travel when it matters.",
     "body3": "We work directly with Mendix partners who need senior capacity on complex engagements. If you need experienced backup on a delivery, we are available.",
     "danny_name": "Danny Hildebrand",
-    "danny_role": "Digital Transformation · Solution Architect · Tech Lead",
-    "danny_desc": "Strategy, presales, solution architecture, platform governance, and AI readiness — from the first conversation to long-term programme oversight.",
+    "danny_role": "Senior Consultant · Solution Architecture · Mendix Expert",
+    "danny_desc": "Identifying the business problems that unlock real value, designing platform and solution architecture around them, and building the foundation for organisations to scale app development independently. 14+ years in enterprise low-code, Mendix Expert certified.",
     "jessy_name": "Jessy Hollander",
     "jessy_role": "Digital Transformation · Project Management · Product Owner",
     "jessy_desc": "Leading transformation programmes, managing delivery across complex enterprise environments, and driving product ownership across multi-stakeholder projects.",
@@ -124,8 +125,8 @@
   "platform_preview": {
     "label": "Built-in tooling",
     "headline": "We assess before we advise.",
-    "body1": "Every engagement starts with a structured assessment — scored across multiple dimensions including architecture, governance, AI readiness, and organisational capability.",
-    "body2": "We run assessments across the full engagement lifecycle: CoE maturity, project health, PoC scoping, and AI & data readiness. The output is a clear baseline, not a slide deck."
+    "body1": "Every engagement starts with a structured assessment — scored across multiple dimensions including architecture, governance, delivery capability, and organisational alignment.",
+    "body2": "We run assessments across the full engagement lifecycle: CoE maturity, project health, PoC scoping, and transformation readiness. The output is a clear baseline, not a slide deck."
   },
   "social_proof": {
     "label": "Track record",

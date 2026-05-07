@@ -54,6 +54,16 @@ export function InflectionPoint() {
           >
             {t('closing')}
           </motion.p>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.65 }}
+            className="text-sm opacity-40 mt-6"
+          >
+            {t('footnote')}
+          </motion.p>
         </div>
       </div>
     </section>
