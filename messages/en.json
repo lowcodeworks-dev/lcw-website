@@ -53,16 +53,16 @@
     "label": "What we do",
     "headline": "From first sprint to full CoE. We cover the full transformation lifecycle.",
     "item1_title": "Find your baseline",
-    "item1_desc": "You can't improve what you can't measure — and most enterprises on a low-code or AI adoption path are working without a clear baseline. We build a custom maturity assessment tailored to your organisation across six dimensions — platform usage, team capability, governance, architecture, AI readiness, and organisational maturity — scored and delivered as a clear baseline report. Most engagements start here. The output tells you exactly what's blocking progress and what to prioritise first.",
+    "item1_desc": "You can't improve what you can't measure. We built a custom maturity assessment across six dimensions — platform usage, team capability, governance, architecture, AI readiness, and organisational maturity — scored and delivered as a baseline report with an initial recommendation. Most engagements start here.",
     "item1_meta": "Delivered as a scored report across 6 dimensions · Typical duration: 2 weeks",
     "item2_title": "Get AI-ready infrastructure",
-    "item2_desc": "Mendix is concentrating all future development — including agentic AI capabilities — in Mendix 11. We start with an intake and scope determination, mapping your business rules and custom work together with your team, then execute a direct upgrade to Mx11. Skip the intermediate step. Get there once, get there ready.",
+    "item2_desc": "Preparing your platform for AI-assisted development means more than adopting the latest release. We map your application landscape, identify business logic and custom work, and determine what needs to move, change, or be rebuilt. For Mendix organisations, that means a structured path to Mx11 — where all future agentic capabilities are being built.",
     "item3_title": "Delivery with transfer",
     "item3_desc": "Hands-on execution that leaves your team capable, not dependent. We work embedded with your team — developing, delivering, and explaining every decision along the way. Whether you need us for a single phase or a long-term extension, the goal is always the same: when we leave, you can run it yourself.",
     "partner_note": "Mendix partner looking for senior capacity on a complex engagement?",
     "partner_link": "We work with partners directly →",
-    "item4_title": "The governance layer AI requires",
-    "item4_desc": "Agentic AI at enterprise scale needs organisational guardrails, not just technical ones. Governance, standards, and application landscape decisions only deliver value when they are actively enforced — not just documented. Organisations that rush into development without this foundation consistently hit the same walls and miss their business value targets. Build the CoE first and you scale fast and safely — skip it and every new initiative slows you down."
+    "item4_title": "Governance that actually sticks",
+    "item4_desc": "Governance doesn't stick when it's only documented — it needs to be built, enforced, and championed at every level. As solution architect at Siemens, I set up governance frameworks, started CoE initiatives, and enforced standards across multiple teams. As transformation manager, I helped programme owners put governance on the agenda and made the case for it when it mattered most. That hands-on experience is what we bring."
   },
   "process": {
     "label": "How we work",
