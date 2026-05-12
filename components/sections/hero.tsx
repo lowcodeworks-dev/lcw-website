@@ -29,7 +29,7 @@ export function Hero() {
           </h1>
 
           {/* Subtext */}
-          <p className="text-lg md:text-xl text-muted-foreground max-w-xl leading-relaxed mb-12">
+          <p className="text-base md:text-lg text-muted-foreground max-w-2xl leading-relaxed mb-8">
             {t('subtext')}
           </p>
 
