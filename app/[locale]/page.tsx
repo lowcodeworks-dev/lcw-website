@@ -3,7 +3,6 @@ import { AssessmentBanner } from '@/components/sections/assessment-banner'
 import { Credibility } from '@/components/sections/credibility'
 import { InflectionPoint } from '@/components/sections/inflection-point'
 import { Problem } from '@/components/sections/problem'
-import { Qualify } from '@/components/sections/qualify'
 import { Services } from '@/components/sections/services'
 import { AssessmentCta } from '@/components/sections/assessment-cta'
 import { PlatformPreview } from '@/components/sections/platform-preview'
@@ -21,7 +20,6 @@ export default function HomePage() {
       <AssessmentBanner />
       <Credibility />
       <Problem />
-      <Qualify />
       <Services />
       <AssessmentCta />
       <PlatformPreview />

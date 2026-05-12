@@ -32,15 +32,7 @@ export function About() {
   return (
     <section id="about" className="relative bg-background py-28 overflow-hidden">
 
-      {/* Ghosted hangul background */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute bottom-0 -right-8 text-[22rem] font-bold leading-none text-foreground/[0.04] select-none hidden md:block"
-      >
-        서울
-      </div>
-
-      <div className="max-w-6xl mx-auto px-6 relative">
+<div className="max-w-6xl mx-auto px-6 relative">
         <div className="grid md:grid-cols-2 gap-16 items-start">
 
           {/* Text */}
