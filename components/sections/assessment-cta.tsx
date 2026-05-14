@@ -22,7 +22,7 @@ export function AssessmentCta() {
               Not sure where to begin?
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              Most engagements start with a Mendix Maturity Assessment — a structured review across 6 dimensions, delivered as a scored report in 2 weeks. It creates clarity before anything else is scoped or priced.
+              Most engagements start with an assessment — a structured review across 6 dimensions, delivered as a scored report. It creates clarity before anything else is scoped or priced.
             </p>
           </div>
 
