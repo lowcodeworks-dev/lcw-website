@@ -1,8 +1,67 @@
 import { NextResponse } from 'next/server'
 import { Resend } from 'resend'
+import enMessages from '@/messages/en.json'
+import koMessages from '@/messages/ko.json'
+import jaMessages from '@/messages/ja.json'
 
 const NOTIFY_EMAIL = 'info@lowcodeworks.consulting'
 const FROM_ADDRESS = 'LCW Assessment <assessment@lowcodeworks.consulting>'
+
+// ─── Email templates (user confirmation) ─────────────────────────────────────
+
+const EMAIL_TEMPLATES = {
+  en: {
+    subject: 'Your Digital Transformation Readiness Assessment',
+    greeting: (name: string) => `Hi ${name},`,
+    thanks: 'Thanks for completing the Digital Transformation Readiness Assessment.',
+    result: (stage: string) => `Your result: ${stage} stage`,
+    focusHeader: 'Your top 3 focus areas:',
+    closing: "We'll be in touch soon to walk through your results. Feel free to reply to this email in the meantime.",
+  },
+  ko: {
+    subject: '디지털 전환 준비도 평가 결과',
+    greeting: (name: string) => `안녕하세요 ${name}님,`,
+    thanks: '디지털 전환 준비도 평가를 완료해 주셔서 감사합니다.',
+    result: (stage: string) => `귀하의 결과: ${stage} 단계`,
+    focusHeader: '상위 3가지 집중 영역:',
+    closing: '귀하의 결과를 함께 검토할 수 있도록 곧 연락드리겠습니다. 그 전에 언제든지 이 이메일에 답장하셔도 됩니다.',
+  },
+  ja: {
+    subject: 'デジタルトランスフォーメーション準備度アセスメント',
+    greeting: (name: string) => `${name}様、`,
+    thanks: 'デジタルトランスフォーメーション準備度アセスメントをご完了いただきありがとうございます。',
+    result: (stage: string) => `あなたの結果: ${stage}ステージ`,
+    focusHeader: 'トップ3の重点領域:',
+    closing: '結果についてご説明するために近日中にご連絡いたします。それまでの間、このメールにご返信いただいても構いません。',
+  },
+} as const
+
+type SupportedLocale = keyof typeof EMAIL_TEMPLATES
+
+// ─── Locale-specific lookups for stage and dimension names ────────────────────
+
+type AssessmentT = typeof enMessages.assessment
+const assessmentMessages: Record<string, AssessmentT> = {
+  en: enMessages.assessment,
+  ko: koMessages.assessment,
+  ja: jaMessages.assessment,
+}
+
+function localizeStage(m: AssessmentT, stage: string): string {
+  if (stage === 'Leading') return m.stage_leading
+  if (stage === 'Scaling') return m.stage_scaling
+  if (stage === 'Developing') return m.stage_developing
+  return m.stage_foundation
+}
+
+function localizeDim(m: AssessmentT, name: string): string {
+  if (name === 'AI & Platform Readiness') return m.dim_ai_platform
+  if (name === 'Governance & Standards') return m.dim_governance
+  if (name === 'Delivery Capability') return m.dim_delivery
+  return m.dim_alignment
+}
+
+// ─── English question/answer list (for Danny's notification email) ────────────
 
 const QUESTIONS = [
   {
@@ -102,7 +161,7 @@ export async function POST(request: Request) {
   const resend = new Resend(process.env.RESEND_API_KEY)
   try {
     const body = await request.json()
-    const { name, company, email, message, honeypot, turnstileToken, stage, dimensions, answers } =
+    const { name, company, email, message, honeypot, turnstileToken, locale, stage, dimensions, answers } =
       body as {
         name: string
         company: string
@@ -110,6 +169,7 @@ export async function POST(request: Request) {
         message: string
         honeypot: string
         turnstileToken: string
+        locale: string
         stage: string
         dimensions: Dimension[]
         answers: number[]
@@ -135,26 +195,40 @@ export async function POST(request: Request) {
       .sort((a, b) => a.score - b.score)
       .slice(0, 3)
 
+    // English Q&A lines for Danny's notification
     const qaLines = answers.map((answerIndex, i) => {
       const q = QUESTIONS[i]
       return `Q${i + 1}: ${q.text}\n→ ${q.answers[answerIndex]}`
     })
 
-    // TODO: POST to LCW Workspace CRM — endpoint to be built in lcw-workspace session
-    console.log('[CRM TODO] New assessment lead:', { name, company, email, stage })
+    // Resolve locale-specific content for user email
+    const safeLocale: SupportedLocale = (locale in EMAIL_TEMPLATES ? locale : 'en') as SupportedLocale
+    const tmpl = EMAIL_TEMPLATES[safeLocale]
+    const m = assessmentMessages[safeLocale] ?? assessmentMessages.en
+    const localizedStage = localizeStage(m, stage)
+    const localizedFocusDimensions = focusDimensions.map((d) => ({
+      name: localizeDim(m, d.name),
+      score: d.score,
+    }))
 
-    // Notify Danny
+    const localeTag = safeLocale !== 'en' ? `[${safeLocale}] ` : ''
+
+    // TODO: POST to LCW Workspace CRM — endpoint to be built in lcw-workspace session
+    console.log('[CRM TODO] New assessment lead:', { name, company, email, stage, locale })
+
+    // Notify Danny — always in English, locale tag in subject for triage
     await resend.emails.send({
       from: FROM_ADDRESS,
       to: NOTIFY_EMAIL,
       replyTo: email,
-      subject: `New assessment — ${stage} — ${name} at ${company || 'unknown company'}`,
+      subject: `${localeTag}New assessment — ${stage} — ${name} at ${company || 'unknown company'}`,
       text: [
         `New Digital Transformation Readiness Assessment completed.`,
         ``,
         `Name:    ${name}`,
         `Company: ${company || '—'}`,
         `Email:   ${email}`,
+        `Locale:  ${safeLocale}`,
         ``,
         `Stage: ${stage}`,
         ``,
@@ -171,22 +245,22 @@ export async function POST(request: Request) {
       ].join('\n'),
     })
 
-    // Confirm to user
+    // Confirm to user — in their locale
     await resend.emails.send({
       from: FROM_ADDRESS,
       to: email,
-      subject: 'Your Digital Transformation Readiness Assessment',
+      subject: tmpl.subject,
       text: [
-        `Hi ${name},`,
+        tmpl.greeting(name),
         ``,
-        `Thanks for completing the Digital Transformation Readiness Assessment.`,
+        tmpl.thanks,
         ``,
-        `Your result: ${stage} stage`,
+        tmpl.result(localizedStage),
         ``,
-        `Your top 3 focus areas:`,
-        ...focusDimensions.map((d, i) => `  ${i + 1}. ${d.name} — ${d.score.toFixed(1)} / 4`),
+        tmpl.focusHeader,
+        ...localizedFocusDimensions.map((d, i) => `  ${i + 1}. ${d.name} — ${d.score.toFixed(1)} / 4`),
         ``,
-        `We'll be in touch soon to walk through your results. Feel free to reply to this email in the meantime.`,
+        tmpl.closing,
         ``,
         `— Danny & Jessy`,
         `LowCodeWorks`,

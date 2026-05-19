@@ -4,92 +4,7 @@ import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowLeft, RotateCcw } from 'lucide-react'
 import Script from 'next/script'
-
-// ─── Questions ────────────────────────────────────────────────────────────────
-
-const QUESTIONS = [
-  {
-    id: 1,
-    routing: true,
-    text: "What best describes why you're here?",
-    answers: [
-      "We want to use AI in our operations but don't know where to start",
-      "We have a low-code platform but it's not delivering what we expected",
-      "We're running digital transformation initiatives but struggling with delivery",
-      'We need project or product leadership for a complex programme',
-    ],
-  },
-  {
-    id: 2,
-    text: 'How many people are involved in your digital initiatives?',
-    answers: [
-      'Just me or a small team (1–5)',
-      'A dedicated team (6–20)',
-      'A programme with multiple teams (20+)',
-      "We don't have a clear team yet",
-    ],
-  },
-  {
-    id: 3,
-    text: 'Do you have defined standards for how digital products are built?',
-    answers: [
-      'No standards exist',
-      'Some informal guidelines',
-      "Documented standards that aren't consistently followed",
-      'Enforced governance with clear ownership',
-    ],
-  },
-  {
-    id: 4,
-    text: 'Have you deployed any AI-assisted features into production?',
-    answers: [
-      "No, we haven't started",
-      "We're experimenting but nothing in production",
-      'One or two things in production',
-      'AI is part of multiple live products',
-    ],
-  },
-  {
-    id: 5,
-    text: 'How would you describe your current platform situation?',
-    answers: [
-      "We don't have a platform strategy yet",
-      "We have tools but they're fragmented",
-      "One main platform but we've stalled after initial adoption",
-      'A running platform that needs to scale or modernise',
-    ],
-  },
-  {
-    id: 6,
-    text: 'Who owns digital transformation decisions in your organisation?',
-    answers: [
-      "It's unclear or nobody owns it",
-      "IT owns it but business isn't aligned",
-      'Shared between IT and business but coordination is hard',
-      'Clear ownership with executive sponsorship',
-    ],
-  },
-  {
-    id: 7,
-    text: "What's your biggest blocker right now?",
-    answers: [
-      "We don't know what good looks like",
-      "We know what we want but can't execute",
-      "We're executing but delivery is slow or inconsistent",
-      'We have delivery but no governance or sustainability',
-    ],
-  },
-  {
-    id: 8,
-    text: 'What does success look like in 12 months?',
-    answers: [
-      'A clear strategy and roadmap',
-      'AI or new platform capabilities in production',
-      'A capable internal team that runs independently',
-      'A programme delivered on time with measurable business impact',
-    ],
-  },
-]
+import { useTranslations, useLocale } from 'next-intl'
 
 const ANSWER_LABELS = ['A', 'B', 'C', 'D']
 
@@ -105,6 +20,7 @@ const SCORE_Q8 = [1, 2, 3, 4]
 
 type Dimension = { name: string; score: number }
 
+// English dimension names — these are the canonical IDs used for scoring and API submission
 function computeDimensions(answers: number[]): Dimension[] {
   const [, q2, q3, q4, q5, q6, q7, q8] = answers
   return [
@@ -115,6 +31,7 @@ function computeDimensions(answers: number[]): Dimension[] {
   ]
 }
 
+// English stage name — used for API submission; localized separately for display
 function getStage(dimensions: Dimension[]): string {
   const avg = dimensions.reduce((s, d) => s + d.score, 0) / dimensions.length
   if (avg >= 3.5) return 'Leading'
@@ -122,19 +39,6 @@ function getStage(dimensions: Dimension[]): string {
   if (avg >= 2.0) return 'Developing'
   return 'Foundation'
 }
-
-// ─── Q1 routing paragraphs ────────────────────────────────────────────────────
-
-const Q1_PARAGRAPHS: ((stage: string) => string)[] = [
-  (stage) =>
-    `Your assessment puts you at the ${stage} stage. Most organisations at this level have clear AI ambitions but are missing the structural foundation — the platform clarity, governance, and team capability needed to move from experimentation to production. The highest-value work right now is building that foundation before scaling any AI investment.`,
-  (stage) =>
-    `Your assessment puts you at the ${stage} stage. Platforms underdeliver not because of the technology — it's the organisational layer around them that determines outcomes: governance, standards, and a clear adoption roadmap. Addressing those gaps is what unlocks the platform value your organisation isn't seeing yet.`,
-  (stage) =>
-    `Your assessment puts you at the ${stage} stage. Delivery challenges are rarely a capacity problem — they reflect gaps in ownership clarity, architectural standards, and the governance structures that make programmes sustainable. Building that infrastructure is the lever that changes delivery outcomes.`,
-  (stage) =>
-    `Your assessment puts you at the ${stage} stage. Complex programmes stall when ownership, standards, and delivery structure aren't aligned from the start. The results below show where your foundation is solid and where leadership attention is most needed before committing to full execution.`,
-]
 
 // ─── Radar chart (pure SVG) ───────────────────────────────────────────────────
 
@@ -171,7 +75,6 @@ function RadarChart({ dimensions }: { dimensions: Dimension[] }) {
       {scorePoints.map((p, i) => (
         <circle key={i} cx={p.x} cy={p.y} r={4} fill="currentColor" />
       ))}
-      {/* Labels omitted — dimension names appear in the adjacent score list */}
     </svg>
   )
 }
@@ -184,9 +87,33 @@ const inputCls =
 // ─── Results page ─────────────────────────────────────────────────────────────
 
 function Results({ answers, onRetake }: { answers: number[]; onRetake: () => void }) {
+  const t = useTranslations('assessment')
+  const locale = useLocale()
+
   const dimensions = computeDimensions(answers)
   const stage = getStage(dimensions)
-  const paragraph = Q1_PARAGRAPHS[answers[0]](stage)
+
+  // Localized stage name for display
+  const localizedStage =
+    stage === 'Leading' ? t('stage_leading') :
+    stage === 'Scaling' ? t('stage_scaling') :
+    stage === 'Developing' ? t('stage_developing') :
+    t('stage_foundation')
+
+  // Localized paragraphs — built as array to avoid dynamic key lookup
+  const paragraphs = [
+    t('q1_para1', { stage: localizedStage }),
+    t('q1_para2', { stage: localizedStage }),
+    t('q1_para3', { stage: localizedStage }),
+    t('q1_para4', { stage: localizedStage }),
+  ]
+  const paragraph = paragraphs[answers[0]]
+
+  // Split stage_headline so the stage word can be wrapped in a <span>
+  const STAGE_MARKER = '⁠STAGE⁠'
+  const rawHeadline = t('stage_headline', { stage: STAGE_MARKER })
+  const headlineParts = rawHeadline.split(STAGE_MARKER)
+
   const focusAreas = [...dimensions].sort((a, b) => a.score - b.score).slice(0, 3)
 
   // Form state
@@ -194,7 +121,6 @@ function Results({ answers, onRetake }: { answers: number[]; onRetake: () => voi
   const [formStatus, setFormStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
   const [formError, setFormError] = useState('')
 
-  // Register global Turnstile callbacks
   useEffect(() => {
     ;(window as any).__lcwTurnstileOk = (token: string) => setTurnstileToken(token)
     ;(window as any).__lcwTurnstileErr = () => setTurnstileToken(null)
@@ -220,10 +146,11 @@ function Results({ answers, onRetake }: { answers: number[]; onRetake: () => voi
           company: fd.get('company'),
           email: fd.get('email'),
           message: fd.get('message'),
-          honeypot: fd.get('website'), // honeypot field
+          honeypot: fd.get('website'),
           turnstileToken,
-          stage,
-          dimensions,
+          locale,
+          stage,       // English — used for Danny's notification email
+          dimensions,  // English names — used for Danny's notification email
           answers,
         }),
       })
@@ -233,11 +160,11 @@ function Results({ answers, onRetake }: { answers: number[]; onRetake: () => voi
         setFormStatus('success')
       } else {
         setFormStatus('error')
-        setFormError(data.error ?? 'Something went wrong. Please try again.')
+        setFormError(data.error ?? t('error_generic'))
       }
     } catch {
       setFormStatus('error')
-      setFormError('Something went wrong. Please try again.')
+      setFormError(t('error_generic'))
     }
   }
 
@@ -251,11 +178,12 @@ function Results({ answers, onRetake }: { answers: number[]; onRetake: () => voi
       {/* Stage headline */}
       <div className="mb-14">
         <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-4">
-          Your baseline
+          {t('your_baseline')}
         </p>
         <h1 className="text-4xl md:text-5xl font-bold text-foreground leading-tight tracking-tight mb-6">
-          You&apos;re at the{' '}
-          <span className="border-b-2 border-foreground pb-0.5">{stage}</span> stage.
+          {headlineParts[0]}
+          <span className="border-b-2 border-foreground pb-0.5">{localizedStage}</span>
+          {headlineParts[1]}
         </h1>
         <p className="text-muted-foreground leading-relaxed max-w-2xl">{paragraph}</p>
       </div>
@@ -270,7 +198,12 @@ function Results({ answers, onRetake }: { answers: number[]; onRetake: () => voi
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.15 + i * 0.08, duration: 0.4 }}>
               <div className="flex justify-between text-sm mb-1.5">
-                <span className="font-medium text-foreground">{d.name}</span>
+                <span className="font-medium text-foreground">
+                  {d.name === 'AI & Platform Readiness' ? t('dim_ai_platform') :
+                   d.name === 'Governance & Standards' ? t('dim_governance') :
+                   d.name === 'Delivery Capability' ? t('dim_delivery') :
+                   t('dim_alignment')}
+                </span>
                 <span className="text-muted-foreground tabular-nums">
                   {d.score.toFixed(1)}&thinsp;/&thinsp;4
                 </span>
@@ -289,7 +222,7 @@ function Results({ answers, onRetake }: { answers: number[]; onRetake: () => voi
       {/* Where to focus first */}
       <div className="mb-16">
         <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-5">
-          Where to focus first
+          {t('where_to_focus')}
         </p>
         <div className="flex flex-col gap-3">
           {focusAreas.map((d, i) => (
@@ -299,7 +232,12 @@ function Results({ answers, onRetake }: { answers: number[]; onRetake: () => voi
               transition={{ delay: 0.4 + i * 0.07, duration: 0.35 }}
               className="flex items-center gap-3 md:gap-5 px-4 md:px-6 py-4 rounded-2xl border border-border">
               <span className="text-xs font-bold text-muted-foreground w-4 shrink-0">{i + 1}</span>
-              <span className="font-medium text-foreground flex-1">{d.name}</span>
+              <span className="font-medium text-foreground flex-1">
+                {d.name === 'AI & Platform Readiness' ? t('dim_ai_platform') :
+                 d.name === 'Governance & Standards' ? t('dim_governance') :
+                 d.name === 'Delivery Capability' ? t('dim_delivery') :
+                 t('dim_alignment')}
+              </span>
               <span className="text-sm text-muted-foreground tabular-nums">
                 {d.score.toFixed(1)}&thinsp;/&thinsp;4
               </span>
@@ -316,14 +254,13 @@ function Results({ answers, onRetake }: { answers: number[]; onRetake: () => voi
         className="border-t border-border pt-14"
       >
         <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-3">
-          Get the full breakdown
+          {t('get_breakdown')}
         </p>
         <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-3">
-          Want to talk through your results?
+          {t('talk_results')}
         </h2>
         <p className="text-muted-foreground leading-relaxed mb-10 max-w-lg">
-          Leave your details and we&apos;ll be in touch to walk through what the results mean for
-          your organisation. Use the field below to tell us what you&apos;d most like to cover.
+          {t('talk_results_body')}
         </p>
 
         {formStatus === 'success' ? (
@@ -332,20 +269,16 @@ function Results({ answers, onRetake }: { answers: number[]; onRetake: () => voi
             animate={{ opacity: 1, y: 0 }}
             className="max-w-lg p-6 rounded-2xl border border-border bg-muted"
           >
-            <p className="font-semibold text-foreground mb-1">Message sent.</p>
-            <p className="text-sm text-muted-foreground">
-              Thanks — we&apos;ll be in touch soon.
-            </p>
+            <p className="font-semibold text-foreground mb-1">{t('message_sent_title')}</p>
+            <p className="text-sm text-muted-foreground">{t('message_sent_body')}</p>
           </motion.div>
         ) : (
           <form onSubmit={handleSubmit} className="flex flex-col gap-4 max-w-lg" noValidate>
-            {/* Turnstile script */}
             <Script
               src="https://challenges.cloudflare.com/turnstile/v0/api.js"
               strategy="afterInteractive"
             />
 
-            {/* Honeypot — entire subtree hidden from accessibility tree and positioned off-screen */}
             <div
               aria-hidden="true"
               style={{ position: 'absolute', left: '-9999px', width: 0, height: 0, overflow: 'hidden' }}
@@ -354,18 +287,17 @@ function Results({ answers, onRetake }: { answers: number[]; onRetake: () => voi
             </div>
 
             <div className="grid sm:grid-cols-2 gap-4">
-              <input name="name" placeholder="Name" required className={inputCls} />
-              <input name="company" placeholder="Company" className={inputCls} />
+              <input name="name" placeholder={t('name_placeholder')} required className={inputCls} />
+              <input name="company" placeholder={t('company_placeholder')} className={inputCls} />
             </div>
-            <input name="email" type="email" placeholder="Email" required className={inputCls} />
+            <input name="email" type="email" placeholder={t('email_placeholder')} required className={inputCls} />
             <textarea
               name="message"
               rows={3}
-              placeholder="What's the main challenge you'd like to work through in the call? (optional)"
+              placeholder={t('message_placeholder')}
               className={`${inputCls} resize-none`}
             />
 
-            {/* Cloudflare Turnstile widget */}
             <div
               className="cf-turnstile"
               data-sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? ''}
@@ -384,7 +316,7 @@ function Results({ answers, onRetake }: { answers: number[]; onRetake: () => voi
                 disabled={formStatus === 'loading' || !turnstileToken}
                 className="px-6 py-3 bg-foreground text-background font-semibold rounded-full text-sm hover:bg-foreground/85 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
               >
-                {formStatus === 'loading' ? 'Sending…' : 'Send message'}
+                {formStatus === 'loading' ? t('sending') : t('send_message')}
               </button>
               <button
                 type="button"
@@ -392,7 +324,7 @@ function Results({ answers, onRetake }: { answers: number[]; onRetake: () => voi
                 className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
                 <RotateCcw className="h-3.5 w-3.5" />
-                Retake assessment
+                {t('retake')}
               </button>
             </div>
           </form>
@@ -405,10 +337,29 @@ function Results({ answers, onRetake }: { answers: number[]; onRetake: () => voi
 // ─── Main page ────────────────────────────────────────────────────────────────
 
 export default function AssessmentPage() {
+  const t = useTranslations('assessment')
+
   const [step, setStep] = useState(0)
   const [answers, setAnswers] = useState<number[]>([])
   const direction = useRef(1)
   const [complete, setComplete] = useState(false)
+
+  // Questions built from translations — localized for the current locale
+  const QUESTIONS = [
+    {
+      id: 1,
+      routing: true,
+      text: t('q1_text'),
+      answers: [t('q1_a1'), t('q1_a2'), t('q1_a3'), t('q1_a4')],
+    },
+    { id: 2, text: t('q2_text'), answers: [t('q2_a1'), t('q2_a2'), t('q2_a3'), t('q2_a4')] },
+    { id: 3, text: t('q3_text'), answers: [t('q3_a1'), t('q3_a2'), t('q3_a3'), t('q3_a4')] },
+    { id: 4, text: t('q4_text'), answers: [t('q4_a1'), t('q4_a2'), t('q4_a3'), t('q4_a4')] },
+    { id: 5, text: t('q5_text'), answers: [t('q5_a1'), t('q5_a2'), t('q5_a3'), t('q5_a4')] },
+    { id: 6, text: t('q6_text'), answers: [t('q6_a1'), t('q6_a2'), t('q6_a3'), t('q6_a4')] },
+    { id: 7, text: t('q7_text'), answers: [t('q7_a1'), t('q7_a2'), t('q7_a3'), t('q7_a4')] },
+    { id: 8, text: t('q8_text'), answers: [t('q8_a1'), t('q8_a2'), t('q8_a3'), t('q8_a4')] },
+  ]
 
   const question = QUESTIONS[step]
 
@@ -441,11 +392,8 @@ export default function AssessmentPage() {
     exit: () => ({ x: direction.current * -64, opacity: 0 }),
   }
 
-  const progressPct = complete ? 100 : (step / QUESTIONS.length) * 100
-
   return (
     <div className="bg-background min-h-screen">
-      {/* Progress line — hidden on results page */}
       {!complete && (
         <div className="sticky top-16 z-10 w-full h-0.5 bg-muted">
           <motion.div
@@ -471,7 +419,7 @@ export default function AssessmentPage() {
               aria-hidden={step === 0}
             >
               <ArrowLeft className="h-4 w-4" />
-              Back
+              {t('back')}
             </button>
             <span className="text-sm text-muted-foreground tabular-nums">
               {step + 1}{' '}
@@ -491,7 +439,7 @@ export default function AssessmentPage() {
               >
                 {question.routing && (
                   <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-4">
-                    About you
+                    {t('about_you')}
                   </p>
                 )}
                 <h2 className="text-2xl md:text-3xl font-bold text-foreground leading-snug tracking-tight mb-10">
