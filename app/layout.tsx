@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Plus_Jakarta_Sans, Noto_Sans_KR } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/react'
 import './globals.css'
 
 const jakarta = Plus_Jakarta_Sans({
@@ -22,7 +23,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html suppressHydrationWarning className={`${jakarta.variable} ${notoKR.variable}`}>
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">{children}<Analytics /></body>
     </html>
   )
 }
