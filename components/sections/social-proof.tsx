@@ -1,10 +1,31 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, animate, useInView } from 'framer-motion'
 import { ArrowUpRight } from 'lucide-react'
 import { useTranslations } from 'next-intl'
+import { useRef, useState, useEffect } from 'react'
 
 const STAT_NUMBERS = ['70+', '8', '3', '2']
+
+function AnimatedNumber({ value }: { value: string }) {
+  const ref = useRef<HTMLSpanElement>(null)
+  const isInView = useInView(ref, { once: true })
+  const [display, setDisplay] = useState('0')
+  const numeric = parseInt(value)
+  const suffix = value.replace(/[0-9]/g, '')
+
+  useEffect(() => {
+    if (!isInView) return
+    const controls = animate(0, numeric, {
+      duration: 1.5,
+      ease: 'easeOut',
+      onUpdate: v => setDisplay(String(Math.round(v))),
+    })
+    return controls.stop
+  }, [isInView, numeric])
+
+  return <span ref={ref}>{display}{suffix}</span>
+}
 
 const CASE_HREFS = [
   'https://www.mendix.com/customer-stories/usi-accelerates-development-and-enables-process-transformation-at-scale/',
@@ -55,7 +76,7 @@ export function SocialProof() {
               className="bg-muted p-8 flex flex-col gap-2"
             >
               <span className="text-5xl font-bold text-accent tracking-tight">
-                {number}
+                <AnimatedNumber value={number} />
               </span>
               <span className="text-sm text-muted-foreground leading-snug">
                 {statLabels[i]}
@@ -76,6 +97,7 @@ export function SocialProof() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
+              whileHover={{ y: -4, transition: { duration: 0.2 } }}
               className="bg-background rounded-2xl p-8 flex flex-col gap-5"
             >
               {/* Top */}
