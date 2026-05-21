@@ -7,7 +7,7 @@ export function InflectionPoint() {
   const t = useTranslations('inflection_point')
 
   return (
-    <section id="why-now" className="bg-foreground text-background py-28">
+    <section id="why-now" className="bg-foreground text-background pt-28 pb-20">
       <div className="max-w-6xl mx-auto px-6">
         <div className="max-w-3xl">
           <motion.p
@@ -55,15 +55,6 @@ export function InflectionPoint() {
             {t('closing')}
           </motion.p>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.65 }}
-            className="text-sm opacity-40 mt-6"
-          >
-            {t('footnote')}
-          </motion.p>
         </div>
       </div>
     </section>
