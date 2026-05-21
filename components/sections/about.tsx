@@ -30,7 +30,7 @@ export function About() {
   const t = useTranslations('about')
 
   return (
-    <section id="about" className="relative bg-background py-28 overflow-hidden">
+    <section id="about" className="relative bg-background pt-20 pb-12 overflow-hidden">
 
 <div className="max-w-6xl mx-auto px-6 relative">
         <div className="grid md:grid-cols-2 gap-16 items-start">

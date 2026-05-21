@@ -14,7 +14,7 @@ export function FAQ() {
   ]
 
   return (
-    <section className="bg-background py-28">
+    <section className="bg-background pt-12 pb-20">
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid md:grid-cols-[1fr_2fr] gap-16 items-start">
 
