@@ -19,12 +19,12 @@ export default function HomePage() {
       <InflectionPoint />
       <AssessmentBanner />
       <Credibility />
+      <SocialProof />
       <Problem />
       <Services />
       <AssessmentCta />
       <PlatformPreview />
       <HowWeWork />
-      <SocialProof />
       <About />
       <FAQ />
       <Contact />
