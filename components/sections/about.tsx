@@ -19,11 +19,6 @@ const team = [
     photo: '/screenshots/dhi_cartoony.png',
     linkedin: 'https://www.linkedin.com/in/dannyhildebrand/',
   },
-  {
-    key: 'jessy',
-    photo: '/screenshots/Jessy_cartoony.png',
-    linkedin: 'https://www.linkedin.com/in/jessyhollander/',
-  },
 ]
 
 export function About() {

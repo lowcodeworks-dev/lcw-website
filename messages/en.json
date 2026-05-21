@@ -9,7 +9,7 @@
     "label": "Enterprise Digital Transformation · Solution Architect · AI App Development",
     "label_sub": "Remote first. Travel when it matters.",
     "headline": "You've invested in the platform. Now get the results it promised.",
-    "subtext": "Having led digital transformation at Siemens for APAC customers, I saw first-hand how often initiatives stall — not because the tools are wrong, but because strategy, governance, and architecture aren't in place. That's the gap LowCodeWorks was built to close. We identify the pain points that deliver the most value when solved, define the roadmap, and build the organisational foundation to execute on it.",
+    "subtext": "Having led digital transformation at Siemens for APAC customers, I saw first-hand how often initiatives stall — not because the tools are wrong, but because strategy, governance, and architecture aren't in place. That's the gap LowCodeWorks was built to close. I identify the pain points that deliver the most value when solved, define the roadmap, and build the organisational foundation to execute on it.",
     "cta_primary": "Take the free assessment",
     "cta_secondary": "Get in touch"
   },
@@ -26,7 +26,7 @@
     "item2": "Ex-Siemens · Mendix NL alumni",
     "item3": "Remote first · Travel when it matters",
     "item4": "Digital transformation · Low-code & AI",
-    "body1": "We think every collaboration should start with an assessment to set common goals — scored across multiple dimensions including architecture, governance, delivery capability, and organisational alignment."
+    "body1": "I believe every collaboration should start with an assessment to set common goals — scored across multiple dimensions including architecture, governance, delivery capability, and organisational alignment."
   },
   "inflection_point": {
     "label": "Why now",
@@ -34,13 +34,13 @@
     "body1": "Before AI, the argument for low-code was speed — getting apps to production faster than traditional development. That argument is now obsolete. The real question is whether your organisation can build enterprise-grade applications within the right governance and strategic guardrails: moving fast, but scaling safely.",
     "body2": "Most organisations are not there yet. Governance is patchy, teams work in silos, no standards exist or are simply not enforced. After a few apps in production, initiatives run into the same walls — not because the technology is not ready, but because the organisational foundation underneath it is not.",
     "body3": "Modern platforms are building compliance controls and AI integration in by design. But the platform is secondary. The structural advantage goes to teams that build the right foundation now.",
-    "closing": "That is the work we do.",
+    "closing": "That is the work I do.",
     "footnote": "Not sure where your organisation stands? Take the assessment below."
   },
   "problem": {
     "headline": "Start is the easy part.",
     "body": "Most organisations adopt the right platform. Momentum builds early, then stalls. Complexity accumulates, standards don't exist, and no one can agree on what to prioritise. The platform gets the blame. The real gap is strategic — knowing which problems to solve, and in what order, to unlock the most value.",
-    "punchline": "We know how to find those problems. And how to build the path forward."
+    "punchline": "I know how to find those problems. And how to build the path forward."
   },
   "qualify": {
     "label": "This is for you if...",
@@ -51,42 +51,42 @@
     "closing": "Not sure? The assessment will tell you."
   },
   "services": {
-    "label": "What we do",
-    "headline": "From first sprint to full CoE. We cover the full transformation lifecycle.",
+    "label": "What I do",
+    "headline": "From first sprint to full CoE. Covering the full transformation lifecycle.",
     "item1_title": "Find your baseline",
-    "item1_desc": "You can't improve what you can't measure. We built a custom maturity assessment across six dimensions — platform usage, team capability, governance, architecture, AI readiness, and organisational maturity — scored and delivered as a baseline report with an initial recommendation. Most engagements start here.",
-    "item1_meta": "If possible, take the free assessment first — it gives us a clear picture of your situation before we continue.",
+    "item1_desc": "You can't improve what you can't measure. I built a custom maturity assessment across six dimensions — platform usage, team capability, governance, architecture, AI readiness, and organisational maturity — scored and delivered as a baseline report with an initial recommendation. Most engagements start here.",
+    "item1_meta": "If possible, take the free assessment first — it gives me a clear picture of your situation before we continue.",
     "item2_title": "Get AI-ready infrastructure",
-    "item2_desc": "Preparing your platform for AI-assisted development means more than adopting the latest release. We map your application landscape, identify business logic and custom work, and determine what needs to move, change, or be rebuilt. For Mendix organisations, that means a structured path to Mx11 — where all future agentic capabilities are being built.",
+    "item2_desc": "Preparing your platform for AI-assisted development means more than adopting the latest release. I map your application landscape, identify business logic and custom work, and determine what needs to move, change, or be rebuilt. For Mendix organisations, that means a structured path to Mx11 — where all future agentic capabilities are being built.",
     "item3_title": "Delivery with transfer",
-    "item3_desc": "Hands-on execution that leaves your team capable, not dependent. We work embedded with your team — developing, delivering, and explaining every decision along the way. Whether you need us for a single phase or a long-term extension, the goal is always the same: when we leave, you can run it yourself.",
+    "item3_desc": "Hands-on execution that leaves your team capable, not dependent. I work embedded with your team — developing, delivering, and explaining every decision along the way. Whether you need me for a single phase or a long-term extension, the goal is always the same: when I leave, you can run it yourself.",
     "partner_note": "Mendix partner looking for senior capacity on a complex engagement?",
-    "partner_link": "We work with partners directly →",
+    "partner_link": "I work with partners directly →",
     "item4_title": "Governance that actually sticks",
-    "item4_desc": "Governance doesn't stick when it's only documented — it needs to be built, enforced, and championed at every level. As solution architect at Siemens, I set up governance frameworks, started CoE initiatives, and enforced standards across multiple teams. As transformation manager, I helped programme owners put governance on the agenda and made the case for it when it mattered most. That hands-on experience is what we bring."
+    "item4_desc": "Governance doesn't stick when it's only documented — it needs to be built, enforced, and championed at every level. As solution architect at Siemens, I set up governance frameworks, started CoE initiatives, and enforced standards across multiple teams. As transformation manager, I helped programme owners put governance on the agenda and made the case for it when it mattered most. That hands-on experience is what I bring."
   },
   "process": {
-    "label": "How we work",
+    "label": "How I work",
     "headline": "From where you are to where you need to be.",
     "step1_num": "01",
     "step1_title": "Maturity assessment",
-    "step1_desc": "We start with a structured Maturity Assessment — platform usage, team capability, governance gaps. This becomes the baseline for everything that follows.",
+    "step1_desc": "I start with a structured Maturity Assessment — platform usage, team capability, governance gaps. This becomes the baseline for everything that follows.",
     "step2_num": "02",
-    "step2_title": "We define where you need to be",
+    "step2_title": "Defining where you need to be",
     "step2_desc": "A clear target — realistic, time-bound, and aligned with your business goals.",
     "step3_num": "03",
-    "step3_title": "We build the bridge",
-    "step3_desc": "We work embedded with your team, share every decision, and leave you capable of running it yourself.",
+    "step3_title": "Building the bridge",
+    "step3_desc": "I work embedded with your team, share every decision, and leave you capable of running it yourself.",
     "step4_num": "04",
-    "step4_title": "We deliver, then decide together",
-    "step4_desc": "Some clients want a capable team that runs independently. Others want ongoing delivery support. We're flexible — the engagement ends when it makes sense, not before."
+    "step4_title": "Delivering, then deciding together",
+    "step4_desc": "Some clients want me to build a capable team that runs independently. Others want ongoing delivery support. I'm flexible — the engagement ends when it makes sense, not before."
   },
   "about": {
-    "label": "About us",
+    "label": "About",
     "headline": "Transformation expertise for enterprises that need to get it right.",
-    "body": "We worked with enterprise IT teams across APAC and Europe — defining AI strategies, governing platforms at scale, managing complex delivery programmes, and building the organisational foundations that make transformation stick. We built our careers inside Mendix and Siemens — starting at Mendix NL, then brought to Seoul in 2022 by Siemens Korea to deliver a worldwide GTM application for a global enterprise client. That engagement rooted us in the region and shaped how we approach the work.",
-    "body2": "A track record with enterprise clients in Korea, Taiwan, Japan, and Europe. Working in these markets also means understanding the local dynamics — how decisions move, how consensus forms, and where relationship trust shapes every programme. English and Dutch. Remote-first, and happy to travel when it matters.",
-    "body3": "We work directly with Mendix partners who need senior capacity on complex engagements. If you need experienced backup on a delivery, reach out.",
+    "body": "I've worked with enterprise IT teams across APAC and Europe — defining AI strategies, governing platforms at scale, managing complex delivery programmes, and building the organisational foundations that make transformation stick. My career was built inside Mendix and Siemens — starting at Mendix NL, then brought to Seoul in 2022 by Siemens Korea to deliver a worldwide GTM application for a global enterprise client. That engagement rooted me in the region and shaped how I approach the work.",
+    "body2": "A track record with enterprise clients in Korea, Taiwan, Japan, and Europe. Working in these markets means understanding the local dynamics — how decisions move, how consensus forms, and where relationship trust shapes every programme. English and Dutch. Remote-first, and happy to travel when it matters.",
+    "body3": "I work directly with Mendix partners who need senior capacity on complex engagements — and bring in trusted specialists from my network when the scope calls for it. If you need experienced backup on a delivery, reach out.",
     "danny_name": "Danny Hildebrand",
     "danny_role": "Transformation Lead · Solution Architecture · AI App Development",
     "danny_desc": "Identifying the business problems that unlock real value, designing platform and solution architecture around them, and building the foundation for organisations to scale app development independently. 14+ years in enterprise low-code, Mendix Expert certified.",
@@ -103,13 +103,13 @@
   "contact": {
     "label": "Get in touch",
     "headline": "Ready to talk?",
-    "subtext": "Tell us where you are and what's blocking progress. We'll take it from there. Engagements are scoped and priced after an initial conversation. Most start with a maturity assessment. Working language: English.",
+    "subtext": "Tell me where you are and what's blocking progress. I'll take it from there. Engagements are scoped and priced after an initial conversation. Most start with a maturity assessment. Working language: English.",
     "availability": "Currently accepting new engagements.",
-    "cta": "Send us a message",
-    "cta_followup": "We'll be in touch as soon as we can.",
+    "cta": "Send a message",
+    "cta_followup": "I'll be in touch as soon as I can.",
     "email": "info@lowcodeworks.consulting",
     "partner_headline": "Are you a Mendix partner?",
-    "partner_body": "We work directly with partners who need senior capacity on complex engagements — as sub-contractor or direct extension, white-labelled or credited, your preference."
+    "partner_body": "I work directly with partners who need senior capacity on complex engagements — as sub-contractor or direct extension, white-labelled or credited, your preference."
   },
   "faq": {
     "label": "FAQ",
@@ -125,9 +125,9 @@
   },
   "platform_preview": {
     "label": "Built-in tooling",
-    "headline": "We assess before we advise.",
+    "headline": "I assess before I advise.",
     "body1": "Every engagement starts with a structured assessment — scored across multiple dimensions including architecture, governance, delivery capability, and organisational alignment.",
-    "body2": "We run assessments across the full engagement lifecycle: CoE maturity, project health, PoC scoping, and transformation readiness. The output is a clear baseline, not a slide deck."
+    "body2": "I run assessments across the full engagement lifecycle: CoE maturity, project health, PoC scoping, and transformation readiness. The output is a clear baseline, not a slide deck."
   },
   "social_proof": {
     "label": "Track record",
