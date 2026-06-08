@@ -143,6 +143,42 @@ interface Dimension {
   score: number
 }
 
+// ─── In-memory rate limiter: 3 submissions per IP per hour ───────────────────
+// Per-instance only — acceptable for a low-traffic B2B form.
+
+const rateLimitStore = new Map<string, { count: number; resetAt: number }>()
+
+function checkRateLimit(ip: string): { allowed: boolean; retryAfter: number } {
+  const now = Date.now()
+  const windowMs = 60 * 60 * 1000
+  const max = 3
+  const entry = rateLimitStore.get(ip)
+  if (!entry || now > entry.resetAt) {
+    rateLimitStore.set(ip, { count: 1, resetAt: now + windowMs })
+    return { allowed: true, retryAfter: 0 }
+  }
+  if (entry.count >= max) {
+    return { allowed: false, retryAfter: Math.ceil((entry.resetAt - now) / 1000) }
+  }
+  entry.count++
+  return { allowed: true, retryAfter: 0 }
+}
+
+// ─── Input validation ─────────────────────────────────────────────────────────
+
+function validateBody(b: Record<string, unknown>): string | null {
+  if (!b.name || typeof b.name !== 'string' || !b.name.trim()) return 'name is required'
+  if ((b.name as string).length > 100) return 'name too long'
+  if (!b.email || typeof b.email !== 'string') return 'email is required'
+  if ((b.email as string).length > 254) return 'email too long'
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(b.email as string)) return 'invalid email'
+  if (!b.locale || !['en', 'ko', 'ja'].includes(b.locale as string)) return 'invalid locale'
+  if (!Array.isArray(b.answers) || b.answers.length === 0) return 'answers required'
+  if (!b.stage || typeof b.stage !== 'string') return 'stage required'
+  if (!Array.isArray(b.dimensions)) return 'dimensions required'
+  return null
+}
+
 async function verifyTurnstile(token: string, ip: string | null): Promise<boolean> {
   const res = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
     method: 'POST',
@@ -161,6 +197,13 @@ export async function POST(request: Request) {
   const resend = new Resend(process.env.RESEND_API_KEY)
   try {
     const body = await request.json()
+
+    // Input validation
+    const validationError = validateBody(body as Record<string, unknown>)
+    if (validationError) {
+      return NextResponse.json({ error: validationError }, { status: 400 })
+    }
+
     const { name, company, email, message, honeypot, turnstileToken, locale, stage, dimensions, answers } =
       body as {
         name: string
@@ -180,9 +223,20 @@ export async function POST(request: Request) {
       return NextResponse.json({ success: true })
     }
 
-    // Turnstile server-side verification
+    // IP rate limit — 3 submissions per hour
     const ip =
-      request.headers.get('CF-Connecting-IP') ?? request.headers.get('x-forwarded-for')
+      request.headers.get('CF-Connecting-IP') ??
+      request.headers.get('x-forwarded-for')?.split(',')[0].trim() ??
+      'unknown'
+    const { allowed, retryAfter } = checkRateLimit(ip)
+    if (!allowed) {
+      return NextResponse.json(
+        { error: 'Too many submissions. Please try again later.' },
+        { status: 429, headers: { 'Retry-After': String(retryAfter) } }
+      )
+    }
+
+    // Turnstile server-side verification
     const valid = await verifyTurnstile(turnstileToken, ip)
     if (!valid) {
       return NextResponse.json(
@@ -214,7 +268,6 @@ export async function POST(request: Request) {
     const localeTag = safeLocale !== 'en' ? `[${safeLocale}] ` : ''
 
     // TODO: POST to LCW Workspace CRM — endpoint to be built in lcw-workspace session
-    console.log('[CRM TODO] New assessment lead:', { name, company, email, stage, locale })
 
     // Notify Danny — always in English, locale tag in subject for triage
     await resend.emails.send({
