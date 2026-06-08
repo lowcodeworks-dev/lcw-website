@@ -193,15 +193,32 @@ async function verifyTurnstile(token: string, ip: string | null): Promise<boolea
   return data.success === true
 }
 
+const ALLOWED_ORIGIN = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://lowcodeworks.consulting'
+
+function corsHeaders(origin: string | null) {
+  const allowed = origin === ALLOWED_ORIGIN ? origin : ALLOWED_ORIGIN
+  return {
+    'Access-Control-Allow-Origin': allowed,
+    'Access-Control-Allow-Methods': 'POST, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type',
+  }
+}
+
+export async function OPTIONS(request: Request) {
+  const origin = request.headers.get('origin')
+  return new NextResponse(null, { status: 204, headers: corsHeaders(origin) })
+}
+
 export async function POST(request: Request) {
   const resend = new Resend(process.env.RESEND_API_KEY)
+  const origin = request.headers.get('origin')
   try {
     const body = await request.json()
 
     // Input validation
     const validationError = validateBody(body as Record<string, unknown>)
     if (validationError) {
-      return NextResponse.json({ error: validationError }, { status: 400 })
+      return NextResponse.json({ error: validationError }, { status: 400, headers: corsHeaders(origin) })
     }
 
     const { name, company, email, message, honeypot, turnstileToken, locale, stage, dimensions, answers } =
@@ -220,7 +237,7 @@ export async function POST(request: Request) {
 
     // Honeypot — silently succeed, do nothing
     if (honeypot) {
-      return NextResponse.json({ success: true })
+      return NextResponse.json({ success: true }, { headers: corsHeaders(origin) })
     }
 
     // IP rate limit — 3 submissions per hour
@@ -232,7 +249,7 @@ export async function POST(request: Request) {
     if (!allowed) {
       return NextResponse.json(
         { error: 'Too many submissions. Please try again later.' },
-        { status: 429, headers: { 'Retry-After': String(retryAfter) } }
+        { status: 429, headers: { 'Retry-After': String(retryAfter), ...corsHeaders(origin) } }
       )
     }
 
@@ -241,7 +258,7 @@ export async function POST(request: Request) {
     if (!valid) {
       return NextResponse.json(
         { error: 'Security check failed. Please refresh and try again.' },
-        { status: 400 }
+        { status: 400, headers: corsHeaders(origin) }
       )
     }
 
@@ -321,12 +338,12 @@ export async function POST(request: Request) {
       ].join('\n'),
     })
 
-    return NextResponse.json({ success: true })
+    return NextResponse.json({ success: true }, { headers: corsHeaders(origin) })
   } catch (err) {
     console.error('[assessment/submit]', err)
     return NextResponse.json(
       { error: 'Something went wrong. Please try again.' },
-      { status: 500 }
+      { status: 500, headers: corsHeaders(null) }
     )
   }
 }
