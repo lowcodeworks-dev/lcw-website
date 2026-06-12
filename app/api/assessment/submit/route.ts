@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { Resend } from 'resend'
+import { assessmentRatelimit } from '@/lib/ratelimit'
 import enMessages from '@/messages/en.json'
 import koMessages from '@/messages/ko.json'
 import jaMessages from '@/messages/ja.json'
@@ -143,27 +144,6 @@ interface Dimension {
   score: number
 }
 
-// ─── In-memory rate limiter: 3 submissions per IP per hour ───────────────────
-// Per-instance only — acceptable for a low-traffic B2B form.
-
-const rateLimitStore = new Map<string, { count: number; resetAt: number }>()
-
-function checkRateLimit(ip: string): { allowed: boolean; retryAfter: number } {
-  const now = Date.now()
-  const windowMs = 60 * 60 * 1000
-  const max = 3
-  const entry = rateLimitStore.get(ip)
-  if (!entry || now > entry.resetAt) {
-    rateLimitStore.set(ip, { count: 1, resetAt: now + windowMs })
-    return { allowed: true, retryAfter: 0 }
-  }
-  if (entry.count >= max) {
-    return { allowed: false, retryAfter: Math.ceil((entry.resetAt - now) / 1000) }
-  }
-  entry.count++
-  return { allowed: true, retryAfter: 0 }
-}
-
 // ─── Input validation ─────────────────────────────────────────────────────────
 
 function validateBody(b: Record<string, unknown>): string | null {
@@ -245,8 +225,9 @@ export async function POST(request: Request) {
       request.headers.get('CF-Connecting-IP') ??
       request.headers.get('x-forwarded-for')?.split(',')[0].trim() ??
       'unknown'
-    const { allowed, retryAfter } = checkRateLimit(ip)
-    if (!allowed) {
+    const { success, reset } = await assessmentRatelimit.limit(ip)
+    if (!success) {
+      const retryAfter = Math.ceil((reset - Date.now()) / 1000)
       return NextResponse.json(
         { error: 'Too many submissions. Please try again later.' },
         { status: 429, headers: { 'Retry-After': String(retryAfter), ...corsHeaders(origin) } }
