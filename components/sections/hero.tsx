@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl'
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import { WORKSPACE_ASSESSMENT_URL } from '@/lib/config'
+import posthog from 'posthog-js'
 
 export function Hero() {
   const t = useTranslations('hero')
@@ -37,6 +38,7 @@ export function Hero() {
           <div className="flex flex-wrap gap-4">
             <a
               href={WORKSPACE_ASSESSMENT_URL}
+              onClick={() => posthog.capture('hero_cta_clicked', { cta: 'primary' })}
               className="inline-flex items-center gap-2 px-6 py-3.5 bg-accent text-accent-foreground font-semibold rounded-full hover:bg-accent/85 transition-colors"
             >
               {t('cta_primary')}
@@ -44,6 +46,7 @@ export function Hero() {
             </a>
             <a
               href="#contact"
+              onClick={() => posthog.capture('hero_contact_clicked')}
               className="inline-flex items-center gap-2 px-6 py-3.5 border border-border text-foreground font-semibold rounded-full hover:bg-muted transition-colors"
             >
               {t('cta_secondary')}

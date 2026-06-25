@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl'
 import { ArrowRight } from 'lucide-react'
 import { WORKSPACE_ASSESSMENT_URL } from '@/lib/config'
+import posthog from 'posthog-js'
 
 export function AssessmentBanner() {
   const t = useTranslations('assessment_banner')
@@ -28,6 +29,7 @@ export function AssessmentBanner() {
             <div className="flex flex-wrap gap-3">
               <a
                 href={WORKSPACE_ASSESSMENT_URL}
+                onClick={() => posthog.capture('assessment_banner_cta_clicked', { location: 'assessment_banner' })}
                 className="inline-flex items-center gap-2 px-6 py-3.5 bg-accent text-accent-foreground font-semibold rounded-full hover:bg-accent/85 transition-colors whitespace-nowrap"
               >
                 {t('cta_primary')}

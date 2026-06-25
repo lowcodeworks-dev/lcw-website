@@ -4,6 +4,7 @@ import { assessmentRatelimit } from '@/lib/ratelimit'
 import enMessages from '@/messages/en.json'
 import koMessages from '@/messages/ko.json'
 import jaMessages from '@/messages/ja.json'
+import { getPostHogClient } from '@/lib/posthog-server'
 
 const NOTIFY_EMAIL = 'info@lowcodeworks.consulting'
 const FROM_ADDRESS = 'LCW Assessment <assessment@lowcodeworks.consulting>'
@@ -192,12 +193,20 @@ export async function OPTIONS(request: Request) {
 export async function POST(request: Request) {
   const resend = new Resend(process.env.RESEND_API_KEY)
   const origin = request.headers.get('origin')
+  const clientDistinctId = request.headers.get('X-POSTHOG-DISTINCT-ID')
   try {
     const body = await request.json()
 
     // Input validation
     const validationError = validateBody(body as Record<string, unknown>)
     if (validationError) {
+      const posthog = getPostHogClient()
+      posthog.capture({
+        distinctId: clientDistinctId ?? 'anonymous',
+        event: 'assessment_submission_failed',
+        properties: { reason: 'validation_error', error: validationError },
+      })
+      await posthog.shutdown()
       return NextResponse.json({ error: validationError }, { status: 400, headers: corsHeaders(origin) })
     }
 
@@ -228,6 +237,13 @@ export async function POST(request: Request) {
     const { success, reset } = await assessmentRatelimit.limit(ip)
     if (!success) {
       const retryAfter = Math.ceil((reset - Date.now()) / 1000)
+      const posthog = getPostHogClient()
+      posthog.capture({
+        distinctId: clientDistinctId ?? 'anonymous',
+        event: 'assessment_submission_failed',
+        properties: { reason: 'rate_limited' },
+      })
+      await posthog.shutdown()
       return NextResponse.json(
         { error: 'Too many submissions. Please try again later.' },
         { status: 429, headers: { 'Retry-After': String(retryAfter), ...corsHeaders(origin) } }
@@ -237,6 +253,13 @@ export async function POST(request: Request) {
     // Turnstile server-side verification
     const valid = await verifyTurnstile(turnstileToken, ip)
     if (!valid) {
+      const posthog = getPostHogClient()
+      posthog.capture({
+        distinctId: clientDistinctId ?? 'anonymous',
+        event: 'assessment_submission_failed',
+        properties: { reason: 'turnstile_failed' },
+      })
+      await posthog.shutdown()
       return NextResponse.json(
         { error: 'Security check failed. Please refresh and try again.' },
         { status: 400, headers: corsHeaders(origin) }
@@ -319,9 +342,36 @@ export async function POST(request: Request) {
       ].join('\n'),
     })
 
+    // Track successful submission server-side, correlated with the client distinct ID
+    const posthog = getPostHogClient()
+    const serverDistinctId = clientDistinctId ?? email
+    posthog.identify({
+      distinctId: serverDistinctId,
+      properties: { email, name, company: company || undefined },
+    })
+    posthog.capture({
+      distinctId: serverDistinctId,
+      event: 'assessment_submission_received',
+      properties: {
+        stage,
+        locale: safeLocale,
+        has_company: Boolean(company),
+        has_message: Boolean(message),
+        dimensions: dimensions.map((d) => ({ name: d.name, score: d.score })),
+      },
+    })
+    await posthog.shutdown()
+
     return NextResponse.json({ success: true }, { headers: corsHeaders(origin) })
   } catch (err) {
     console.error('[assessment/submit]', err)
+    const posthog = getPostHogClient()
+    posthog.capture({
+      distinctId: clientDistinctId ?? 'anonymous',
+      event: 'assessment_submission_failed',
+      properties: { reason: 'server_error' },
+    })
+    await posthog.shutdown()
     return NextResponse.json(
       { error: 'Something went wrong. Please try again.' },
       { status: 500, headers: corsHeaders(null) }

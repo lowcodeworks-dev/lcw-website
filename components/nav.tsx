@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl'
 import { usePathname } from 'next/navigation'
 import { useState, useEffect, useRef } from 'react'
 import { Menu, X, ChevronDown } from 'lucide-react'
+import posthog from 'posthog-js'
 
 const LOCALES = ['en', 'ko', 'ja'] as const
 type Locale = (typeof LOCALES)[number]
@@ -98,6 +99,7 @@ export function Nav({ locale }: { locale: string }) {
 
           <a
             href="#contact"
+            onClick={() => posthog.capture('nav_cta_clicked', { location: 'desktop_nav' })}
             className="px-4 py-2 bg-accent text-accent-foreground text-sm font-semibold rounded-full hover:bg-accent/85 transition-colors"
           >
             {t('cta')}
