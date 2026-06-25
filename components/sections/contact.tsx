@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl'
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
+import posthog from 'posthog-js'
 
 export function Contact() {
   const t = useTranslations('contact')
@@ -31,6 +32,7 @@ export function Contact() {
           {/* Primary CTA — email */}
           <a
             href={`mailto:${t('email')}`}
+            onClick={() => posthog.capture('contact_email_clicked', { location: 'contact_section' })}
             className="inline-flex items-center gap-3 px-8 py-4 bg-background text-foreground font-semibold text-lg rounded-full hover:bg-background/90 transition-colors"
           >
             {t('cta')}

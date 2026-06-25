@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowLeft, RotateCcw } from 'lucide-react'
 import Script from 'next/script'
 import { useTranslations, useLocale } from 'next-intl'
+import posthog from 'posthog-js'
 
 const ANSWER_LABELS = ['A', 'B', 'C', 'D']
 
@@ -134,17 +135,26 @@ function Results({ answers, onRetake }: { answers: number[]; onRetake: () => voi
     e.preventDefault()
     const fd = new FormData(e.currentTarget)
 
+    const name = fd.get('name') as string
+    const email = fd.get('email') as string
+    const company = fd.get('company') as string
+
     setFormStatus('loading')
     setFormError('')
+
+    const distinctId = posthog.get_distinct_id()
 
     try {
       const res = await fetch('/api/assessment/submit', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'X-POSTHOG-DISTINCT-ID': distinctId ?? '',
+        },
         body: JSON.stringify({
-          name: fd.get('name'),
-          company: fd.get('company'),
-          email: fd.get('email'),
+          name,
+          company,
+          email,
           message: fd.get('message'),
           honeypot: fd.get('website'),
           turnstileToken,
@@ -157,12 +167,29 @@ function Results({ answers, onRetake }: { answers: number[]; onRetake: () => voi
 
       const data = await res.json()
       if (data.success) {
+        posthog.identify(email, { name, email, company })
+        posthog.capture('assessment_contact_form_submitted', {
+          stage,
+          locale,
+          dimensions: dimensions.map((d) => ({ name: d.name, score: d.score })),
+        })
         setFormStatus('success')
       } else {
+        posthog.capture('assessment_contact_form_errored', {
+          stage,
+          locale,
+          error: data.error,
+        })
         setFormStatus('error')
         setFormError(data.error ?? t('error_generic'))
       }
-    } catch {
+    } catch (err) {
+      posthog.captureException(err)
+      posthog.capture('assessment_contact_form_errored', {
+        stage,
+        locale,
+        error: 'network_error',
+      })
       setFormStatus('error')
       setFormError(t('error_generic'))
     }
@@ -367,9 +394,26 @@ export default function AssessmentPage() {
     direction.current = 1
     const updated = [...answers.slice(0, step), answerIndex]
     setAnswers(updated)
+
+    if (step === 0) {
+      posthog.capture('assessment_started', { question_number: 1, total_questions: QUESTIONS.length })
+    }
+
+    posthog.capture('assessment_question_answered', {
+      question_number: step + 1,
+      total_questions: QUESTIONS.length,
+      answer_index: answerIndex,
+    })
+
     if (step < QUESTIONS.length - 1) {
       setStep(step + 1)
     } else {
+      const dimensions = computeDimensions(updated)
+      const stage = getStage(dimensions)
+      posthog.capture('assessment_completed', {
+        stage,
+        dimensions: dimensions.map((d) => ({ name: d.name, score: d.score })),
+      })
       setComplete(true)
     }
   }
@@ -381,6 +425,7 @@ export default function AssessmentPage() {
   }
 
   const handleRetake = () => {
+    posthog.capture('assessment_retaken')
     setStep(0)
     setAnswers([])
     setComplete(false)

@@ -7,11 +7,11 @@ const csp = [
   "default-src 'self'",
   // Next.js App Router requires 'unsafe-inline' for hydration scripts.
   // Cloudflare Turnstile also requires its domain here.
-  "script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com",
+  "script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com https://eu-assets.i.posthog.com",
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob:",
   "font-src 'self'",
-  "connect-src 'self'",
+  "connect-src 'self' https://eu.i.posthog.com https://eu-assets.i.posthog.com",
   // Turnstile renders inside an iframe from Cloudflare
   "frame-src https://challenges.cloudflare.com",
   "frame-ancestors 'none'",
@@ -35,6 +35,23 @@ const nextConfig: NextConfig = {
   async headers() {
     return [{ source: '/(.*)', headers: securityHeaders }]
   },
+  async rewrites() {
+    return [
+      {
+        source: '/ingest/static/:path*',
+        destination: 'https://eu-assets.i.posthog.com/static/:path*',
+      },
+      {
+        source: '/ingest/array/:path*',
+        destination: 'https://eu-assets.i.posthog.com/array/:path*',
+      },
+      {
+        source: '/ingest/:path*',
+        destination: 'https://eu.i.posthog.com/:path*',
+      },
+    ]
+  },
+  skipTrailingSlashRedirect: true,
 }
 
 export default withNextIntl(nextConfig)
