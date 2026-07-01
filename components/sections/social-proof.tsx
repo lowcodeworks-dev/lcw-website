@@ -1,27 +1,45 @@
 'use client'
 
-import { motion, animate, useInView } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
 import { ArrowUpRight } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { useRef, useState, useEffect } from 'react'
 
 const STAT_NUMBERS = ['70+', '8', '3', '2']
 
+const SCRAMBLE_MS = 500
+const SETTLE_MS = 900
+
 function AnimatedNumber({ value }: { value: string }) {
   const ref = useRef<HTMLSpanElement>(null)
-  const isInView = useInView(ref, { once: true })
+  const isInView = useInView(ref, { once: true, amount: 0.4 })
   const [display, setDisplay] = useState('0')
-  const numeric = parseInt(value)
+  const numeric = parseInt(value, 10)
   const suffix = value.replace(/[0-9]/g, '')
 
   useEffect(() => {
     if (!isInView) return
-    const controls = animate(0, numeric, {
-      duration: 1.5,
-      ease: 'easeOut',
-      onUpdate: v => setDisplay(String(Math.round(v))),
-    })
-    return controls.stop
+    const digits = String(numeric).length
+    const start = performance.now()
+    let frame: number
+
+    function tick(now: number) {
+      const elapsed = now - start
+      if (elapsed < SCRAMBLE_MS) {
+        const rand = Math.floor(Math.random() * Math.pow(10, digits))
+        setDisplay(String(rand))
+        frame = requestAnimationFrame(tick)
+      } else if (elapsed < SETTLE_MS) {
+        const t = (elapsed - SCRAMBLE_MS) / (SETTLE_MS - SCRAMBLE_MS)
+        const eased = 1 - Math.pow(1 - t, 3)
+        setDisplay(String(Math.floor(eased * numeric)))
+        frame = requestAnimationFrame(tick)
+      } else {
+        setDisplay(String(numeric))
+      }
+    }
+    frame = requestAnimationFrame(tick)
+    return () => cancelAnimationFrame(frame)
   }, [isInView, numeric])
 
   return <span ref={ref}>{display}{suffix}</span>

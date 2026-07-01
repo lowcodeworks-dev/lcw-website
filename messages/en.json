@@ -145,12 +145,12 @@
     "case1_desc": "USI Global is a Taiwanese electronics manufacturer with 22,000 employees across 30 production sites. We led the Mendix CoE setup and digital transformation — consolidating 10 fragmented legacy systems into a single platform covering 70+ approval workflows. Result: 30% faster development and a unified foundation for enterprise-wide process transformation.",
     "case1_cta": "Read the full story on Mendix.com",
     "case2_company": "Macnica · Japan",
-    "case2_led": "Jessy Hollander",
+    "case2_led": "Danny Hildebrand",
     "case2_tag": "CoE Setup · DX Factory · Partner Enablement",
     "case2_desc": "Macnica is Japan's leading Mendix partner and one of the country's largest IT distributors. We set up the Macnica DX Factory — a Mendix CoE enabling both internal application development and customer-facing projects. The factory became the foundation for Macnica's Mendix practice across Japan.",
     "case2_cta": "Read more on Macnica.co.jp",
     "case3_company": "Mendix Ecosystem · APAC & Europe",
-    "case3_led": "Danny Hildebrand & Jessy Hollander",
+    "case3_led": "Danny Hildebrand",
     "case3_tag": "Partner Enablement · PoC · Presales",
     "case3_desc": "Before founding LCW, we operated inside Mendix and Siemens — enabling 8+ partners across APAC and Europe, winning competitive PoC cycles against OutSystems and Power Apps, supporting Siemens presales engagements, and presenting at Mendix community events. This front-line experience across the full partner landscape is where the pattern recognition comes from.",
     "case3_badge": "Internal track record · Pre-LCW"
@@ -238,5 +238,15 @@
     "seoul_desc": "LowCodeWorks Co., Ltd. is registered here — D-8 visa entity.",
     "bangkok_city": "Bangkok, Thailand",
     "bangkok_desc": "Currently based here. Remote-first, travel when it matters."
+  },
+  "perspectives": {
+    "eyebrow": "Perspectives",
+    "headline": "A few things I keep coming back to.",
+    "item1_quote": "The platform is never the bottleneck. The organisation building on it is.",
+    "item1_src": "— on transformation failures",
+    "item2_quote": "Graph gives AI context. AI gives graph reasoning. Orchestration makes the decision actionable.",
+    "item2_src": "— on where the stack is heading",
+    "item3_quote": "Governance isn't a document. It's enforced, championed, and revisited — or it doesn't exist.",
+    "item3_src": "— on what actually sticks"
   }
 }

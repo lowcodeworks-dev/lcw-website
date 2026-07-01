@@ -6,6 +6,7 @@ import { InflectionPoint } from '@/components/sections/inflection-point'
 import { Services } from '@/components/sections/services'
 import { AssessmentCta } from '@/components/sections/assessment-cta'
 import { About } from '@/components/sections/about'
+import { Perspectives } from '@/components/sections/perspectives'
 import { FAQ } from '@/components/sections/faq'
 import { Contact } from '@/components/sections/contact'
 
@@ -20,6 +21,7 @@ export default function HomePage() {
       <Services />
       <AssessmentCta />
       <About />
+      <Perspectives />
       <FAQ />
       <Contact />
     </>

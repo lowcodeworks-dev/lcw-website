@@ -145,12 +145,12 @@
     "case1_desc": "USI Globalは30の生産拠点に22,000名の従業員を擁する台湾の電子機器メーカーです。MendixのCoE構築とデジタルトランスフォーメーションを主導し、10の分散したレガシーシステムを70以上の承認ワークフローをカバーする単一プラットフォームに統合しました。結果：開発速度30%向上と全社的なプロセス変革の統合基盤を実現。",
     "case1_cta": "Mendix.comで全文を読む",
     "case2_company": "Macnica · 日本",
-    "case2_led": "Jessy Hollander",
+    "case2_led": "Danny Hildebrand",
     "case2_tag": "CoE構築 · DXファクトリー · パートナー支援",
     "case2_desc": "MacnicaはMendixの日本における主要パートナーであり、国内最大級のITディストリビューターの一つです。社内アプリケーション開発と顧客向けプロジェクトの双方を支援するMendix CoE「Macnica DX Factory」を構築しました。このファクトリーは日本全国でのMacnicaのMendixビジネスの基盤となりました。",
     "case2_cta": "Macnica.co.jpで詳しく読む",
     "case3_company": "Mendixエコシステム · アジア太平洋 & ヨーロッパ",
-    "case3_led": "Danny Hildebrand & Jessy Hollander",
+    "case3_led": "Danny Hildebrand",
     "case3_tag": "パートナー支援 · PoC · プレセールス",
     "case3_desc": "LCW設立以前、私たちはMendixとSiemensの内部で活動していました — APACとヨーロッパ全域で8社以上のパートナーを支援し、OutSystemsやPower Appsとの競合PoC案件を受注し、SiemensのプレセールスをサポートしMendixコミュニティイベントで登壇しました。パートナー全体にわたるこの最前線の経験が、パターン認識の源泉です。",
     "case3_badge": "社内実績 · LCW設立前"
@@ -238,5 +238,15 @@
     "seoul_desc": "LowCodeWorks Co., Ltd.はここに登録されています — D-8ビザ法人。",
     "bangkok_city": "バンコク、タイ",
     "bangkok_desc": "現在の拠点です。リモートファーストで、必要な時は出張します。"
+  },
+  "perspectives": {
+    "eyebrow": "視点",
+    "headline": "私が繰り返し立ち返る、いくつかの考え。",
+    "item1_quote": "プラットフォームがボトルネックになることはありません。その上に構築する組織がボトルネックです。",
+    "item1_src": "— 変革の失敗について",
+    "item2_quote": "グラフはAIに文脈を与え、AIはグラフに推論を与え、オーケストレーションがその判断を実行可能にします。",
+    "item2_src": "— 技術スタックの行き先について",
+    "item3_quote": "ガバナンスは文書ではありません。実行され、推進され、繰り返し見直されて初めて存在します。",
+    "item3_src": "— 実際に定着するものについて"
   }
 }
