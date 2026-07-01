@@ -1,12 +1,13 @@
 import type { Metadata } from 'next'
-import { Plus_Jakarta_Sans, Noto_Sans_KR } from 'next/font/google'
+import { JetBrains_Mono, Noto_Sans_KR } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/react'
+import { ThemeProvider } from 'next-themes'
 import './globals.css'
 
-const jakarta = Plus_Jakarta_Sans({
-  variable: '--font-jakarta',
+const jetbrainsMono = JetBrains_Mono({
+  variable: '--font-jetbrains-mono',
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800'],
+  weight: ['400', '500', '600', '700'],
 })
 
 const notoKR = Noto_Sans_KR({
@@ -22,8 +23,13 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html suppressHydrationWarning className={`${jakarta.variable} ${notoKR.variable}`}>
-      <body className="antialiased">{children}<Analytics /></body>
+    <html suppressHydrationWarning className={`${jetbrainsMono.variable} ${notoKR.variable}`}>
+      <body className="antialiased">
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+          {children}
+        </ThemeProvider>
+        <Analytics />
+      </body>
     </html>
   )
 }
