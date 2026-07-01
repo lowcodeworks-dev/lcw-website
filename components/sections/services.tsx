@@ -19,7 +19,7 @@ export function Services() {
   const t = useTranslations('services')
 
   return (
-    <section id="services" className="bg-foreground py-28">
+    <section id="services" className="bg-card border-y border-border py-28">
       <div className="max-w-6xl mx-auto px-6">
 
         <motion.div
@@ -29,10 +29,10 @@ export function Services() {
           transition={{ duration: 0.5 }}
           className="mb-16"
         >
-          <p className="text-xs font-semibold uppercase tracking-widest text-background/50 mb-4">
+          <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-4">
             {t('label')}
           </p>
-          <h2 className="text-4xl md:text-5xl font-bold text-background leading-tight tracking-tight max-w-2xl">
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground leading-tight tracking-tight max-w-2xl">
             Two layers of the same problem.
           </h2>
         </motion.div>
@@ -45,11 +45,11 @@ export function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="border border-background/10 rounded-2xl p-8 flex flex-col gap-4 hover:bg-background/5 transition-colors"
+              className="border border-border rounded-2xl p-8 flex flex-col gap-4 hover:bg-muted transition-colors"
             >
-              <span className="text-4xl font-bold text-background/30 select-none">0{i + 1}</span>
-              <h3 className="text-xl font-bold text-background">{layer.title}</h3>
-              <p className="text-background/60 leading-relaxed text-sm">{layer.desc}</p>
+              <span className="text-4xl font-bold text-muted-foreground/40 select-none">0{i + 1}</span>
+              <h3 className="text-xl font-bold text-foreground">{layer.title}</h3>
+              <p className="text-muted-foreground leading-relaxed text-sm">{layer.desc}</p>
             </motion.div>
           ))}
         </div>
@@ -59,10 +59,10 @@ export function Services() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="text-sm text-background/40 text-center"
+          className="text-sm text-muted-foreground text-center"
         >
           {t('partner_note')}{' '}
-          <a href="#contact" className="text-background/60 underline underline-offset-2 hover:text-background/80 transition-colors">
+          <a href="#contact" className="text-foreground/70 underline underline-offset-2 hover:text-foreground transition-colors">
             {t('partner_link')}
           </a>
         </motion.p>

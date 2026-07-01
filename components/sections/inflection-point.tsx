@@ -7,7 +7,7 @@ export function InflectionPoint() {
   const t = useTranslations('inflection_point')
 
   return (
-    <section id="why-now" className="bg-foreground text-background py-28">
+    <section id="why-now" className="bg-muted border-y border-border py-28">
       <div className="max-w-6xl mx-auto px-6">
         <div className="max-w-3xl">
           <motion.p
@@ -15,7 +15,7 @@ export function InflectionPoint() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-xs font-semibold uppercase tracking-widest opacity-50 mb-8"
+            className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-8"
           >
             {t('label')}
           </motion.p>
@@ -25,7 +25,7 @@ export function InflectionPoint() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl md:text-5xl font-bold leading-tight tracking-tight mb-10"
+            className="text-4xl md:text-5xl font-bold text-foreground leading-tight tracking-tight mb-10"
           >
             {t('headline')}
           </motion.h2>
@@ -38,7 +38,7 @@ export function InflectionPoint() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.2 + i * 0.1 }}
-                className="text-lg opacity-75 leading-relaxed"
+                className="text-lg text-muted-foreground leading-relaxed"
               >
                 {t(key)}
               </motion.p>
@@ -50,7 +50,7 @@ export function InflectionPoint() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.55 }}
-            className="text-2xl md:text-3xl font-bold"
+            className="text-2xl md:text-3xl font-bold text-foreground"
           >
             {t('closing')}
           </motion.p>
@@ -60,7 +60,7 @@ export function InflectionPoint() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.65 }}
-            className="text-sm opacity-40 mt-6"
+            className="text-sm text-muted-foreground/70 mt-6"
           >
             {t('footnote')}
           </motion.p>
