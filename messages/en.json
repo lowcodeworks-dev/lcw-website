@@ -8,10 +8,11 @@
   "hero": {
     "label": "Enterprise Digital Transformation · Solution Architect · AI App Development",
     "label_sub": "Remote first. Travel when it matters.",
-    "headline": "You've invested in the platform. Now get the results it promised.",
-    "subtext": "Having led digital transformation at Siemens for APAC customers, I saw first-hand how often initiatives stall — not because the tools are wrong, but because strategy, governance, and architecture aren't in place. That's the gap LowCodeWorks was built to close. We identify the pain points that deliver the most value when solved, define the roadmap, and build the organisational foundation to execute on it.",
+    "headline": "Enterprise transformation, without the platform dependency.",
+    "subtext": "Having led digital transformation at Siemens for APAC customers, I saw first-hand how often initiatives stall — not because the tools are wrong, but because strategy, governance, and architecture aren't in place. That's the gap LowCodeWorks was built to close. I identify the pain points that deliver the most value when solved, define the roadmap, and build the organisational foundation to execute on it.",
     "cta_primary": "Take the free assessment",
-    "cta_secondary": "Get in touch"
+    "cta_secondary": "Get in touch",
+    "byline": "By Danny Hildebrand — Solution Architect, Digital Transformation"
   },
   "assessment_banner": {
     "label": "Free · Self-serve",
@@ -230,5 +231,12 @@
     "q1_para2": "Your assessment puts you at the {stage} stage. Platforms underdeliver not because of the technology — it's the organisational layer around them that determines outcomes: governance, standards, and a clear adoption roadmap. Addressing those gaps is what unlocks the platform value your organisation isn't seeing yet.",
     "q1_para3": "Your assessment puts you at the {stage} stage. Delivery challenges are rarely a capacity problem — they reflect gaps in ownership clarity, architectural standards, and the governance structures that make programmes sustainable. Building that infrastructure is the lever that changes delivery outcomes.",
     "q1_para4": "Your assessment puts you at the {stage} stage. Complex programmes stall when ownership, standards, and delivery structure aren't aligned from the start. The results below show where your foundation is solid and where leadership attention is most needed before committing to full execution."
+  },
+  "locations": {
+    "eyebrow": "Where I work from",
+    "seoul_city": "Seoul, Korea",
+    "seoul_desc": "LowCodeWorks Co., Ltd. is registered here — D-8 visa entity.",
+    "bangkok_city": "Bangkok, Thailand",
+    "bangkok_desc": "Currently based here. Remote-first, travel when it matters."
   }
 }

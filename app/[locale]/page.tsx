@@ -1,4 +1,5 @@
 import { Hero } from '@/components/sections/hero'
+import { Locations } from '@/components/sections/locations'
 import { Credibility } from '@/components/sections/credibility'
 import { SocialProof } from '@/components/sections/social-proof'
 import { InflectionPoint } from '@/components/sections/inflection-point'
@@ -12,6 +13,7 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <Locations />
       <Credibility />
       <SocialProof />
       <InflectionPoint />

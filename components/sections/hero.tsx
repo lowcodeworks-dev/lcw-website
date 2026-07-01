@@ -18,6 +18,12 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: 'easeOut' }}
         >
+          {/* Byline */}
+          <div className="flex items-center gap-3 mb-7">
+            <div className="w-11 h-11 rounded-full border border-border bg-muted shrink-0" />
+            <p className="text-xs text-muted-foreground leading-snug">{t('byline')}</p>
+          </div>
+
           {/* Label */}
           <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-8">
             {t('label')}
