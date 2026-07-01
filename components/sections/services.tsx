@@ -47,7 +47,7 @@ export function Services() {
               transition={{ duration: 0.5, delay: i * 0.1 }}
               className="border border-background/10 rounded-2xl p-8 flex flex-col gap-4 hover:bg-background/5 transition-colors"
             >
-              <span className="text-4xl font-bold text-accent/40 select-none">0{i + 1}</span>
+              <span className="text-4xl font-bold text-background/30 select-none">0{i + 1}</span>
               <h3 className="text-xl font-bold text-background">{layer.title}</h3>
               <p className="text-background/60 leading-relaxed text-sm">{layer.desc}</p>
             </motion.div>

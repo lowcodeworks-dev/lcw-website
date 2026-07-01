@@ -93,7 +93,7 @@ export function SocialProof() {
               transition={{ duration: 0.5, delay: i * 0.08 }}
               className="bg-muted p-8 flex flex-col gap-2"
             >
-              <span className="text-5xl font-bold text-accent tracking-tight">
+              <span className="text-5xl font-bold text-foreground tracking-tight">
                 <AnimatedNumber value={number} />
               </span>
               <span className="text-sm text-muted-foreground leading-snug">
