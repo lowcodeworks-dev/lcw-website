@@ -3,20 +3,13 @@
 import { useTranslations } from 'next-intl'
 import { motion } from 'framer-motion'
 
-// Placeholder copy — replaced with final copy in Phase 3
-const LAYERS = [
-  {
-    title: 'Enterprise transformation',
-    desc: 'Governance frameworks, Centre of Excellence setup, and delivery leadership for organisations scaling digital platforms — regardless of which platform.',
-  },
-  {
-    title: 'Graph + AI + orchestration',
-    desc: 'Where connected data, reasoning, and low-code execution meet. Graph gives context, AI reasons on it, orchestration makes it actionable.',
-  },
-]
-
 export function Services() {
   const t = useTranslations('services')
+
+  const layers = [
+    { title: t('item1_title'), desc: t('item1_desc') },
+    { title: t('item2_title'), desc: t('item2_desc') },
+  ]
 
   return (
     <section id="services" className="bg-card border-y border-border py-28">
@@ -33,12 +26,12 @@ export function Services() {
             {t('label')}
           </p>
           <h2 className="text-4xl md:text-5xl font-bold text-foreground leading-tight tracking-tight max-w-2xl">
-            Two layers of the same problem.
+            {t('headline')}
           </h2>
         </motion.div>
 
         <div className="grid sm:grid-cols-2 gap-6 mb-8">
-          {LAYERS.map((layer, i) => (
+          {layers.map((layer, i) => (
             <motion.div
               key={layer.title}
               initial={{ opacity: 0, y: 20 }}
