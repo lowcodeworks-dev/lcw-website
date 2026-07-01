@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowLeft, RotateCcw } from 'lucide-react'
 import Script from 'next/script'
 import { useTranslations, useLocale } from 'next-intl'
+import { useTheme } from 'next-themes'
 import posthog from 'posthog-js'
 
 const ANSWER_LABELS = ['A', 'B', 'C', 'D']
@@ -90,6 +91,8 @@ const inputCls =
 function Results({ answers, onRetake }: { answers: number[]; onRetake: () => void }) {
   const t = useTranslations('assessment')
   const locale = useLocale()
+  const { resolvedTheme } = useTheme()
+  const turnstileTheme = resolvedTheme === 'light' ? 'light' : 'dark'
 
   const dimensions = computeDimensions(answers)
   const stage = getStage(dimensions)
@@ -119,17 +122,38 @@ function Results({ answers, onRetake }: { answers: number[]; onRetake: () => voi
 
   // Form state
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null)
+  const [turnstileScriptLoaded, setTurnstileScriptLoaded] = useState(false)
   const [formStatus, setFormStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
   const [formError, setFormError] = useState('')
+  const turnstileDivRef = useRef<HTMLDivElement>(null)
+  const turnstileWidgetId = useRef<string | null>(null)
 
+  // Explicit render (rather than relying on Turnstile's auto-render + data-theme) so the
+  // widget can be re-rendered with the correct theme when the site's light/dark toggle changes —
+  // auto-render only reads data-theme once and never reacts to it changing.
   useEffect(() => {
-    ;(window as any).__lcwTurnstileOk = (token: string) => setTurnstileToken(token)
-    ;(window as any).__lcwTurnstileErr = () => setTurnstileToken(null)
-    return () => {
-      delete (window as any).__lcwTurnstileOk
-      delete (window as any).__lcwTurnstileErr
+    if (!turnstileScriptLoaded || !turnstileDivRef.current) return
+    const turnstile = (window as any).turnstile
+    if (!turnstile) return
+
+    if (turnstileWidgetId.current) {
+      turnstile.remove(turnstileWidgetId.current)
     }
-  }, [])
+    setTurnstileToken(null)
+    turnstileWidgetId.current = turnstile.render(turnstileDivRef.current, {
+      sitekey: process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? '',
+      theme: turnstileTheme,
+      callback: (token: string) => setTurnstileToken(token),
+      'error-callback': () => setTurnstileToken(null),
+    })
+
+    return () => {
+      if (turnstileWidgetId.current) {
+        turnstile.remove(turnstileWidgetId.current)
+        turnstileWidgetId.current = null
+      }
+    }
+  }, [turnstileScriptLoaded, turnstileTheme])
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -302,8 +326,9 @@ function Results({ answers, onRetake }: { answers: number[]; onRetake: () => voi
         ) : (
           <form onSubmit={handleSubmit} className="flex flex-col gap-4 max-w-lg" noValidate>
             <Script
-              src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+              src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"
               strategy="afterInteractive"
+              onLoad={() => setTurnstileScriptLoaded(true)}
             />
 
             <div
@@ -325,13 +350,7 @@ function Results({ answers, onRetake }: { answers: number[]; onRetake: () => voi
               className={`${inputCls} resize-none`}
             />
 
-            <div
-              className="cf-turnstile"
-              data-sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? ''}
-              data-callback="__lcwTurnstileOk"
-              data-error-callback="__lcwTurnstileErr"
-              data-theme="light"
-            />
+            <div ref={turnstileDivRef} className="cf-turnstile" />
 
             {formStatus === 'error' && (
               <p className="text-sm text-red-500">{formError}</p>
