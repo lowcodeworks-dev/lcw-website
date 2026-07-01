@@ -336,7 +336,7 @@ export async function POST(request: Request) {
         ``,
         tmpl.closing,
         ``,
-        `— Danny & Jessy`,
+        `— Danny`,
         `LowCodeWorks`,
         `lowcodeworks.consulting`,
       ].join('\n'),

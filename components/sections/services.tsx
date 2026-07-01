@@ -3,15 +3,20 @@
 import { useTranslations } from 'next-intl'
 import { motion } from 'framer-motion'
 
+// Placeholder copy — replaced with final copy in Phase 3
+const LAYERS = [
+  {
+    title: 'Enterprise transformation',
+    desc: 'Governance frameworks, Centre of Excellence setup, and delivery leadership for organisations scaling digital platforms — regardless of which platform.',
+  },
+  {
+    title: 'Graph + AI + orchestration',
+    desc: 'Where connected data, reasoning, and low-code execution meet. Graph gives context, AI reasons on it, orchestration makes it actionable.',
+  },
+]
+
 export function Services() {
   const t = useTranslations('services')
-
-  const items = [
-    { title: t('item1_title'), desc: t('item1_desc'), meta: t('item1_meta') },
-    { title: t('item2_title'), desc: t('item2_desc') },
-    { title: t('item3_title'), desc: t('item3_desc') },
-    { title: t('item4_title'), desc: t('item4_desc') },
-  ]
 
   return (
     <section id="services" className="bg-foreground py-28">
@@ -28,28 +33,23 @@ export function Services() {
             {t('label')}
           </p>
           <h2 className="text-4xl md:text-5xl font-bold text-background leading-tight tracking-tight max-w-2xl">
-            {t('headline')}
+            Two layers of the same problem.
           </h2>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 gap-px bg-background/10 rounded-2xl overflow-hidden mb-8">
-          {items.map((item, i) => (
+        <div className="grid sm:grid-cols-2 gap-6 mb-8">
+          {LAYERS.map((layer, i) => (
             <motion.div
-              key={item.title}
+              key={layer.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="bg-foreground p-8 flex flex-col gap-4 hover:bg-background/5 transition-colors"
+              className="border border-background/10 rounded-2xl p-8 flex flex-col gap-4 hover:bg-background/5 transition-colors"
             >
               <span className="text-4xl font-bold text-accent/40 select-none">0{i + 1}</span>
-              <h3 className="text-xl font-bold text-background">{item.title}</h3>
-              <p className="text-background/60 leading-relaxed text-sm">{item.desc}</p>
-              {'meta' in item && item.meta && (
-                <p className="text-xs text-background/30 border-t border-background/10 pt-3 mt-auto">
-                  {item.meta}
-                </p>
-              )}
+              <h3 className="text-xl font-bold text-background">{layer.title}</h3>
+              <p className="text-background/60 leading-relaxed text-sm">{layer.desc}</p>
             </motion.div>
           ))}
         </div>

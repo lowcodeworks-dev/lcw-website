@@ -2,7 +2,6 @@
 
 import { useTranslations } from 'next-intl'
 import { motion } from 'framer-motion'
-import Image from 'next/image'
 function LinkedinIcon({ className }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -13,18 +12,11 @@ function LinkedinIcon({ className }: { className?: string }) {
   )
 }
 
-const team = [
-  {
-    key: 'danny',
-    photo: '/screenshots/dhi_cartoony.png',
-    linkedin: 'https://www.linkedin.com/in/dannyhildebrand/',
-  },
-  {
-    key: 'jessy',
-    photo: '/screenshots/Jessy_cartoony.png',
-    linkedin: 'https://www.linkedin.com/in/jessyhollander/',
-  },
-]
+const founder = {
+  key: 'danny',
+  photo: '/screenshots/dhi_cartoony.png',
+  linkedin: 'https://www.linkedin.com/in/dannyhildebrand/',
+}
 
 export function About() {
   const t = useTranslations('about')
@@ -70,37 +62,28 @@ export function About() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="flex flex-col gap-4"
           >
-            {team.map((member) => (
-              <div
-                key={member.key}
-                className="flex items-center gap-5 p-6 bg-muted rounded-2xl"
-              >
-                <div className="w-16 h-16 rounded-full overflow-hidden shrink-0 bg-muted-foreground/10">
-                  <Image
-                    src={member.photo}
-                    alt={t(`${member.key}_name`)}
-                    width={64}
-                    height={64}
-                    className="w-full h-full object-cover object-top"
-                  />
-                </div>
-                <div className="flex-1">
-                  <p className="font-bold text-foreground">{t(`${member.key}_name`)}</p>
-                  <p className="text-sm text-muted-foreground">{t(`${member.key}_role`)}</p>
-                  <p className="text-xs text-muted-foreground/70 mt-1 leading-snug">{t(`${member.key}_desc`)}</p>
-                </div>
+            <div className="flex items-start gap-5 p-6 bg-muted rounded-2xl">
+              <div className="relative w-[88px] h-[88px] rounded-xl overflow-hidden shrink-0 bg-muted-foreground/10 border border-border flex items-center justify-center">
+                <span className="text-[9px] text-muted-foreground/60 text-center px-1 leading-tight border border-dashed border-muted-foreground/30 rounded px-1 py-0.5">
+                  founder-photo.jpg
+                </span>
+              </div>
+              <div className="flex-1">
+                <p className="font-bold text-foreground">{t(`${founder.key}_name`)}</p>
+                <p className="text-sm text-muted-foreground">{t(`${founder.key}_role`)}</p>
+                <p className="text-xs text-muted-foreground/70 mt-1 leading-snug">{t(`${founder.key}_desc`)}</p>
                 <a
-                  href={member.linkedin}
+                  href={founder.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 text-xs font-semibold text-muted-foreground hover:text-foreground transition-colors shrink-0"
-                  aria-label={`${t(`${member.key}_name`)} on LinkedIn`}
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-muted-foreground hover:text-foreground transition-colors mt-3"
+                  aria-label={`${t(`${founder.key}_name`)} on LinkedIn`}
                 >
                   <LinkedinIcon className="h-5 w-5" />
                   <span>LinkedIn</span>
                 </a>
               </div>
-            ))}
+            </div>
           </motion.div>
         </div>
 
