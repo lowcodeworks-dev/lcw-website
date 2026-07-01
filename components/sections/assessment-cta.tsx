@@ -5,14 +5,14 @@ import { ArrowRight } from 'lucide-react'
 
 export function AssessmentCta() {
   return (
-    <section className="bg-muted py-20">
+    <section className="bg-background py-20">
       <div className="max-w-6xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="flex flex-col md:flex-row md:items-center md:justify-between gap-8"
+          className="flex flex-col md:flex-row md:items-center md:justify-between gap-8 bg-card border border-border rounded-3xl p-8 md:p-12"
         >
           <div className="max-w-xl">
             <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-3">

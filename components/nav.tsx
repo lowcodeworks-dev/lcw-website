@@ -4,8 +4,27 @@ import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import { usePathname } from 'next/navigation'
 import { useState, useEffect, useRef } from 'react'
-import { Menu, X, ChevronDown } from 'lucide-react'
+import { Menu, X, ChevronDown, Sun, Moon } from 'lucide-react'
+import { useTheme } from 'next-themes'
 import posthog from 'posthog-js'
+
+function ThemeToggle() {
+  const { resolvedTheme, setTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => setMounted(true), [])
+
+  if (!mounted) return <div className="w-8 h-8" />
+
+  return (
+    <button
+      onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
+      className="w-8 h-8 flex items-center justify-center rounded-full text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+      aria-label="Toggle theme"
+    >
+      {resolvedTheme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+    </button>
+  )
+}
 
 const LOCALES = ['en', 'ko', 'ja'] as const
 type Locale = (typeof LOCALES)[number]
@@ -97,6 +116,8 @@ export function Nav({ locale }: { locale: string }) {
             )}
           </div>
 
+          <ThemeToggle />
+
           <a
             href="#contact"
             onClick={() => posthog.capture('nav_cta_clicked', { location: 'desktop_nav' })}
@@ -126,6 +147,7 @@ export function Nav({ locale }: { locale: string }) {
             </a>
           ))}
           <div className="flex items-center gap-3 pt-2 border-t border-border">
+            <ThemeToggle />
             {LOCALES.map((l) => (
               <Link
                 key={l}
