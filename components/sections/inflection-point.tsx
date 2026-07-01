@@ -60,7 +60,7 @@ export function InflectionPoint() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.65 }}
-            className="text-sm text-muted-foreground/70 mt-6"
+            className="text-sm text-muted-foreground mt-6"
           >
             {t('footnote')}
           </motion.p>

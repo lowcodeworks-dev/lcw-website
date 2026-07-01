@@ -71,7 +71,7 @@ export function About() {
               <div className="flex-1">
                 <p className="font-bold text-foreground">{t(`${founder.key}_name`)}</p>
                 <p className="text-sm text-muted-foreground">{t(`${founder.key}_role`)}</p>
-                <p className="text-xs text-muted-foreground/70 mt-1 leading-snug">{t(`${founder.key}_desc`)}</p>
+                <p className="text-xs text-muted-foreground mt-1 leading-snug">{t(`${founder.key}_desc`)}</p>
                 <a
                   href={founder.linkedin}
                   target="_blank"
