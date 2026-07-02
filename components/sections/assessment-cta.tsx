@@ -2,6 +2,8 @@
 
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
+import { WORKSPACE_ASSESSMENT_URL } from '@/lib/config'
+import posthog from 'posthog-js'
 
 export function AssessmentCta() {
   return (
@@ -28,10 +30,11 @@ export function AssessmentCta() {
 
           <div className="flex flex-col gap-3 shrink-0">
             <a
-              href="mailto:info@lowcodeworks.consulting"
+              href={WORKSPACE_ASSESSMENT_URL}
+              onClick={() => posthog.capture('assessment_cta_clicked', { location: 'assessment_cta' })}
               className="inline-flex items-center gap-2 px-7 py-4 bg-accent text-accent-foreground font-semibold rounded-full hover:bg-accent/85 transition-colors whitespace-nowrap"
             >
-              Get in touch
+              Take the free assessment
               <ArrowRight className="h-4 w-4" />
             </a>
             <p className="text-xs text-muted-foreground text-center">We'll scope it together</p>
