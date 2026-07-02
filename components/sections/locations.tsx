@@ -43,11 +43,11 @@ export function Locations() {
                   className="object-cover"
                 />
               </motion.div>
-              <div className="absolute top-3 left-3 w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white">
+              <div className="pointer-events-none absolute top-3 left-3 w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white">
                 <ArrowUpRight className="h-4 w-4" />
               </div>
               <div
-                className="absolute inset-0 flex items-end p-5"
+                className="pointer-events-none absolute inset-0 flex items-end p-5"
                 style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.85) 10%, transparent 65%)' }}
               >
                 <div>
