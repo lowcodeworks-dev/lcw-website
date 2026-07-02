@@ -49,6 +49,9 @@ const CASE_HREFS = [
   'https://www.mendix.com/customer-stories/usi-accelerates-development-and-enables-process-transformation-at-scale/',
   'https://www.macnica.co.jp/en/business/ai_iot/news/2021/136600/',
   null,
+  null,
+  null,
+  'https://www.pcbflow.com',
 ]
 
 export function SocialProof() {
@@ -57,9 +60,12 @@ export function SocialProof() {
   const statLabels = [t('stat1_label'), t('stat2_label'), t('stat3_label'), t('stat4_label')]
 
   const cases = [
-    { company: t('case1_company'), led: t('case1_led'), tag: t('case1_tag'), desc: t('case1_desc'), cta: t('case1_cta'), href: CASE_HREFS[0] },
-    { company: t('case2_company'), led: t('case2_led'), tag: t('case2_tag'), desc: t('case2_desc'), cta: t('case2_cta'), href: CASE_HREFS[1] },
-    { company: t('case3_company'), led: t('case3_led'), tag: t('case3_tag'), desc: t('case3_desc'), cta: null,           href: CASE_HREFS[2] },
+    { company: t('case1_company'), led: t('case1_led'), tag: t('case1_tag'), desc: t('case1_desc'), cta: t('case1_cta'), href: CASE_HREFS[0], badge: null },
+    { company: t('case2_company'), led: t('case2_led'), tag: t('case2_tag'), desc: t('case2_desc'), cta: t('case2_cta'), href: CASE_HREFS[1], badge: null },
+    { company: t('case3_company'), led: t('case3_led'), tag: t('case3_tag'), desc: t('case3_desc'), cta: null,           href: CASE_HREFS[2], badge: t('case3_badge') },
+    { company: t('case4_company'), led: t('case4_led'), tag: t('case4_tag'), desc: t('case4_desc'), cta: null,           href: CASE_HREFS[3], badge: t('case4_badge') },
+    { company: t('case5_company'), led: t('case5_led'), tag: t('case5_tag'), desc: t('case5_desc'), cta: null,           href: CASE_HREFS[4], badge: t('case5_badge') },
+    { company: t('case6_company'), led: t('case6_led'), tag: t('case6_tag'), desc: t('case6_desc'), cta: t('case6_cta'), href: CASE_HREFS[5], badge: null },
   ]
 
   return (
@@ -151,7 +157,7 @@ export function SocialProof() {
                 </a>
               ) : (
                 <span className="text-xs text-muted-foreground uppercase tracking-widest font-semibold">
-                  {t('case3_badge')}
+                  {c.badge}
                 </span>
               )}
             </motion.div>
