@@ -3,16 +3,11 @@
 import { useTranslations } from 'next-intl'
 import { motion } from 'framer-motion'
 import { ArrowUpRight } from 'lucide-react'
+import Image from 'next/image'
 
 const CARDS = [
-  {
-    key: 'seoul',
-    gradient: 'linear-gradient(150deg, oklch(0.35 0.01 285 / 0.9), oklch(0.55 0.01 285 / 0.9))',
-  },
-  {
-    key: 'bangkok',
-    gradient: 'linear-gradient(150deg, oklch(0.4 0.02 40 / 0.9), oklch(0.6 0.02 40 / 0.9))',
-  },
+  { key: 'seoul', src: '/images/seoul.jpg' },
+  { key: 'bangkok', src: '/images/bangkok.jpg' },
 ] as const
 
 export function Locations() {
@@ -37,16 +32,23 @@ export function Locations() {
             >
               <motion.div
                 className="absolute inset-0"
-                style={{ background: card.gradient }}
                 whileHover={{ scale: 1.06 }}
                 transition={{ duration: 0.5, ease: 'easeOut' }}
-              />
+              >
+                <Image
+                  src={card.src}
+                  alt={t(`${card.key}_city`)}
+                  fill
+                  sizes="(min-width: 640px) 50vw, 100vw"
+                  className="object-cover"
+                />
+              </motion.div>
               <div className="absolute top-3 left-3 w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white">
                 <ArrowUpRight className="h-4 w-4" />
               </div>
               <div
                 className="absolute inset-0 flex items-end p-5"
-                style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.78) 10%, transparent 65%)' }}
+                style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.85) 10%, transparent 65%)' }}
               >
                 <div>
                   <div className="text-base font-bold text-white">{t(`${card.key}_city`)}</div>

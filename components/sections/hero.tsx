@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl'
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
+import Image from 'next/image'
 import { WORKSPACE_ASSESSMENT_URL } from '@/lib/config'
 import posthog from 'posthog-js'
 
@@ -20,7 +21,13 @@ export function Hero() {
         >
           {/* Byline */}
           <div className="flex items-center gap-3 mb-7">
-            <div className="w-11 h-11 rounded-full border border-border bg-muted shrink-0" />
+            <Image
+              src="/images/founder-photo.jpg"
+              alt="Danny Hildebrand"
+              width={44}
+              height={44}
+              className="w-11 h-11 rounded-full border border-border object-cover shrink-0"
+            />
             <p className="text-xs text-muted-foreground leading-snug">{t('byline')}</p>
           </div>
 

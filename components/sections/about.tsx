@@ -2,6 +2,7 @@
 
 import { useTranslations } from 'next-intl'
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 function LinkedinIcon({ className }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -63,10 +64,14 @@ export function About() {
             className="flex flex-col gap-4"
           >
             <div className="flex items-start gap-5 p-6 bg-muted rounded-2xl">
-              <div className="relative w-[88px] h-[88px] rounded-xl overflow-hidden shrink-0 bg-muted-foreground/10 border border-border flex items-center justify-center">
-                <span className="text-[9px] text-muted-foreground/60 text-center px-1 leading-tight border border-dashed border-muted-foreground/30 rounded px-1 py-0.5">
-                  founder-photo.jpg
-                </span>
+              <div className="relative w-[88px] h-[88px] rounded-xl overflow-hidden shrink-0 border border-border">
+                <Image
+                  src="/images/founder-photo.jpg"
+                  alt={t(`${founder.key}_name`)}
+                  fill
+                  sizes="88px"
+                  className="object-cover"
+                />
               </div>
               <div className="flex-1">
                 <p className="font-bold text-foreground">{t(`${founder.key}_name`)}</p>
