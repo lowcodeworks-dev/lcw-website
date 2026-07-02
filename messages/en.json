@@ -222,7 +222,8 @@
     "q1_para1": "Your assessment puts you at the {stage} stage. Most organisations at this level have clear AI ambitions but are missing the structural foundation — the platform clarity, governance, and team capability needed to move from experimentation to production. The highest-value work right now is building that foundation before scaling any AI investment.",
     "q1_para2": "Your assessment puts you at the {stage} stage. Platforms underdeliver not because of the technology — it's the organisational layer around them that determines outcomes: governance, standards, and a clear adoption roadmap. Addressing those gaps is what unlocks the platform value your organisation isn't seeing yet.",
     "q1_para3": "Your assessment puts you at the {stage} stage. Delivery challenges are rarely a capacity problem — they reflect gaps in ownership clarity, architectural standards, and the governance structures that make programmes sustainable. Building that infrastructure is the lever that changes delivery outcomes.",
-    "q1_para4": "Your assessment puts you at the {stage} stage. Complex programmes stall when ownership, standards, and delivery structure aren't aligned from the start. The results below show where your foundation is solid and where leadership attention is most needed before committing to full execution."
+    "q1_para4": "Your assessment puts you at the {stage} stage. Complex programmes stall when ownership, standards, and delivery structure aren't aligned from the start. The results below show where your foundation is solid and where leadership attention is most needed before committing to full execution.",
+    "turnstile_failed": "Verification widget couldn't load — this can happen with strict ad-blockers. Email your results directly instead:"
   },
   "locations": {
     "eyebrow": "Where I work from",

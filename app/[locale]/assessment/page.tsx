@@ -123,10 +123,20 @@ function Results({ answers, onRetake }: { answers: number[]; onRetake: () => voi
   // Form state
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null)
   const [turnstileScriptLoaded, setTurnstileScriptLoaded] = useState(false)
+  const [turnstileFailed, setTurnstileFailed] = useState(false)
   const [formStatus, setFormStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
   const [formError, setFormError] = useState('')
   const turnstileDivRef = useRef<HTMLDivElement>(null)
   const turnstileWidgetId = useRef<string | null>(null)
+
+  // Some ad-blockers silently drop the script tag (no load, no error event) rather than
+  // blocking the request outright — this backstop catches that case too.
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (!turnstileScriptLoaded) setTurnstileFailed(true)
+    }, 6000)
+    return () => clearTimeout(timer)
+  }, [turnstileScriptLoaded])
 
   // Explicit render (rather than relying on Turnstile's auto-render + data-theme) so the
   // widget can be re-rendered with the correct theme when the site's light/dark toggle changes —
@@ -134,18 +144,28 @@ function Results({ answers, onRetake }: { answers: number[]; onRetake: () => voi
   useEffect(() => {
     if (!turnstileScriptLoaded || !turnstileDivRef.current) return
     const turnstile = (window as any).turnstile
-    if (!turnstile) return
+    // Script tag loaded but the global never appeared (e.g. an ad-blocker let the request
+    // through but stubbed the response) — surface this instead of leaving the button dead forever.
+    if (!turnstile) {
+      setTurnstileFailed(true)
+      return
+    }
 
     if (turnstileWidgetId.current) {
       turnstile.remove(turnstileWidgetId.current)
     }
     setTurnstileToken(null)
-    turnstileWidgetId.current = turnstile.render(turnstileDivRef.current, {
-      sitekey: process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? '',
-      theme: turnstileTheme,
-      callback: (token: string) => setTurnstileToken(token),
-      'error-callback': () => setTurnstileToken(null),
-    })
+    try {
+      turnstileWidgetId.current = turnstile.render(turnstileDivRef.current, {
+        sitekey: process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? '',
+        theme: turnstileTheme,
+        callback: (token: string) => setTurnstileToken(token),
+        'error-callback': () => setTurnstileFailed(true),
+      })
+      setTurnstileFailed(false)
+    } catch {
+      setTurnstileFailed(true)
+    }
 
     return () => {
       if (turnstileWidgetId.current) {
@@ -329,6 +349,7 @@ function Results({ answers, onRetake }: { answers: number[]; onRetake: () => voi
               src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"
               strategy="afterInteractive"
               onLoad={() => setTurnstileScriptLoaded(true)}
+              onError={() => setTurnstileFailed(true)}
             />
 
             <div
@@ -350,7 +371,16 @@ function Results({ answers, onRetake }: { answers: number[]; onRetake: () => voi
               className={`${inputCls} resize-none`}
             />
 
-            <div ref={turnstileDivRef} className="cf-turnstile" />
+            <div ref={turnstileDivRef} className={turnstileFailed ? 'hidden' : 'cf-turnstile'} />
+
+            {turnstileFailed && (
+              <p className="text-sm text-muted-foreground">
+                {t('turnstile_failed')}{' '}
+                <a href="mailto:info@lowcodeworks.consulting" className="underline underline-offset-2 hover:text-foreground">
+                  info@lowcodeworks.consulting
+                </a>
+              </p>
+            )}
 
             {formStatus === 'error' && (
               <p className="text-sm text-red-500">{formError}</p>
