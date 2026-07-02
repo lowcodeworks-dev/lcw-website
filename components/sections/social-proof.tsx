@@ -132,9 +132,11 @@ export function SocialProof() {
               </div>
 
               {/* Description */}
-              <p className="text-muted-foreground text-sm leading-relaxed flex-1">
-                {c.desc}
-              </p>
+              <div className="text-muted-foreground text-sm leading-relaxed flex-1 flex flex-col gap-3">
+                {c.desc.split('\n\n').map((para, idx) => (
+                  <p key={idx}>{para}</p>
+                ))}
+              </div>
 
               {/* Link or confidential badge */}
               {c.href ? (
