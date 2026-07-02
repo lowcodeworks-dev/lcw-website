@@ -49,8 +49,8 @@ const CASE_HREFS = [
   'https://www.mendix.com/customer-stories/usi-accelerates-development-and-enables-process-transformation-at-scale/',
   'https://www.macnica.co.jp/en/business/ai_iot/news/2021/136600/',
   null,
-  null,
-  null,
+  'https://www.mendix.com/customer-stories/accelerate-app-delivery-at-scale-with-mendix-and-aws/',
+  'https://www.mendix.com/customer-stories/rijkswaterstaat/',
   'https://www.pcbflow.com',
 ]
 
@@ -63,8 +63,8 @@ export function SocialProof() {
     { company: t('case1_company'), led: t('case1_led'), tag: t('case1_tag'), desc: t('case1_desc'), cta: t('case1_cta'), href: CASE_HREFS[0], badge: null },
     { company: t('case2_company'), led: t('case2_led'), tag: t('case2_tag'), desc: t('case2_desc'), cta: t('case2_cta'), href: CASE_HREFS[1], badge: null },
     { company: t('case3_company'), led: t('case3_led'), tag: t('case3_tag'), desc: t('case3_desc'), cta: null,           href: CASE_HREFS[2], badge: t('case3_badge') },
-    { company: t('case4_company'), led: t('case4_led'), tag: t('case4_tag'), desc: t('case4_desc'), cta: null,           href: CASE_HREFS[3], badge: t('case4_badge') },
-    { company: t('case5_company'), led: t('case5_led'), tag: t('case5_tag'), desc: t('case5_desc'), cta: null,           href: CASE_HREFS[4], badge: t('case5_badge') },
+    { company: t('case4_company'), led: t('case4_led'), tag: t('case4_tag'), desc: t('case4_desc'), cta: t('case4_cta'), href: CASE_HREFS[3], badge: null },
+    { company: t('case5_company'), led: t('case5_led'), tag: t('case5_tag'), desc: t('case5_desc'), cta: t('case5_cta'), href: CASE_HREFS[4], badge: null },
     { company: t('case6_company'), led: t('case6_led'), tag: t('case6_tag'), desc: t('case6_desc'), cta: t('case6_cta'), href: CASE_HREFS[5], badge: null },
   ]
 
