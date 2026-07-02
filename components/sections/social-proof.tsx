@@ -148,7 +148,7 @@ export function SocialProof() {
                   <ArrowUpRight className="h-4 w-4" />
                 </a>
               ) : (
-                <span className="text-xs text-muted-foreground/60 uppercase tracking-widest font-semibold">
+                <span className="text-xs text-muted-foreground uppercase tracking-widest font-semibold">
                   {t('case3_badge')}
                 </span>
               )}
