@@ -60,12 +60,12 @@ export function SocialProof() {
   const statLabels = [t('stat1_label'), t('stat2_label'), t('stat3_label'), t('stat4_label')]
 
   const cases = [
-    { company: t('case1_company'), tag: t('case1_tag'), desc: t('case1_desc'), cta: t('case1_cta'), href: CASE_HREFS[0], badge: null },
-    { company: t('case2_company'), tag: t('case2_tag'), desc: t('case2_desc'), cta: t('case2_cta'), href: CASE_HREFS[1], badge: null },
-    { company: t('case3_company'), tag: t('case3_tag'), desc: t('case3_desc'), cta: null,           href: CASE_HREFS[2], badge: t('case3_badge') },
-    { company: t('case4_company'), tag: t('case4_tag'), desc: t('case4_desc'), cta: t('case4_cta'), href: CASE_HREFS[3], badge: null },
-    { company: t('case5_company'), tag: t('case5_tag'), desc: t('case5_desc'), cta: t('case5_cta'), href: CASE_HREFS[4], badge: null },
-    { company: t('case6_company'), tag: t('case6_tag'), desc: t('case6_desc'), cta: t('case6_cta'), href: CASE_HREFS[5], badge: null },
+    { company: t('case1_company'), period: t('case1_period'), tag: t('case1_tag'), desc: t('case1_desc'), cta: t('case1_cta'), href: CASE_HREFS[0], badge: null },
+    { company: t('case2_company'), period: t('case2_period'), tag: t('case2_tag'), desc: t('case2_desc'), cta: t('case2_cta'), href: CASE_HREFS[1], badge: null },
+    { company: t('case3_company'), period: t('case3_period'), tag: t('case3_tag'), desc: t('case3_desc'), cta: null,           href: CASE_HREFS[2], badge: t('case3_badge') },
+    { company: t('case4_company'), period: t('case4_period'), tag: t('case4_tag'), desc: t('case4_desc'), cta: t('case4_cta'), href: CASE_HREFS[3], badge: null },
+    { company: t('case5_company'), period: t('case5_period'), tag: t('case5_tag'), desc: t('case5_desc'), cta: t('case5_cta'), href: CASE_HREFS[4], badge: null },
+    { company: t('case6_company'), period: t('case6_period'), tag: t('case6_tag'), desc: t('case6_desc'), cta: t('case6_cta'), href: CASE_HREFS[5], badge: null },
   ]
 
   return (
@@ -128,6 +128,7 @@ export function SocialProof() {
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <h3 className="text-2xl font-bold text-foreground">{c.company}</h3>
+                  <p className="text-xs text-muted-foreground mt-1">{c.period}</p>
                 </div>
                 <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground text-right leading-relaxed">
                   {c.tag.split(' · ').map((tag, idx) => (

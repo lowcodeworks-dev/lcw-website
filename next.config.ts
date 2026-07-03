@@ -3,11 +3,15 @@ import createNextIntlPlugin from 'next-intl/plugin'
 
 const withNextIntl = createNextIntlPlugin()
 
+const isDev = process.env.NODE_ENV !== 'production'
+
 const csp = [
   "default-src 'self'",
   // Next.js App Router requires 'unsafe-inline' for hydration scripts.
   // Cloudflare Turnstile also requires its domain here.
-  "script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com https://eu-assets.i.posthog.com",
+  // 'unsafe-eval' is dev-only — React/Turbopack use eval() for debugging callstacks;
+  // React never uses eval() in production, so prod stays strict.
+  `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ''} https://challenges.cloudflare.com https://eu-assets.i.posthog.com`,
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob:",
   "font-src 'self'",
