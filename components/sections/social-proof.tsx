@@ -50,8 +50,8 @@ const CASE_HREFS = [
   'https://www.macnica.co.jp/en/business/ai_iot/news/2021/136600/',
   null,
   'https://www.mendix.com/customer-stories/accelerate-app-delivery-at-scale-with-mendix-and-aws/',
-  'https://www.mendix.com/customer-stories/rijkswaterstaat/',
   'https://www.pcbflow.com',
+  'https://www.mendix.com/customer-stories/rijkswaterstaat/',
 ]
 
 export function SocialProof() {
