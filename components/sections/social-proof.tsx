@@ -46,8 +46,8 @@ function AnimatedNumber({ value }: { value: string }) {
 }
 
 const CASE_HREFS = [
-  'https://www.mendix.com/customer-stories/usi-accelerates-development-and-enables-process-transformation-at-scale/',
   'https://www.macnica.co.jp/en/business/ai_iot/news/2021/136600/',
+  'https://www.mendix.com/customer-stories/usi-accelerates-development-and-enables-process-transformation-at-scale/',
   null,
   'https://www.mendix.com/customer-stories/accelerate-app-delivery-at-scale-with-mendix-and-aws/',
   'https://www.pcbflow.com',
