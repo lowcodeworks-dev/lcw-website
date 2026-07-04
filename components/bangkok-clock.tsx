@@ -2,14 +2,14 @@
 
 import { useEffect, useState } from 'react'
 
-export function SeoulClock() {
+export function BangkokClock() {
   const [time, setTime] = useState<string | null>(null)
 
   useEffect(() => {
     function tick() {
       setTime(
         new Intl.DateTimeFormat('en-GB', {
-          timeZone: 'Asia/Seoul',
+          timeZone: 'Asia/Bangkok',
           hour: '2-digit',
           minute: '2-digit',
           hour12: false,
@@ -25,7 +25,7 @@ export function SeoulClock() {
 
   return (
     <span className="text-xs text-background/30 tabular-nums">
-      Seoul {time} KST
+      Bangkok {time} ICT
     </span>
   )
 }

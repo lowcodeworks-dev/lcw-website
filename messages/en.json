@@ -1,6 +1,7 @@
 {
   "nav": {
     "services": "Services",
+    "work": "Track record",
     "about": "About",
     "contact": "Contact",
     "cta": "Get in touch"
@@ -9,7 +10,7 @@
     "label": "Enterprise Digital Transformation · Solution Architect · AI App Development",
     "label_sub": "Remote first. Travel when it matters.",
     "headline": "Enterprise transformation, without the platform dependency.",
-    "subtext": "14+ years leading digital transformation across APAC and EMEA — governance, CoE setup, delivery at enterprise scale. Currently focused on where graph, AI, and low-code orchestration meet.",
+    "subtext": "14+ years leading digital transformation across APAC and EMEA on Mendix — governance, CoE setup, delivery at enterprise scale. The discipline underneath travels to any platform. Currently focused on where graph, AI, and low-code orchestration meet.",
     "cta_primary": "Take the free assessment",
     "cta_secondary": "Get in touch",
     "byline": "By Danny Hildebrand — Solution Architect, Digital Transformation"
@@ -81,7 +82,8 @@
     "label": "About",
     "headline": "Transformation expertise for organisations that need to get it right.",
     "body": "I've worked with enterprise IT teams across APAC and Europe — defining strategies, governing platforms at scale, managing complex delivery programmes, and building the organisational foundations that make transformation stick. I built my career inside Mendix and Siemens — starting at Mendix NL, then brought to Seoul in 2022 by Siemens Korea to deliver a worldwide GTM application for a global enterprise client. That engagement rooted me in the region and shaped how I approach the work.",
-    "body2": "A track record with enterprise clients in Korea, Taiwan, Japan, and Europe. Working in these markets also means understanding the local dynamics — how decisions move, how consensus forms, and where relationship trust shapes every programme. English and Dutch. Remote-first, and happy to travel when it matters. Open to both project-based engagements and the right full-time role — whichever fits the problem best.",
+    "body2": "A track record with enterprise clients in Korea, Taiwan, Japan, and Europe. Working in these markets also means understanding the local dynamics — how decisions move, how consensus forms, and where relationship trust shapes every programme. English and Dutch. Remote-first, and happy to travel when it matters.",
+    "availability_note": "Open to both project-based engagements and the right full-time role — whichever fits the problem best.",
     "body3": "I work directly with platform partners and system integrators who need senior capacity on complex engagements. If you need experienced backup on a delivery, reach out.",
     "danny_name": "Danny Hildebrand",
     "danny_role": "Transformation Lead · Solution Architecture · AI App Development",
@@ -114,7 +116,9 @@
     "q3": "Can you work alongside our existing team?",
     "a3": "Yes. I do hands-on delivery, work alongside your existing developers, or both. Some clients need me to deliver; others need me to coach and guide their team. Most engagements end up being a mix — I adapt to what the situation actually requires.",
     "q4": "How are engagements scoped and priced?",
-    "a4": "I scope and price after an initial conversation. There's no fixed rate card — engagements vary by size, duration, and complexity. I'll be direct about what makes sense."
+    "a4": "I scope and price after an initial conversation. There's no fixed rate card — engagements vary by size, duration, and complexity. I'll be direct about what makes sense.",
+    "q5": "Are you available for full-time roles?",
+    "a5": "Yes. Alongside project-based engagements, I'm open to the right full-time role — particularly in Seoul or Bangkok. If you're hiring for a Solution Architect, transformation lead, or similar role, reach out via the contact section below."
   },
   "platform_preview": {
     "label": "Built-in tooling",
@@ -128,12 +132,12 @@
     "engagements_label": "Pre-LCW track record · Via Siemens & enterprise platform partners",
     "stat1_label": "Developers enabled",
     "stat2_label": "Partners enabled",
-    "stat3_label": "PoC wins vs. Outsystems & PowerApps",
-    "stat4_label": "CoE setups across APAC",
+    "stat3_label": "Faster development delivery",
+    "stat4_label": "Legacy apps modernised",
     "case1_company": "Macnica · Japan",
     "case1_period": "2024 – 2025",
     "case1_tag": "CoE Setup · DX Factory · Partner Enablement",
-    "case1_desc": "Macnica is Japan's leading Mendix partner and one of the country's largest IT distributors. We set up the Macnica DX Factory — a Mendix CoE enabling both internal application development and customer-facing projects. As tech lead, I coached the development teams, embedded Agile ways of working, and set up the technical governance and development processes. The factory became the foundation for Macnica's Mendix practice across Japan.",
+    "case1_desc": "Macnica is Japan's leading Mendix partner and one of the country's largest IT distributors. I set up the Macnica DX Factory — a Mendix CoE enabling both internal application development and customer-facing projects. As tech lead, I coached the development teams, embedded Agile ways of working, and set up the technical governance and development processes. The factory became the foundation for Macnica's Mendix practice across Japan.",
     "case1_cta": "Read more on Macnica.co.jp",
     "case2_company": "USI Global · Taiwan",
     "case2_period": "2024",
@@ -242,7 +246,7 @@
   "locations": {
     "eyebrow": "Where I work from",
     "seoul_city": "Seoul, Korea",
-    "seoul_desc": "LowCodeWorks Co., Ltd. is registered here — D-8 visa entity.",
+    "seoul_desc": "LowCodeWorks Co., Ltd. is registered here.",
     "bangkok_city": "Bangkok, Thailand",
     "bangkok_desc": "Currently based here. Remote-first, travel when it matters."
   },

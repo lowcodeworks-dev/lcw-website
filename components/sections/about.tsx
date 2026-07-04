@@ -52,6 +52,9 @@ export function About() {
 
             <p className="text-muted-foreground leading-relaxed mb-6">{t('body')}</p>
             <p className="text-muted-foreground leading-relaxed mb-6">{t('body2')}</p>
+            <p className="text-foreground font-medium leading-relaxed mb-6 bg-muted rounded-xl px-4 py-3">
+              {t('availability_note')}
+            </p>
             <p className="text-sm text-muted-foreground leading-relaxed border-l-2 border-border pl-4">{t('body3')}</p>
           </motion.div>
 
