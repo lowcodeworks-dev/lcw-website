@@ -5,7 +5,7 @@ import { ArrowUpRight } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { useRef, useState, useEffect } from 'react'
 
-const STAT_NUMBERS = ['70+', '8', '3', '2']
+const STAT_NUMBERS = ['70+', '8+', '30%', '120+']
 
 const SCRAMBLE_MS = 500
 const SETTLE_MS = 900
@@ -13,9 +13,11 @@ const SETTLE_MS = 900
 function AnimatedNumber({ value }: { value: string }) {
   const ref = useRef<HTMLSpanElement>(null)
   const isInView = useInView(ref, { once: true, amount: 0.4 })
-  const [display, setDisplay] = useState('0')
   const numeric = parseInt(value, 10)
   const suffix = value.replace(/[0-9]/g, '')
+  // Start at the final value (not 0) so SSR output, no-JS fallback, and
+  // crawlers see the real number — the scramble is a client-only flourish.
+  const [display, setDisplay] = useState(String(numeric))
 
   useEffect(() => {
     if (!isInView) return
@@ -69,7 +71,7 @@ export function SocialProof() {
   ]
 
   return (
-    <section className="bg-muted py-28">
+    <section id="work" className="bg-muted py-28">
       <div className="max-w-6xl mx-auto px-6">
 
         {/* Header */}

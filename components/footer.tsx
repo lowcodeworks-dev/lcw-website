@@ -1,7 +1,7 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
-import { SeoulClock } from '@/components/seoul-clock'
+import { BangkokClock } from '@/components/bangkok-clock'
 
 export function Footer() {
   const t = useTranslations('footer')
@@ -16,7 +16,7 @@ export function Footer() {
           <span className="text-xs text-background/30">Seoul, Republic of Korea</span>
         </div>
         <div className="hidden md:block">
-          <SeoulClock />
+          <BangkokClock />
         </div>
         <p className="text-xs text-background/30">
           © {new Date().getFullYear()} {t('company')}. {t('rights')}

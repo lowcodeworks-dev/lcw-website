@@ -59,6 +59,7 @@ export function Nav({ locale }: { locale: string }) {
 
   const links = [
     { label: t('services'), href: '#services' },
+    { label: t('work'), href: '#work' },
     { label: t('about'), href: '#about' },
     { label: t('contact'), href: '#contact' },
   ]
