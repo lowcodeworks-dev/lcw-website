@@ -4,7 +4,7 @@ import { assessmentRatelimit } from '@/lib/ratelimit'
 import enMessages from '@/messages/en.json'
 import koMessages from '@/messages/ko.json'
 import jaMessages from '@/messages/ja.json'
-import { getPostHogClient } from '@/lib/posthog-server'
+import { forwardAssessmentLead, trackFunnelServerEvent } from '@/lib/assessment-webhook'
 
 const NOTIFY_EMAIL = 'info@lowcodeworks.consulting'
 const FROM_ADDRESS = 'LCW Assessment <assessment@lowcodeworks.consulting>'
@@ -193,20 +193,17 @@ export async function OPTIONS(request: Request) {
 export async function POST(request: Request) {
   const resend = new Resend(process.env.RESEND_API_KEY)
   const origin = request.headers.get('origin')
-  const clientDistinctId = request.headers.get('X-POSTHOG-DISTINCT-ID')
+  let sessionId = 'unknown'
   try {
     const body = await request.json()
+    sessionId = typeof (body as Record<string, unknown>).session_id === 'string'
+      ? (body as Record<string, unknown>).session_id as string
+      : 'unknown'
 
     // Input validation
     const validationError = validateBody(body as Record<string, unknown>)
     if (validationError) {
-      const posthog = getPostHogClient()
-      posthog.capture({
-        distinctId: clientDistinctId ?? 'anonymous',
-        event: 'assessment_submission_failed',
-        properties: { reason: 'validation_error', error: validationError },
-      })
-      await posthog.shutdown()
+      trackFunnelServerEvent({ session_id: sessionId, event: 'submission_failed', reason: 'validation_error' })
       return NextResponse.json({ error: validationError }, { status: 400, headers: corsHeaders(origin) })
     }
 
@@ -237,13 +234,7 @@ export async function POST(request: Request) {
     const { success, reset } = await assessmentRatelimit.limit(ip)
     if (!success) {
       const retryAfter = Math.ceil((reset - Date.now()) / 1000)
-      const posthog = getPostHogClient()
-      posthog.capture({
-        distinctId: clientDistinctId ?? 'anonymous',
-        event: 'assessment_submission_failed',
-        properties: { reason: 'rate_limited' },
-      })
-      await posthog.shutdown()
+      trackFunnelServerEvent({ session_id: sessionId, event: 'submission_failed', reason: 'rate_limited' })
       return NextResponse.json(
         { error: 'Too many submissions. Please try again later.' },
         { status: 429, headers: { 'Retry-After': String(retryAfter), ...corsHeaders(origin) } }
@@ -253,13 +244,7 @@ export async function POST(request: Request) {
     // Turnstile server-side verification
     const valid = await verifyTurnstile(turnstileToken, ip)
     if (!valid) {
-      const posthog = getPostHogClient()
-      posthog.capture({
-        distinctId: clientDistinctId ?? 'anonymous',
-        event: 'assessment_submission_failed',
-        properties: { reason: 'turnstile_failed' },
-      })
-      await posthog.shutdown()
+      trackFunnelServerEvent({ session_id: sessionId, event: 'submission_failed', reason: 'turnstile_failed' })
       return NextResponse.json(
         { error: 'Security check failed. Please refresh and try again.' },
         { status: 400, headers: corsHeaders(origin) }
@@ -288,7 +273,13 @@ export async function POST(request: Request) {
 
     const localeTag = safeLocale !== 'en' ? `[${safeLocale}] ` : ''
 
-    // TODO: POST to LCW Workspace CRM — endpoint to be built in lcw-workspace session
+    // Forward the lead to the LCW Workspace CRM (creates a website_leads row).
+    // Fire-and-forget — a forwarding failure shouldn't block the emails below,
+    // Danny still gets notified either way.
+    forwardAssessmentLead({
+      name, company, email, locale: safeLocale, stage, answers, dimensions, message,
+      session_id: sessionId,
+    })
 
     // Notify Danny — always in English, locale tag in subject for triage
     await resend.emails.send({
@@ -342,36 +333,17 @@ export async function POST(request: Request) {
       ].join('\n'),
     })
 
-    // Track successful submission server-side, correlated with the client distinct ID
-    const posthog = getPostHogClient()
-    const serverDistinctId = clientDistinctId ?? email
-    posthog.identify({
-      distinctId: serverDistinctId,
-      properties: { email, name, company: company || undefined },
+    trackFunnelServerEvent({
+      session_id: sessionId,
+      event: 'submission_received',
+      stage,
+      locale: safeLocale,
     })
-    posthog.capture({
-      distinctId: serverDistinctId,
-      event: 'assessment_submission_received',
-      properties: {
-        stage,
-        locale: safeLocale,
-        has_company: Boolean(company),
-        has_message: Boolean(message),
-        dimensions: dimensions.map((d) => ({ name: d.name, score: d.score })),
-      },
-    })
-    await posthog.shutdown()
 
     return NextResponse.json({ success: true }, { headers: corsHeaders(origin) })
   } catch (err) {
     console.error('[assessment/submit]', err)
-    const posthog = getPostHogClient()
-    posthog.capture({
-      distinctId: clientDistinctId ?? 'anonymous',
-      event: 'assessment_submission_failed',
-      properties: { reason: 'server_error' },
-    })
-    await posthog.shutdown()
+    trackFunnelServerEvent({ session_id: sessionId, event: 'submission_failed', reason: 'server_error' })
     return NextResponse.json(
       { error: 'Something went wrong. Please try again.' },
       { status: 500, headers: corsHeaders(null) }
