@@ -6,7 +6,7 @@ import { ArrowLeft, RotateCcw } from 'lucide-react'
 import Script from 'next/script'
 import { useTranslations, useLocale } from 'next-intl'
 import { useTheme } from 'next-themes'
-import posthog from 'posthog-js'
+import { trackFunnelEvent } from '@/lib/track-assessment'
 
 const ANSWER_LABELS = ['A', 'B', 'C', 'D']
 
@@ -88,7 +88,15 @@ const inputCls =
 
 // ─── Results page ─────────────────────────────────────────────────────────────
 
-function Results({ answers, onRetake }: { answers: number[]; onRetake: () => void }) {
+function Results({
+  answers,
+  onRetake,
+  sessionId,
+}: {
+  answers: number[]
+  onRetake: () => void
+  sessionId: string
+}) {
   const t = useTranslations('assessment')
   const locale = useLocale()
   const { resolvedTheme } = useTheme()
@@ -186,15 +194,10 @@ function Results({ answers, onRetake }: { answers: number[]; onRetake: () => voi
     setFormStatus('loading')
     setFormError('')
 
-    const distinctId = posthog.get_distinct_id()
-
     try {
       const res = await fetch('/api/assessment/submit', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-POSTHOG-DISTINCT-ID': distinctId ?? '',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           name,
           company,
@@ -206,34 +209,18 @@ function Results({ answers, onRetake }: { answers: number[]; onRetake: () => voi
           stage,       // English — used for Danny's notification email
           dimensions,  // English names — used for Danny's notification email
           answers,
+          session_id: sessionId,
         }),
       })
 
       const data = await res.json()
       if (data.success) {
-        posthog.identify(email, { name, email, company })
-        posthog.capture('assessment_contact_form_submitted', {
-          stage,
-          locale,
-          dimensions: dimensions.map((d) => ({ name: d.name, score: d.score })),
-        })
         setFormStatus('success')
       } else {
-        posthog.capture('assessment_contact_form_errored', {
-          stage,
-          locale,
-          error: data.error,
-        })
         setFormStatus('error')
         setFormError(data.error ?? t('error_generic'))
       }
-    } catch (err) {
-      posthog.captureException(err)
-      posthog.capture('assessment_contact_form_errored', {
-        stage,
-        locale,
-        error: 'network_error',
-      })
+    } catch {
       setFormStatus('error')
       setFormError(t('error_generic'))
     }
@@ -414,11 +401,13 @@ function Results({ answers, onRetake }: { answers: number[]; onRetake: () => voi
 
 export default function AssessmentPage() {
   const t = useTranslations('assessment')
+  const locale = useLocale()
 
   const [step, setStep] = useState(0)
   const [answers, setAnswers] = useState<number[]>([])
   const direction = useRef(1)
   const [complete, setComplete] = useState(false)
+  const [sessionId] = useState(() => crypto.randomUUID())
 
   // Questions built from translations — localized for the current locale
   const QUESTIONS = [
@@ -445,13 +434,22 @@ export default function AssessmentPage() {
     setAnswers(updated)
 
     if (step === 0) {
-      posthog.capture('assessment_started', { question_number: 1, total_questions: QUESTIONS.length })
+      trackFunnelEvent({
+        session_id: sessionId,
+        event: 'started',
+        question_number: 1,
+        total_questions: QUESTIONS.length,
+        locale,
+      })
     }
 
-    posthog.capture('assessment_question_answered', {
+    trackFunnelEvent({
+      session_id: sessionId,
+      event: 'question_answered',
       question_number: step + 1,
       total_questions: QUESTIONS.length,
       answer_index: answerIndex,
+      locale,
     })
 
     if (step < QUESTIONS.length - 1) {
@@ -459,10 +457,7 @@ export default function AssessmentPage() {
     } else {
       const dimensions = computeDimensions(updated)
       const stage = getStage(dimensions)
-      posthog.capture('assessment_completed', {
-        stage,
-        dimensions: dimensions.map((d) => ({ name: d.name, score: d.score })),
-      })
+      trackFunnelEvent({ session_id: sessionId, event: 'completed', stage, locale })
       setComplete(true)
     }
   }
@@ -474,7 +469,7 @@ export default function AssessmentPage() {
   }
 
   const handleRetake = () => {
-    posthog.capture('assessment_retaken')
+    trackFunnelEvent({ session_id: sessionId, event: 'retaken', locale })
     setStep(0)
     setAnswers([])
     setComplete(false)
@@ -501,7 +496,7 @@ export default function AssessmentPage() {
       )}
 
       {complete ? (
-        <Results answers={answers} onRetake={handleRetake} />
+        <Results answers={answers} onRetake={handleRetake} sessionId={sessionId} />
       ) : (
         <div className="max-w-2xl mx-auto px-6 pt-10 pb-20">
           <div className="flex items-center justify-between mb-12">
