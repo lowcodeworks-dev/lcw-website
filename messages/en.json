@@ -168,7 +168,21 @@
   "footer": {
     "tagline": "Enterprise digital transformation for the teams that need it.",
     "rights": "All rights reserved.",
-    "company": "LowCodeWorks"
+    "company": "LowCodeWorks",
+    "privacy": "Privacy Policy",
+    "terms": "Terms & Conditions"
+  },
+  "cookie_consent": {
+    "message": "We use cookies for analytics, to understand how visitors use this site. You can accept or decline non-essential cookies below.",
+    "accept": "Accept",
+    "decline": "Decline",
+    "privacy_link": "Privacy Policy"
+  },
+  "legal": {
+    "back": "Back to home",
+    "privacy_title": "Privacy Policy",
+    "terms_title": "Terms & Conditions",
+    "english_only_notice": ""
   },
   "assessment": {
     "back": "Back",

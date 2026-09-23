@@ -1,9 +1,10 @@
 'use client'
 
+import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import { BangkokClock } from '@/components/bangkok-clock'
 
-export function Footer() {
+export function Footer({ locale }: { locale: string }) {
   const t = useTranslations('footer')
 
   return (
@@ -18,9 +19,25 @@ export function Footer() {
         <div className="hidden md:block">
           <BangkokClock />
         </div>
-        <p className="text-xs text-background/30">
-          © {new Date().getFullYear()} {t('company')}. {t('rights')}
-        </p>
+        <div className="flex flex-col items-center md:items-end gap-2">
+          <div className="flex items-center gap-4">
+            <Link
+              href={`/${locale}/privacy`}
+              className="text-xs text-background/50 hover:text-background/80 transition-colors"
+            >
+              {t('privacy')}
+            </Link>
+            <Link
+              href={`/${locale}/terms`}
+              className="text-xs text-background/50 hover:text-background/80 transition-colors"
+            >
+              {t('terms')}
+            </Link>
+          </div>
+          <p className="text-xs text-background/30">
+            © {new Date().getFullYear()} {t('company')}. {t('rights')}
+          </p>
+        </div>
       </div>
     </footer>
   )

@@ -53,5 +53,5 @@ export default function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/((?!api|_next|_vercel|ingest|.*\\..*).*)'],
+  matcher: ['/((?!api|_next|_vercel|ingest|opengraph-image|twitter-image|.*\\..*).*)'],
 }
