@@ -5,6 +5,7 @@ import enMessages from '@/messages/en.json'
 import koMessages from '@/messages/ko.json'
 import jaMessages from '@/messages/ja.json'
 import { forwardAssessmentLead, trackFunnelServerEvent } from '@/lib/assessment-webhook'
+import { SITE_URL } from '@/lib/config'
 
 const NOTIFY_EMAIL = 'info@lowcodeworks.consulting'
 const FROM_ADDRESS = 'LCW Assessment <assessment@lowcodeworks.consulting>'
@@ -174,7 +175,7 @@ async function verifyTurnstile(token: string, ip: string | null): Promise<boolea
   return data.success === true
 }
 
-const ALLOWED_ORIGIN = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://lowcodeworks.consulting'
+const ALLOWED_ORIGIN = SITE_URL
 
 function corsHeaders(origin: string | null) {
   const allowed = origin === ALLOWED_ORIGIN ? origin : ALLOWED_ORIGIN

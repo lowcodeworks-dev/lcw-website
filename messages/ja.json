@@ -168,7 +168,21 @@
   "footer": {
     "tagline": "それを必要とするチームのためのエンタープライズ・デジタルトランスフォーメーション。",
     "rights": "全著作権所有。",
-    "company": "LowCodeWorks"
+    "company": "LowCodeWorks",
+    "privacy": "プライバシーポリシー",
+    "terms": "利用規約"
+  },
+  "cookie_consent": {
+    "message": "当サイトでは、訪問者の利用状況を把握するために分析目的でCookieを使用しています。以下から、必須ではないCookieへの同意・拒否を選択できます。",
+    "accept": "同意する",
+    "decline": "拒否する",
+    "privacy_link": "プライバシーポリシー"
+  },
+  "legal": {
+    "back": "ホームに戻る",
+    "privacy_title": "プライバシーポリシー",
+    "terms_title": "利用規約",
+    "english_only_notice": "本ページは英語のみで提供されています。ご不明な点は info@lowcodeworks.consulting までご連絡ください。"
   },
   "assessment": {
     "back": "戻る",
