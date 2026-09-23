@@ -15,6 +15,13 @@
     "cta_secondary": "Get in touch",
     "byline": "By Danny Hildebrand — Solution Architect, Digital Transformation"
   },
+  "assessment_cta": {
+    "label": "Start here",
+    "headline": "Not sure where to begin?",
+    "body": "Most engagements start with an assessment — a structured review across 6 dimensions, delivered as a scored report. It creates clarity before anything else is scoped or priced.",
+    "cta": "Take the free assessment",
+    "footnote": "We'll scope it together"
+  },
   "assessment_banner": {
     "label": "Free · Self-serve",
     "headline": "Not sure where you stand?",
@@ -261,9 +268,7 @@
   "locations": {
     "eyebrow": "Where I work from",
     "seoul_city": "Seoul, Korea",
-    "seoul_desc": "LowCodeWorks Co., Ltd. is registered here. Currently based here.",
-    "bangkok_city": "Bangkok, Thailand",
-    "bangkok_desc": "Regular travel here for client work. Remote-first otherwise."
+    "seoul_desc": "LowCodeWorks Co., Ltd. is registered here. Currently based here."
   },
   "perspectives": {
     "eyebrow": "Perspectives",
