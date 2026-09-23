@@ -15,6 +15,13 @@
     "cta_secondary": "お問い合わせ",
     "byline": "By Danny Hildebrand — ソリューションアーキテクト、デジタルトランスフォーメーション"
   },
+  "assessment_cta": {
+    "label": "まずはここから",
+    "headline": "何から始めればよいか迷っていませんか？",
+    "body": "多くの案件はアセスメントから始まります — 6つの次元にわたる構造化されたレビューを行い、スコア化されたレポートとしてお届けします。範囲や費用を決める前に、明確な現状把握ができます。",
+    "cta": "無料アセスメントを受ける",
+    "footnote": "範囲は一緒に決めていきます"
+  },
   "assessment_banner": {
     "label": "無料 · セルフサービス",
     "headline": "自社の現状が把握できていますか？",
@@ -261,9 +268,7 @@
   "locations": {
     "eyebrow": "拠点について",
     "seoul_city": "ソウル、韓国",
-    "seoul_desc": "LowCodeWorks Co., Ltd.はここに登録されており、現在の拠点でもあります。",
-    "bangkok_city": "バンコク、タイ",
-    "bangkok_desc": "クライアント業務で定期的に訪れています。それ以外はリモートファーストで働いています。"
+    "seoul_desc": "LowCodeWorks Co., Ltd.はここに登録されており、現在の拠点でもあります。"
   },
   "perspectives": {
     "eyebrow": "視点",

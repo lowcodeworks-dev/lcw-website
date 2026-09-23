@@ -1,11 +1,14 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import { WORKSPACE_ASSESSMENT_URL } from '@/lib/config'
 import posthog from 'posthog-js'
 
 export function AssessmentCta() {
+  const t = useTranslations('assessment_cta')
+
   return (
     <section className="bg-background py-20">
       <div className="max-w-6xl mx-auto px-6">
@@ -18,13 +21,13 @@ export function AssessmentCta() {
         >
           <div className="max-w-xl">
             <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-3">
-              Start here
+              {t('label')}
             </p>
             <h2 className="text-3xl md:text-4xl font-bold text-foreground leading-tight tracking-tight mb-3">
-              Not sure where to begin?
+              {t('headline')}
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              Most engagements start with an assessment — a structured review across 6 dimensions, delivered as a scored report. It creates clarity before anything else is scoped or priced.
+              {t('body')}
             </p>
           </div>
 
@@ -34,10 +37,10 @@ export function AssessmentCta() {
               onClick={() => posthog.capture('assessment_cta_clicked', { location: 'assessment_cta' })}
               className="inline-flex items-center gap-2 px-7 py-4 bg-accent text-accent-foreground font-semibold rounded-full hover:bg-accent/85 transition-colors whitespace-nowrap"
             >
-              Take the free assessment
+              {t('cta')}
               <ArrowRight className="h-4 w-4" />
             </a>
-            <p className="text-xs text-muted-foreground text-center">We'll scope it together</p>
+            <p className="text-xs text-muted-foreground text-center">{t('footnote')}</p>
           </div>
         </motion.div>
       </div>
