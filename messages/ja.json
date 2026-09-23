@@ -182,7 +182,8 @@
     "back": "ホームに戻る",
     "privacy_title": "プライバシーポリシー",
     "terms_title": "利用規約",
-    "english_only_notice": "本ページは英語のみで提供されています。ご不明な点は info@lowcodeworks.consulting までご連絡ください。"
+    "last_updated": "最終更新日",
+    "last_updated_date": "2026年9月23日"
   },
   "assessment": {
     "back": "戻る",
@@ -260,9 +261,9 @@
   "locations": {
     "eyebrow": "拠点について",
     "seoul_city": "ソウル、韓国",
-    "seoul_desc": "LowCodeWorks Co., Ltd.はここに登録されています。",
+    "seoul_desc": "LowCodeWorks Co., Ltd.はここに登録されており、現在の拠点でもあります。",
     "bangkok_city": "バンコク、タイ",
-    "bangkok_desc": "現在の拠点です。リモートファーストで、必要な時は出張します。"
+    "bangkok_desc": "クライアント業務で定期的に訪れています。それ以外はリモートファーストで働いています。"
   },
   "perspectives": {
     "eyebrow": "視点",
