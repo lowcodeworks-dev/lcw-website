@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
-import { BangkokClock } from '@/components/bangkok-clock'
+import { SeoulClock } from '@/components/seoul-clock'
 
 export function Footer({ locale }: { locale: string }) {
   const t = useTranslations('footer')
@@ -17,7 +17,7 @@ export function Footer({ locale }: { locale: string }) {
           <span className="text-xs text-background/30">Seoul, Republic of Korea</span>
         </div>
         <div className="hidden md:block">
-          <BangkokClock />
+          <SeoulClock />
         </div>
         <div className="flex flex-col items-center md:items-end gap-2">
           <div className="flex items-center gap-4">

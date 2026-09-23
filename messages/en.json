@@ -182,7 +182,8 @@
     "back": "Back to home",
     "privacy_title": "Privacy Policy",
     "terms_title": "Terms & Conditions",
-    "english_only_notice": ""
+    "last_updated": "Last updated",
+    "last_updated_date": "September 23, 2026"
   },
   "assessment": {
     "back": "Back",
@@ -260,9 +261,9 @@
   "locations": {
     "eyebrow": "Where I work from",
     "seoul_city": "Seoul, Korea",
-    "seoul_desc": "LowCodeWorks Co., Ltd. is registered here.",
+    "seoul_desc": "LowCodeWorks Co., Ltd. is registered here. Currently based here.",
     "bangkok_city": "Bangkok, Thailand",
-    "bangkok_desc": "Currently based here. Remote-first, travel when it matters."
+    "bangkok_desc": "Regular travel here for client work. Remote-first otherwise."
   },
   "perspectives": {
     "eyebrow": "Perspectives",
